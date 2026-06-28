@@ -1,0 +1,17 @@
+{
+  "_comment": "Pre-Migration Check Configuration Template",
+
+  "IICS_SRC_username": "source_user@example.com",
+  "IICS_SRC_password": "source_password",
+  "IICS_SRC_region": "dm-us",
+
+  "IICS_TGT_username": "target_user@example.com",
+  "IICS_TGT_password": "target_password",
+  "IICS_TGT_region": "dm-us",
+
+  "PreMigration_Tag": ["PreMigration", "ReadyToMigrate"],
+  "ProjectName": "MyProject",
+
+  "logFileDir": "Logs",
+  "reportFileDir": "Reports"
+}

@@ -1,0 +1,13 @@
+{
+  "_comment": "Post-Migration Validation Configuration Template",
+
+  "IICS_TGT_username": "target_user@example.com",
+  "IICS_TGT_password": "target_password",
+  "IICS_TGT_region": "dm-us",
+
+  "PostMigration_Tag": ["Migrated", "PostMigration"],
+  "ProjectName": "MyProject",
+
+  "logFileDir": "Logs",
+  "reportFileDir": "Reports"
+}

@@ -1,0 +1,27 @@
+{
+  "_comment": "CI/CD Migration Configuration Template",
+
+  "ProjectName": ["MyProject"],
+
+  "IICS_SRC_username": "source_user@example.com",
+  "IICS_SRC_password": "source_password",
+  "IICS_SRC_region": "dm-us",
+
+  "IICS_TGT_username": "target_user@example.com",
+  "IICS_TGT_password": "target_password",
+  "IICS_TGT_region": "dm-us",
+
+  "PreMigration_Tag": ["PreMigration", "ReadyToMigrate"],
+  "PostMigration_Tag": ["Migrated"],
+
+  "Git_Repository_URL": "https://github.com/your-org/your-repo.git",
+  "Git_config_useremail": "user@example.com",
+  "Git_config_username": "Your Name",
+  "Git_password": "your_git_token",
+
+  "Git_SRC_Branch": "dev",
+  "Git_TGT_Branch": "qa",
+
+  "Publish": 0,
+  "logFileDir": "Logs"
+}
