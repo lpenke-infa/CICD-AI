@@ -1,0 +1,25 @@
+{
+  "ProjectName": [
+    "MunichPLPDemo"
+  ],
+  "IICS_SRC_username": "lpenke_cicd_admin",
+  "IICS_SRC_password": "infa@2023",
+  "IICS_SRC_region": "dm-us",
+  "IICS_TGT_username": "CICD_Automation_QA",
+  "IICS_TGT_password": "infa@2024",
+  "IICS_TGT_region": "dm-us",
+  "PreMigration_Tag": [
+    "Folder-2"
+  ],
+  "PostMigration_Tag": [
+    "PM"
+  ],
+  "Git_Repository_URL": "https://github.com/m-soumitry/GLISE",
+  "Git_config_useremail": "soumitrymounika@gmail.com",
+  "Git_config_username": "m-soumitry",
+  "Git_password": "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",
+  "Git_SRC_Branch": "DEV",
+  "Git_TGT_Branch": "QA",
+  "Publish": 0,
+  "logFileDir": "Logs"
+}

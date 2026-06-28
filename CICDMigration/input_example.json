@@ -1,0 +1,26 @@
+{
+    "ProjectName": ["YourProjectName"],
+
+    "IICS_SRC_username": "source_username",
+    "IICS_SRC_password": "source_password",
+    "IICS_SRC_region": "dm-us",
+
+    "IICS_TGT_username": "target_username",
+    "IICS_TGT_password": "target_password",
+    "IICS_TGT_region": "dm-us",
+
+    "PreMigration_Tag": ["TAG1", "TAG2"],
+    "PostMigration_Tag": ["MIGRATED"],
+
+    "Git_Repository_URL": "https://github.com/organization/repository",
+    "Git_config_useremail": "your.email@example.com",
+    "Git_config_username": "your_github_username",
+    "Git_password": "your_github_personal_access_token",
+
+    "Git_SRC_Branch": "DEV",
+    "Git_TGT_Branch": "QA",
+
+    "Publish": 0,
+
+    "logFileDir": "Logs"
+}
