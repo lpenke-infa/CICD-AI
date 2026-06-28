@@ -1,0 +1,21 @@
+# Core Dependencies
+requests==2.31.0
+pymssql==2.2.8
+
+# Excel Report Generation
+pandas>=2.0.0
+openpyxl>=3.1.0
+
+# Slack Bot Framework
+slack-bolt>=1.18.0
+slack-sdk>=3.27.0
+
+# AI & LangChain
+langchain>=0.3.0
+langchain-openai>=0.3.0
+langgraph>=0.2.0
+
+# HTTP & Utilities
+python-dotenv>=1.0.0
+httpx>=0.27.0
+urllib3>=2.0.0
