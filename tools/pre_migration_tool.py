@@ -24,7 +24,7 @@ def pre_migration_check_tool(config_file_path: str) -> str:
 
     Args:
         config_file_path: Path to the JSON configuration file containing validation settings.
-                         Default directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\Configs
+                         Default directory: Configs/ (relative to project root)
 
     The configuration file must contain:
         - IICS_SRC_username: Source environment username
@@ -81,12 +81,11 @@ def execute_pre_migration_check(
     try:
         import os
 
-        # If only filename provided, prepend Configs directory
+        # If only filename provided, prepend Configs directory (relative to project root)
         if not os.path.isabs(config_file_path) and '\\' not in config_file_path and '/' not in config_file_path:
-            config_file_path = os.path.join(
-                r"C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\Configs",
-                config_file_path
-            )
+            # Get project root (parent of tools directory)
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            config_file_path = os.path.join(project_root, "Configs", config_file_path)
 
         # Verify file exists
         if not os.path.exists(config_file_path):
