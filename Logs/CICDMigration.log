@@ -1,1 +1,749 @@
-test
+2026-06-28 10:36:58 - INFO - [create_logger:55] - ================================================================================
+2026-06-28 10:36:58 - INFO - [create_logger:56] - CICD Migration Session Started - 2026-06-28 10:36:58
+2026-06-28 10:36:58 - INFO - [create_logger:57] - ================================================================================
+2026-06-28 10:36:58 - INFO - [validate_input_data:115] - Input configuration validation successful
+2026-06-28 10:37:01 - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:37:02 - INFO - [tagged_assets:183] - Retrieving assets based on tags: ['Folder-2']
+2026-06-28 10:37:02 - INFO - [tagged_assets:189] - Processing tag: 'Folder-2'
+2026-06-28 10:37:06 - INFO - [filter_and_parse_path:157] - Iteration 1/1: Retrieved 20 assets
+2026-06-28 10:37:06 - INFO - [tagged_assets:208] - Tag 'Folder-2' - Found 20 assets in project 'MunichPLPDemo'
+2026-06-28 10:37:06 - INFO - [tagged_assets:223] - Total unique assets to migrate: 20
+2026-06-28 10:37:09 - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:37:10 - INFO - [create_projects_and_folders:267] - Creating required projects and folders
+2026-06-28 10:37:10 - INFO - [create_projects_and_folders:272] - Processing project: MunichPLPDemo
+2026-06-28 10:37:12 - INFO - [create_projects_and_folders:282] -   Project 'MunichPLPDemo' already exists
+2026-06-28 10:37:14 - INFO - [create_projects_and_folders:290] -   Processing folder: Leelaprasad_V1
+2026-06-28 10:37:16 - INFO - [create_projects_and_folders:301] -     Folder 'Leelaprasad_V1' already exists
+2026-06-28 10:37:16 - INFO - [create_projects_and_folders:306] - Projects and folders setup completed
+2026-06-28 10:37:18 - INFO - [git_config:98] - Configured git user.name and user.email
+2026-06-28 10:37:18 - INFO - [git_config:118] - Cloning Git Repository: https://github.com/m-soumitry/GLISE
+2026-06-28 10:37:28 - INFO - [git_config:120] - Repository cloned to: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 10:37:28 - INFO - [git_operations:151] - Working Directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 10:37:28 - INFO - [git_operations:152] - Pulling changes from cloud branch to local branch
+2026-06-28 10:37:28 - INFO - [git_operations:154] - Checkout to Source branch: DEV
+2026-06-28 10:37:31 - INFO - [git_operations:157] - Pulling latest changes from Source branch: DEV
+2026-06-28 10:37:38 - INFO - [git_operations:166] - Checkout to Target branch: QA
+2026-06-28 10:37:39 - INFO - [git_operations:169] - Pulling latest changes from Target branch: QA
+2026-06-28 10:37:46 - INFO - [git_operations:178] - Checking out assets from Source to Target branch
+2026-06-28 10:37:46 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.AC-IICS-login.AI_CONNECTION.json
+2026-06-28 10:37:46 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/AC-IICS-login.AI_CONNECTION.xml
+2026-06-28 10:37:46 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_attendance.DTEMPLATE.json
+2026-06-28 10:37:46 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_attendance.DTEMPLATE.zip
+2026-06-28 10:37:46 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course.DTEMPLATE.json
+2026-06-28 10:37:46 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course.DTEMPLATE.zip
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course_score.DTEMPLATE.json
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course_score.DTEMPLATE.zip
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_department.DTEMPLATE.json
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_department.DTEMPLATE.zip
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_enroll.DTEMPLATE.json
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_enroll.DTEMPLATE.zip
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_faculty.DTEMPLATE.json
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_faculty.DTEMPLATE.zip
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_score.DTEMPLATE.json
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_score.DTEMPLATE.zip
+2026-06-28 10:37:47 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_student.DTEMPLATE.json
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_student.DTEMPLATE.zip
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_teach.DTEMPLATE.json
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_teach.DTEMPLATE.zip
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Guide_Practice.GUIDE.json
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Guide_Practice.GUIDE.xml
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_DivideData_according_to_sem.DTEMPLATE.json
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_DivideData_according_to_sem.DTEMPLATE.zip
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_joinData_of_all_Semsesters.DTEMPLATE.json
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_joinData_of_all_Semsesters.DTEMPLATE.zip
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Mapping1_Test.DTEMPLATE.json
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Mapping1_Test.DTEMPLATE.zip
+2026-06-28 10:37:48 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.mapplet_filter_sem_1.DMAPPLET.json
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/mapplet_filter_sem_1.DMAPPLET.zip
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Process1.PROCESS.json
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Process1.PROCESS.xml
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.SC_IICSLogin.AI_SERVICE_CONNECTOR.json
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/SC_IICSLogin.AI_SERVICE_CONNECTOR.xml
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_email_alert.TASKFLOW.json
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_email_alert.TASKFLOW.xml
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_initiate_subprocess.TASKFLOW.json
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_initiate_subprocess.TASKFLOW.xml
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_subProcess.TASKFLOW.json
+2026-06-28 10:37:49 - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_subProcess.TASKFLOW.xml
+2026-06-28 10:37:49 - INFO - [git_operations:202] - Successfully checked out 40/40 assets
+2026-06-28 10:37:50 - WARNING - [git_operations:207] - No changes to commit
+2026-06-28 10:37:50 - INFO - [cherrypick:253] - Cherry-pick completed successfully. Commit: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 10:37:50 - INFO - [cherrypick:265] - Cleaning up repository directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 10:37:50 - WARNING - [cherrypick:268] - Failed to cleanup repository: [WinError 5] Access is denied: 'C:\\Users\\leelaprasad.p.SFDC\\Documents\\AutomationsAI\\CICD_Final\\GLISE\\.git\\objects\\info\\commit-graphs\\commit-graph-chain'
+2026-06-28 10:37:51 - INFO - [pull_assets:192] - Starting pull operation for 20 assets
+2026-06-28 10:37:51 - INFO - [pull_assets:193] - Commit Hash: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 10:37:51 - INFO - [pull_v3:40] - Initiating pull using IICS REST V3 API
+2026-06-28 10:37:54 - INFO - [pull_v3:80] - Pull initiated successfully. Pull Action ID: jsvdfWUXPwIdk4atmxff8H
+2026-06-28 10:37:54 - INFO - [get_pull_status_v3:115] - Monitoring pull operation status
+2026-06-28 10:37:55 - INFO - [get_pull_status_v3:140] - Pull State (check 1): IN_PROGRESS
+2026-06-28 10:38:12 - INFO - [get_pull_status_v3:140] - Pull State (check 2): IN_PROGRESS
+2026-06-28 10:38:29 - INFO - [get_pull_status_v3:140] - Pull State (check 3): SUCCESSFUL
+2026-06-28 10:38:29 - INFO - [get_pull_status_v3:143] - Pull completed successfully
+2026-06-28 10:38:29 - INFO - [pull_assets:212] - Pull operation completed successfully
+2026-06-28 10:38:31 - INFO - [post_migration_tag:182] - Starting post-migration tagging with tags: ['PM']
+2026-06-28 10:38:33 - INFO - [lookup_v3:80] - Created tag request for 20 assets
+2026-06-28 10:38:35 - INFO - [post_migration_tagging_v3:142] - Batch 1/1: Successfully tagged 20 assets
+2026-06-28 10:38:35 - INFO - [post_migration_tagging_v3:157] - Successfully tagged 20 assets
+2026-06-28 10:38:35 - INFO - [post_migration_tag:203] - Post-migration tagging completed successfully
+2026-06-28 10:38:41 - CRITICAL - [add_record:85] - DB error: Unable to add record to DB - (20009, b'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\nDB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\n')
+2026-06-28 10:52:30 - CICDMigration - INFO - [create_logger:55] - ================================================================================
+2026-06-28 10:52:30 - CICDMigration - INFO - [create_logger:56] - CICD Migration Session Started - 2026-06-28 10:52:30
+2026-06-28 10:52:30 - CICDMigration - INFO - [create_logger:57] - ================================================================================
+2026-06-28 10:52:30 - CICDMigration - INFO - [validate_input_data:115] - Input configuration validation successful
+2026-06-28 10:52:32 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:52:33 - CICDMigration - INFO - [tagged_assets:183] - Retrieving assets based on tags: ['Folder-2']
+2026-06-28 10:52:33 - CICDMigration - INFO - [tagged_assets:189] - Processing tag: 'Folder-2'
+2026-06-28 10:52:37 - CICDMigration - INFO - [filter_and_parse_path:157] - Iteration 1/1: Retrieved 20 assets
+2026-06-28 10:52:37 - CICDMigration - INFO - [tagged_assets:208] - Tag 'Folder-2' - Found 20 assets in project 'MunichPLPDemo'
+2026-06-28 10:52:37 - CICDMigration - INFO - [tagged_assets:223] - Total unique assets to migrate: 20
+2026-06-28 10:52:40 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:52:41 - CICDMigration - INFO - [create_projects_and_folders:267] - Creating required projects and folders
+2026-06-28 10:52:41 - CICDMigration - INFO - [create_projects_and_folders:272] - Processing project: MunichPLPDemo
+2026-06-28 10:52:43 - CICDMigration - INFO - [create_projects_and_folders:282] -   Project 'MunichPLPDemo' already exists
+2026-06-28 10:52:45 - CICDMigration - INFO - [create_projects_and_folders:290] -   Processing folder: Leelaprasad_V1
+2026-06-28 10:52:47 - CICDMigration - INFO - [create_projects_and_folders:301] -     Folder 'Leelaprasad_V1' already exists
+2026-06-28 10:52:47 - CICDMigration - INFO - [create_projects_and_folders:306] - Projects and folders setup completed
+2026-06-28 10:52:49 - CICDMigration - INFO - [git_config:98] - Configured git user.name and user.email
+2026-06-28 10:52:49 - CICDMigration - INFO - [git_config:108] - Repository directory already exists: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 10:52:49 - CICDMigration - INFO - [git_config:109] - Skipping clone and using existing repository
+2026-06-28 10:52:49 - CICDMigration - INFO - [git_config:112] - Fetching latest changes from remote...
+2026-06-28 10:52:52 - CICDMigration - INFO - [git_config:114] - Repository updated successfully
+2026-06-28 10:52:52 - CICDMigration - INFO - [git_operations:151] - Working Directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 10:52:52 - CICDMigration - INFO - [git_operations:152] - Pulling changes from cloud branch to local branch
+2026-06-28 10:52:52 - CICDMigration - INFO - [git_operations:154] - Checkout to Source branch: DEV
+2026-06-28 10:52:53 - CICDMigration - INFO - [git_operations:157] - Pulling latest changes from Source branch: DEV
+2026-06-28 10:53:00 - CICDMigration - INFO - [git_operations:166] - Checkout to Target branch: QA
+2026-06-28 10:53:00 - CICDMigration - INFO - [git_operations:169] - Pulling latest changes from Target branch: QA
+2026-06-28 10:53:07 - CICDMigration - INFO - [git_operations:178] - Checking out assets from Source to Target branch
+2026-06-28 10:53:07 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.AC-IICS-login.AI_CONNECTION.json
+2026-06-28 10:53:07 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/AC-IICS-login.AI_CONNECTION.xml
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_attendance.DTEMPLATE.json
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_attendance.DTEMPLATE.zip
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course.DTEMPLATE.json
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course.DTEMPLATE.zip
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course_score.DTEMPLATE.json
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course_score.DTEMPLATE.zip
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_department.DTEMPLATE.json
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_department.DTEMPLATE.zip
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_enroll.DTEMPLATE.json
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_enroll.DTEMPLATE.zip
+2026-06-28 10:53:08 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_faculty.DTEMPLATE.json
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_faculty.DTEMPLATE.zip
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_score.DTEMPLATE.json
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_score.DTEMPLATE.zip
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_student.DTEMPLATE.json
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_student.DTEMPLATE.zip
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_teach.DTEMPLATE.json
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_teach.DTEMPLATE.zip
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Guide_Practice.GUIDE.json
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Guide_Practice.GUIDE.xml
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_DivideData_according_to_sem.DTEMPLATE.json
+2026-06-28 10:53:09 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_DivideData_according_to_sem.DTEMPLATE.zip
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_joinData_of_all_Semsesters.DTEMPLATE.json
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_joinData_of_all_Semsesters.DTEMPLATE.zip
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Mapping1_Test.DTEMPLATE.json
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Mapping1_Test.DTEMPLATE.zip
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.mapplet_filter_sem_1.DMAPPLET.json
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/mapplet_filter_sem_1.DMAPPLET.zip
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Process1.PROCESS.json
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Process1.PROCESS.xml
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.SC_IICSLogin.AI_SERVICE_CONNECTOR.json
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/SC_IICSLogin.AI_SERVICE_CONNECTOR.xml
+2026-06-28 10:53:10 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_email_alert.TASKFLOW.json
+2026-06-28 10:53:11 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_email_alert.TASKFLOW.xml
+2026-06-28 10:53:11 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_initiate_subprocess.TASKFLOW.json
+2026-06-28 10:53:11 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_initiate_subprocess.TASKFLOW.xml
+2026-06-28 10:53:11 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_subProcess.TASKFLOW.json
+2026-06-28 10:53:11 - CICDMigration - INFO - [git_operations:194] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_subProcess.TASKFLOW.xml
+2026-06-28 10:53:11 - CICDMigration - INFO - [git_operations:202] - Successfully checked out 40/40 assets
+2026-06-28 10:53:11 - CICDMigration - WARNING - [git_operations:207] - No changes to commit
+2026-06-28 10:53:11 - CICDMigration - INFO - [cherrypick:253] - Cherry-pick completed successfully. Commit: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 10:53:11 - CICDMigration - INFO - [cherrypick:265] - Cleaning up repository directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 10:53:11 - CICDMigration - WARNING - [cherrypick:268] - Failed to cleanup repository: [WinError 5] Access is denied: 'C:\\Users\\leelaprasad.p.SFDC\\Documents\\AutomationsAI\\CICD_Final\\GLISE\\.git\\objects\\info\\commit-graphs\\commit-graph-chain'
+2026-06-28 10:53:12 - CICDMigration - INFO - [pull_assets:192] - Starting pull operation for 20 assets
+2026-06-28 10:53:12 - CICDMigration - INFO - [pull_assets:193] - Commit Hash: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 10:53:12 - CICDMigration - INFO - [pull_v3:40] - Initiating pull using IICS REST V3 API
+2026-06-28 10:53:15 - CICDMigration - INFO - [pull_v3:80] - Pull initiated successfully. Pull Action ID: 8dHczsJ0Q8kfZj8oP1k3yU
+2026-06-28 10:53:15 - CICDMigration - INFO - [get_pull_status_v3:115] - Monitoring pull operation status
+2026-06-28 10:53:16 - CICDMigration - INFO - [get_pull_status_v3:140] - Pull State (check 1): IN_PROGRESS
+2026-06-28 10:53:33 - CICDMigration - INFO - [get_pull_status_v3:140] - Pull State (check 2): IN_PROGRESS
+2026-06-28 10:53:50 - CICDMigration - INFO - [get_pull_status_v3:140] - Pull State (check 3): SUCCESSFUL
+2026-06-28 10:53:50 - CICDMigration - INFO - [get_pull_status_v3:143] - Pull completed successfully
+2026-06-28 10:53:50 - CICDMigration - INFO - [pull_assets:212] - Pull operation completed successfully
+2026-06-28 10:53:52 - CICDMigration - INFO - [post_migration_tag:182] - Starting post-migration tagging with tags: ['PM']
+2026-06-28 10:53:54 - CICDMigration - INFO - [lookup_v3:80] - Created tag request for 20 assets
+2026-06-28 10:53:57 - CICDMigration - INFO - [post_migration_tagging_v3:142] - Batch 1/1: Successfully tagged 20 assets
+2026-06-28 10:53:57 - CICDMigration - INFO - [post_migration_tagging_v3:157] - Successfully tagged 20 assets
+2026-06-28 10:53:57 - CICDMigration - INFO - [post_migration_tag:203] - Post-migration tagging completed successfully
+2026-06-28 10:54:02 - CICDMigration - CRITICAL - [add_record:85] - DB error: Unable to add record to DB - (20009, b'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\nDB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\n')
+2026-06-28 11:55:54 - CICDMigration - INFO - [create_logger:55] - ================================================================================
+2026-06-28 11:55:54 - CICDMigration - INFO - [create_logger:56] - CICD Migration Session Started - 2026-06-28 11:55:54
+2026-06-28 11:55:54 - CICDMigration - INFO - [create_logger:57] - ================================================================================
+2026-06-28 11:55:54 - CICDMigration - INFO - [validate_input_data:115] - Input configuration validation successful
+2026-06-28 11:55:56 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 11:55:58 - CICDMigration - INFO - [tagged_assets:178] - Retrieving assets based on tags: ['Folder-2']
+2026-06-28 11:55:58 - CICDMigration - INFO - [tagged_assets:184] - Processing tag: 'Folder-2'
+2026-06-28 11:56:02 - CICDMigration - INFO - [filter_and_parse_path:152] - Iteration 1/1: Retrieved 20 assets
+2026-06-28 11:56:02 - CICDMigration - INFO - [tagged_assets:203] - Tag 'Folder-2' - Found 20 assets in project 'MunichPLPDemo'
+2026-06-28 11:56:02 - CICDMigration - INFO - [tagged_assets:218] - Total unique assets to migrate: 20
+2026-06-28 11:56:05 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 11:56:07 - CICDMigration - INFO - [create_projects_and_folders:262] - Creating required projects and folders
+2026-06-28 11:56:07 - CICDMigration - INFO - [create_projects_and_folders:267] - Processing project: MunichPLPDemo
+2026-06-28 11:56:09 - CICDMigration - INFO - [create_projects_and_folders:277] -   Project 'MunichPLPDemo' already exists
+2026-06-28 11:56:10 - CICDMigration - INFO - [create_projects_and_folders:285] -   Processing folder: Leelaprasad_V1
+2026-06-28 11:56:13 - CICDMigration - INFO - [create_projects_and_folders:296] -     Folder 'Leelaprasad_V1' already exists
+2026-06-28 11:56:13 - CICDMigration - INFO - [create_projects_and_folders:301] - Projects and folders setup completed
+2026-06-28 11:56:15 - CICDMigration - INFO - [git_config:93] - Configured git user.name and user.email
+2026-06-28 11:56:15 - CICDMigration - INFO - [git_config:103] - Repository directory already exists: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 11:56:15 - CICDMigration - INFO - [git_config:104] - Skipping clone and using existing repository
+2026-06-28 11:56:15 - CICDMigration - INFO - [git_config:107] - Fetching latest changes from remote...
+2026-06-28 11:56:17 - CICDMigration - INFO - [git_config:109] - Repository updated successfully
+2026-06-28 11:56:17 - CICDMigration - INFO - [git_operations:146] - Working Directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 11:56:17 - CICDMigration - INFO - [git_operations:147] - Pulling changes from cloud branch to local branch
+2026-06-28 11:56:17 - CICDMigration - INFO - [git_operations:149] - Checkout to Source branch: DEV
+2026-06-28 11:56:18 - CICDMigration - INFO - [git_operations:152] - Pulling latest changes from Source branch: DEV
+2026-06-28 11:56:25 - CICDMigration - INFO - [git_operations:161] - Checkout to Target branch: QA
+2026-06-28 11:56:26 - CICDMigration - INFO - [git_operations:164] - Pulling latest changes from Target branch: QA
+2026-06-28 11:56:33 - CICDMigration - INFO - [git_operations:173] - Checking out assets from Source to Target branch
+2026-06-28 11:56:33 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.AC-IICS-login.AI_CONNECTION.json
+2026-06-28 11:56:33 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/AC-IICS-login.AI_CONNECTION.xml
+2026-06-28 11:56:33 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_attendance.DTEMPLATE.json
+2026-06-28 11:56:34 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_attendance.DTEMPLATE.zip
+2026-06-28 11:56:34 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course.DTEMPLATE.json
+2026-06-28 11:56:34 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course.DTEMPLATE.zip
+2026-06-28 11:56:34 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course_score.DTEMPLATE.json
+2026-06-28 11:56:34 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course_score.DTEMPLATE.zip
+2026-06-28 11:56:34 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_department.DTEMPLATE.json
+2026-06-28 11:56:34 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_department.DTEMPLATE.zip
+2026-06-28 11:56:34 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_enroll.DTEMPLATE.json
+2026-06-28 11:56:34 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_enroll.DTEMPLATE.zip
+2026-06-28 11:56:34 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_faculty.DTEMPLATE.json
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_faculty.DTEMPLATE.zip
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_score.DTEMPLATE.json
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_score.DTEMPLATE.zip
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_student.DTEMPLATE.json
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_student.DTEMPLATE.zip
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_teach.DTEMPLATE.json
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_teach.DTEMPLATE.zip
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Guide_Practice.GUIDE.json
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Guide_Practice.GUIDE.xml
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_DivideData_according_to_sem.DTEMPLATE.json
+2026-06-28 11:56:35 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_DivideData_according_to_sem.DTEMPLATE.zip
+2026-06-28 11:56:36 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_joinData_of_all_Semsesters.DTEMPLATE.json
+2026-06-28 11:56:36 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_joinData_of_all_Semsesters.DTEMPLATE.zip
+2026-06-28 11:56:36 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Mapping1_Test.DTEMPLATE.json
+2026-06-28 11:56:36 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Mapping1_Test.DTEMPLATE.zip
+2026-06-28 11:56:36 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.mapplet_filter_sem_1.DMAPPLET.json
+2026-06-28 11:56:36 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/mapplet_filter_sem_1.DMAPPLET.zip
+2026-06-28 11:56:36 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Process1.PROCESS.json
+2026-06-28 11:56:36 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Process1.PROCESS.xml
+2026-06-28 11:56:36 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.SC_IICSLogin.AI_SERVICE_CONNECTOR.json
+2026-06-28 11:56:36 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/SC_IICSLogin.AI_SERVICE_CONNECTOR.xml
+2026-06-28 11:56:37 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_email_alert.TASKFLOW.json
+2026-06-28 11:56:37 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_email_alert.TASKFLOW.xml
+2026-06-28 11:56:37 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_initiate_subprocess.TASKFLOW.json
+2026-06-28 11:56:37 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_initiate_subprocess.TASKFLOW.xml
+2026-06-28 11:56:37 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_subProcess.TASKFLOW.json
+2026-06-28 11:56:37 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_subProcess.TASKFLOW.xml
+2026-06-28 11:56:37 - CICDMigration - INFO - [git_operations:197] - Successfully checked out 40/40 assets
+2026-06-28 11:56:37 - CICDMigration - WARNING - [git_operations:202] - No changes to commit
+2026-06-28 11:56:37 - CICDMigration - INFO - [cherrypick:248] - Cherry-pick completed successfully. Commit: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 11:56:37 - CICDMigration - INFO - [cherrypick:260] - Cleaning up repository directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 11:56:37 - CICDMigration - WARNING - [cherrypick:263] - Failed to cleanup repository: [WinError 5] Access is denied: 'C:\\Users\\leelaprasad.p.SFDC\\Documents\\AutomationsAI\\CICD_Final\\GLISE\\.git\\objects\\info\\commit-graphs\\commit-graph-chain'
+2026-06-28 11:56:39 - CICDMigration - INFO - [pull_assets:187] - Starting pull operation for 20 assets
+2026-06-28 11:56:39 - CICDMigration - INFO - [pull_assets:188] - Commit Hash: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 11:56:39 - CICDMigration - INFO - [pull_v3:35] - Initiating pull using IICS REST V3 API
+2026-06-28 11:56:41 - CICDMigration - INFO - [pull_v3:75] - Pull initiated successfully. Pull Action ID: 1AVvC8NVyF9csjOZ1xw9Oq
+2026-06-28 11:56:41 - CICDMigration - INFO - [get_pull_status_v3:110] - Monitoring pull operation status
+2026-06-28 11:56:43 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 1): IN_PROGRESS
+2026-06-28 11:57:00 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 2): IN_PROGRESS
+2026-06-28 11:57:17 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 3): SUCCESSFUL
+2026-06-28 11:57:17 - CICDMigration - INFO - [get_pull_status_v3:138] - Pull completed successfully
+2026-06-28 11:57:17 - CICDMigration - INFO - [pull_assets:207] - Pull operation completed successfully
+2026-06-28 11:57:19 - CICDMigration - INFO - [post_migration_tag:177] - Starting post-migration tagging with tags: ['PM']
+2026-06-28 11:57:20 - CICDMigration - INFO - [lookup_v3:75] - Created tag request for 20 assets
+2026-06-28 11:57:23 - CICDMigration - INFO - [post_migration_tagging_v3:137] - Batch 1/1: Successfully tagged 20 assets
+2026-06-28 11:57:23 - CICDMigration - INFO - [post_migration_tagging_v3:152] - Successfully tagged 20 assets
+2026-06-28 11:57:23 - CICDMigration - INFO - [post_migration_tag:198] - Post-migration tagging completed successfully
+2026-06-28 11:57:29 - CICDMigration - CRITICAL - [add_record:85] - DB error: Unable to add record to DB - (20009, b'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\nDB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\n')
+2026-06-28 12:06:53 - CICDMigration - INFO - [create_logger:55] - ================================================================================
+2026-06-28 12:06:53 - CICDMigration - INFO - [create_logger:56] - CICD Migration Session Started - 2026-06-28 12:06:53
+2026-06-28 12:06:53 - CICDMigration - INFO - [create_logger:57] - ================================================================================
+2026-06-28 12:06:53 - CICDMigration - INFO - [validate_input_data:115] - Input configuration validation successful
+2026-06-28 12:06:54 - CICDMigration - INFO - [create_logger:55] - ================================================================================
+2026-06-28 12:06:54 - CICDMigration - INFO - [create_logger:56] - CICD Migration Session Started - 2026-06-28 12:06:54
+2026-06-28 12:06:54 - CICDMigration - INFO - [create_logger:57] - ================================================================================
+2026-06-28 12:06:54 - CICDMigration - INFO - [validate_input_data:115] - Input configuration validation successful
+2026-06-28 12:07:03 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:07:06 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:07:07 - CICDMigration - INFO - [tagged_assets:178] - Retrieving assets based on tags: ['Folder-2']
+2026-06-28 12:07:07 - CICDMigration - INFO - [tagged_assets:184] - Processing tag: 'Folder-2'
+2026-06-28 12:07:11 - CICDMigration - INFO - [filter_and_parse_path:152] - Iteration 1/1: Retrieved 20 assets
+2026-06-28 12:07:11 - CICDMigration - INFO - [tagged_assets:203] - Tag 'Folder-2' - Found 20 assets in project 'MunichPLPDemo'
+2026-06-28 12:07:11 - CICDMigration - INFO - [tagged_assets:218] - Total unique assets to migrate: 20
+2026-06-28 12:07:12 - CICDMigration - INFO - [tagged_assets:178] - Retrieving assets based on tags: ['Folder-2']
+2026-06-28 12:07:12 - CICDMigration - INFO - [tagged_assets:184] - Processing tag: 'Folder-2'
+2026-06-28 12:07:16 - CICDMigration - INFO - [filter_and_parse_path:152] - Iteration 1/1: Retrieved 20 assets
+2026-06-28 12:07:16 - CICDMigration - INFO - [tagged_assets:203] - Tag 'Folder-2' - Found 20 assets in project 'MunichPLPDemo'
+2026-06-28 12:07:16 - CICDMigration - INFO - [tagged_assets:218] - Total unique assets to migrate: 20
+2026-06-28 12:07:20 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:07:22 - CICDMigration - INFO - [create_projects_and_folders:262] - Creating required projects and folders
+2026-06-28 12:07:22 - CICDMigration - INFO - [create_projects_and_folders:267] - Processing project: MunichPLPDemo
+2026-06-28 12:07:24 - CICDMigration - INFO - [create_projects_and_folders:277] -   Project 'MunichPLPDemo' already exists
+2026-06-28 12:07:26 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:07:26 - CICDMigration - INFO - [create_projects_and_folders:285] -   Processing folder: Leelaprasad_V1
+2026-06-28 12:07:27 - CICDMigration - INFO - [create_projects_and_folders:262] - Creating required projects and folders
+2026-06-28 12:07:27 - CICDMigration - INFO - [create_projects_and_folders:267] - Processing project: MunichPLPDemo
+2026-06-28 12:07:28 - CICDMigration - INFO - [create_projects_and_folders:296] -     Folder 'Leelaprasad_V1' already exists
+2026-06-28 12:07:28 - CICDMigration - INFO - [create_projects_and_folders:301] - Projects and folders setup completed
+2026-06-28 12:07:29 - CICDMigration - INFO - [create_projects_and_folders:277] -   Project 'MunichPLPDemo' already exists
+2026-06-28 12:07:30 - CICDMigration - INFO - [git_config:93] - Configured git user.name and user.email
+2026-06-28 12:07:30 - CICDMigration - INFO - [git_config:113] - Cloning Git Repository: https://github.com/m-soumitry/GLISE
+2026-06-28 12:07:31 - CICDMigration - INFO - [create_projects_and_folders:285] -   Processing folder: Leelaprasad_V1
+2026-06-28 12:07:33 - CICDMigration - INFO - [create_projects_and_folders:296] -     Folder 'Leelaprasad_V1' already exists
+2026-06-28 12:07:33 - CICDMigration - INFO - [create_projects_and_folders:301] - Projects and folders setup completed
+2026-06-28 12:07:34 - CICDMigration - INFO - [git_config:115] - Repository cloned to: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:07:34 - CICDMigration - INFO - [git_operations:146] - Working Directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:07:34 - CICDMigration - INFO - [git_operations:147] - Pulling changes from cloud branch to local branch
+2026-06-28 12:07:34 - CICDMigration - INFO - [git_operations:149] - Checkout to Source branch: DEV
+2026-06-28 12:07:34 - CICDMigration - INFO - [git_config:93] - Configured git user.name and user.email
+2026-06-28 12:07:34 - CICDMigration - INFO - [git_config:103] - Repository directory already exists: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:07:34 - CICDMigration - INFO - [git_config:104] - Skipping clone and using existing repository
+2026-06-28 12:07:34 - CICDMigration - INFO - [git_config:107] - Fetching latest changes from remote...
+2026-06-28 12:07:36 - CICDMigration - INFO - [git_config:109] - Repository updated successfully
+2026-06-28 12:07:36 - CICDMigration - INFO - [git_operations:146] - Working Directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:07:36 - CICDMigration - INFO - [git_operations:147] - Pulling changes from cloud branch to local branch
+2026-06-28 12:07:36 - CICDMigration - INFO - [git_operations:149] - Checkout to Source branch: DEV
+2026-06-28 12:07:36 - CICDMigration - ERROR - [run_git_command:50] - Git command failed: git checkout DEV
+Error: fatal: Unable to create 'C:/Users/leelaprasad.p.SFDC/Documents/AutomationsAI/CICD_Final/GLISE/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, or the lock file may be stale
+
+2026-06-28 12:07:36 - CICDMigration - ERROR - [cherrypick:253] - Cherry-pick operation failed: Git command failed: git checkout DEV
+Error: fatal: Unable to create 'C:/Users/leelaprasad.p.SFDC/Documents/AutomationsAI/CICD_Final/GLISE/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, or the lock file may be stale
+
+2026-06-28 12:07:36 - CICDMigration - INFO - [cherrypick:260] - Cleaning up repository directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:07:37 - CICDMigration - WARNING - [cherrypick:263] - Failed to cleanup repository: [WinError 5] Access is denied: 'C:\\Users\\leelaprasad.p.SFDC\\Documents\\AutomationsAI\\CICD_Final\\GLISE\\.git\\objects\\info\\commit-graphs\\commit-graph-chain'
+2026-06-28 12:07:38 - CICDMigration - INFO - [git_operations:152] - Pulling latest changes from Source branch: DEV
+2026-06-28 12:07:45 - CICDMigration - INFO - [git_operations:161] - Checkout to Target branch: QA
+2026-06-28 12:07:45 - CICDMigration - INFO - [git_operations:164] - Pulling latest changes from Target branch: QA
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:173] - Checking out assets from Source to Target branch
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.AC-IICS-login.AI_CONNECTION.json
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/AC-IICS-login.AI_CONNECTION.xml
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_attendance.DTEMPLATE.json
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_attendance.DTEMPLATE.zip
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course.DTEMPLATE.json
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course.DTEMPLATE.zip
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course_score.DTEMPLATE.json
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course_score.DTEMPLATE.zip
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_department.DTEMPLATE.json
+2026-06-28 12:07:53 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_department.DTEMPLATE.zip
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_enroll.DTEMPLATE.json
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_enroll.DTEMPLATE.zip
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_faculty.DTEMPLATE.json
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_faculty.DTEMPLATE.zip
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_score.DTEMPLATE.json
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_score.DTEMPLATE.zip
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_student.DTEMPLATE.json
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_student.DTEMPLATE.zip
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_teach.DTEMPLATE.json
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_teach.DTEMPLATE.zip
+2026-06-28 12:07:54 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Guide_Practice.GUIDE.json
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Guide_Practice.GUIDE.xml
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_DivideData_according_to_sem.DTEMPLATE.json
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_DivideData_according_to_sem.DTEMPLATE.zip
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_joinData_of_all_Semsesters.DTEMPLATE.json
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_joinData_of_all_Semsesters.DTEMPLATE.zip
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Mapping1_Test.DTEMPLATE.json
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Mapping1_Test.DTEMPLATE.zip
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.mapplet_filter_sem_1.DMAPPLET.json
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/mapplet_filter_sem_1.DMAPPLET.zip
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Process1.PROCESS.json
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Process1.PROCESS.xml
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.SC_IICSLogin.AI_SERVICE_CONNECTOR.json
+2026-06-28 12:07:55 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/SC_IICSLogin.AI_SERVICE_CONNECTOR.xml
+2026-06-28 12:07:56 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_email_alert.TASKFLOW.json
+2026-06-28 12:07:56 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_email_alert.TASKFLOW.xml
+2026-06-28 12:07:56 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_initiate_subprocess.TASKFLOW.json
+2026-06-28 12:07:56 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_initiate_subprocess.TASKFLOW.xml
+2026-06-28 12:07:56 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_subProcess.TASKFLOW.json
+2026-06-28 12:07:56 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_subProcess.TASKFLOW.xml
+2026-06-28 12:07:56 - CICDMigration - INFO - [git_operations:197] - Successfully checked out 40/40 assets
+2026-06-28 12:07:56 - CICDMigration - WARNING - [git_operations:202] - No changes to commit
+2026-06-28 12:07:56 - CICDMigration - INFO - [cherrypick:248] - Cherry-pick completed successfully. Commit: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 12:07:56 - CICDMigration - INFO - [cherrypick:260] - Cleaning up repository directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:07:56 - CICDMigration - WARNING - [cherrypick:263] - Failed to cleanup repository: [WinError 5] Access is denied: 'C:\\Users\\leelaprasad.p.SFDC\\Documents\\AutomationsAI\\CICD_Final\\GLISE\\.git\\objects\\info\\commit-graphs\\commit-graph-chain'
+2026-06-28 12:07:57 - CICDMigration - INFO - [pull_assets:187] - Starting pull operation for 20 assets
+2026-06-28 12:07:57 - CICDMigration - INFO - [pull_assets:188] - Commit Hash: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 12:07:57 - CICDMigration - INFO - [pull_v3:35] - Initiating pull using IICS REST V3 API
+2026-06-28 12:08:00 - CICDMigration - INFO - [pull_v3:75] - Pull initiated successfully. Pull Action ID: 3b3izj1xTPFd1bSMVvFaws
+2026-06-28 12:08:00 - CICDMigration - INFO - [get_pull_status_v3:110] - Monitoring pull operation status
+2026-06-28 12:08:02 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 1): IN_PROGRESS
+2026-06-28 12:08:18 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 2): IN_PROGRESS
+2026-06-28 12:08:35 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 3): SUCCESSFUL
+2026-06-28 12:08:35 - CICDMigration - INFO - [get_pull_status_v3:138] - Pull completed successfully
+2026-06-28 12:08:35 - CICDMigration - INFO - [pull_assets:207] - Pull operation completed successfully
+2026-06-28 12:08:37 - CICDMigration - INFO - [post_migration_tag:177] - Starting post-migration tagging with tags: ['PM']
+2026-06-28 12:08:38 - CICDMigration - INFO - [lookup_v3:75] - Created tag request for 20 assets
+2026-06-28 12:08:41 - CICDMigration - INFO - [post_migration_tagging_v3:137] - Batch 1/1: Successfully tagged 20 assets
+2026-06-28 12:08:41 - CICDMigration - INFO - [post_migration_tagging_v3:152] - Successfully tagged 20 assets
+2026-06-28 12:08:41 - CICDMigration - INFO - [post_migration_tag:198] - Post-migration tagging completed successfully
+2026-06-28 12:08:47 - CICDMigration - CRITICAL - [add_record:85] - DB error: Unable to add record to DB - (20009, b'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\nDB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\n')
+2026-06-28 12:24:16 - CICDMigration - INFO - [create_logger:55] - ================================================================================
+2026-06-28 12:24:16 - CICDMigration - INFO - [create_logger:56] - CICD Migration Session Started - 2026-06-28 12:24:16
+2026-06-28 12:24:16 - CICDMigration - INFO - [create_logger:57] - ================================================================================
+2026-06-28 12:24:16 - CICDMigration - INFO - [validate_input_data:115] - Input configuration validation successful
+2026-06-28 12:24:21 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:24:22 - CICDMigration - INFO - [tagged_assets:178] - Retrieving assets based on tags: ['Folder-2']
+2026-06-28 12:24:22 - CICDMigration - INFO - [tagged_assets:184] - Processing tag: 'Folder-2'
+2026-06-28 12:24:27 - CICDMigration - INFO - [filter_and_parse_path:152] - Iteration 1/1: Retrieved 20 assets
+2026-06-28 12:24:27 - CICDMigration - INFO - [tagged_assets:203] - Tag 'Folder-2' - Found 20 assets in project 'MunichPLPDemo'
+2026-06-28 12:24:27 - CICDMigration - INFO - [tagged_assets:218] - Total unique assets to migrate: 20
+2026-06-28 12:24:30 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:24:32 - CICDMigration - INFO - [create_projects_and_folders:262] - Creating required projects and folders
+2026-06-28 12:24:32 - CICDMigration - INFO - [create_projects_and_folders:267] - Processing project: MunichPLPDemo
+2026-06-28 12:24:33 - CICDMigration - INFO - [create_projects_and_folders:277] -   Project 'MunichPLPDemo' already exists
+2026-06-28 12:24:35 - CICDMigration - INFO - [create_projects_and_folders:285] -   Processing folder: Leelaprasad_V1
+2026-06-28 12:24:37 - CICDMigration - INFO - [create_projects_and_folders:296] -     Folder 'Leelaprasad_V1' already exists
+2026-06-28 12:24:37 - CICDMigration - INFO - [create_projects_and_folders:301] - Projects and folders setup completed
+2026-06-28 12:24:40 - CICDMigration - INFO - [git_config:93] - Configured git user.name and user.email
+2026-06-28 12:24:40 - CICDMigration - INFO - [git_config:113] - Cloning Git Repository: https://github.com/m-soumitry/GLISE
+2026-06-28 12:24:55 - CICDMigration - INFO - [git_config:115] - Repository cloned to: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:24:55 - CICDMigration - INFO - [git_operations:146] - Working Directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:24:55 - CICDMigration - INFO - [git_operations:147] - Pulling changes from cloud branch to local branch
+2026-06-28 12:24:55 - CICDMigration - INFO - [git_operations:149] - Checkout to Source branch: DEV
+2026-06-28 12:24:59 - CICDMigration - INFO - [git_operations:152] - Pulling latest changes from Source branch: DEV
+2026-06-28 12:25:06 - CICDMigration - INFO - [git_operations:161] - Checkout to Target branch: QA
+2026-06-28 12:25:07 - CICDMigration - INFO - [git_operations:164] - Pulling latest changes from Target branch: QA
+2026-06-28 12:25:14 - CICDMigration - INFO - [git_operations:173] - Checking out assets from Source to Target branch
+2026-06-28 12:25:14 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.AC-IICS-login.AI_CONNECTION.json
+2026-06-28 12:25:14 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/AC-IICS-login.AI_CONNECTION.xml
+2026-06-28 12:25:14 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_attendance.DTEMPLATE.json
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_attendance.DTEMPLATE.zip
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course.DTEMPLATE.json
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course.DTEMPLATE.zip
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course_score.DTEMPLATE.json
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course_score.DTEMPLATE.zip
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_department.DTEMPLATE.json
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_department.DTEMPLATE.zip
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_enroll.DTEMPLATE.json
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_enroll.DTEMPLATE.zip
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_faculty.DTEMPLATE.json
+2026-06-28 12:25:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_faculty.DTEMPLATE.zip
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_score.DTEMPLATE.json
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_score.DTEMPLATE.zip
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_student.DTEMPLATE.json
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_student.DTEMPLATE.zip
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_teach.DTEMPLATE.json
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_teach.DTEMPLATE.zip
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Guide_Practice.GUIDE.json
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Guide_Practice.GUIDE.xml
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_DivideData_according_to_sem.DTEMPLATE.json
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_DivideData_according_to_sem.DTEMPLATE.zip
+2026-06-28 12:25:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_joinData_of_all_Semsesters.DTEMPLATE.json
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_joinData_of_all_Semsesters.DTEMPLATE.zip
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Mapping1_Test.DTEMPLATE.json
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Mapping1_Test.DTEMPLATE.zip
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.mapplet_filter_sem_1.DMAPPLET.json
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/mapplet_filter_sem_1.DMAPPLET.zip
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Process1.PROCESS.json
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Process1.PROCESS.xml
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.SC_IICSLogin.AI_SERVICE_CONNECTOR.json
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/SC_IICSLogin.AI_SERVICE_CONNECTOR.xml
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_email_alert.TASKFLOW.json
+2026-06-28 12:25:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_email_alert.TASKFLOW.xml
+2026-06-28 12:25:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_initiate_subprocess.TASKFLOW.json
+2026-06-28 12:25:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_initiate_subprocess.TASKFLOW.xml
+2026-06-28 12:25:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_subProcess.TASKFLOW.json
+2026-06-28 12:25:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_subProcess.TASKFLOW.xml
+2026-06-28 12:25:18 - CICDMigration - INFO - [git_operations:197] - Successfully checked out 40/40 assets
+2026-06-28 12:25:18 - CICDMigration - WARNING - [git_operations:202] - No changes to commit
+2026-06-28 12:25:18 - CICDMigration - INFO - [cherrypick:248] - Cherry-pick completed successfully. Commit: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 12:25:18 - CICDMigration - INFO - [cherrypick:260] - Cleaning up repository directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:25:18 - CICDMigration - WARNING - [cherrypick:263] - Failed to cleanup repository: [WinError 5] Access is denied: 'C:\\Users\\leelaprasad.p.SFDC\\Documents\\AutomationsAI\\CICD_Final\\GLISE\\.git\\objects\\info\\commit-graphs\\commit-graph-chain'
+2026-06-28 12:25:19 - CICDMigration - INFO - [pull_assets:187] - Starting pull operation for 20 assets
+2026-06-28 12:25:19 - CICDMigration - INFO - [pull_assets:188] - Commit Hash: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 12:25:19 - CICDMigration - INFO - [pull_v3:35] - Initiating pull using IICS REST V3 API
+2026-06-28 12:25:22 - CICDMigration - INFO - [pull_v3:75] - Pull initiated successfully. Pull Action ID: 0It9Nybds34eo6ONGyjKQt
+2026-06-28 12:25:22 - CICDMigration - INFO - [get_pull_status_v3:110] - Monitoring pull operation status
+2026-06-28 12:25:24 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 1): IN_PROGRESS
+2026-06-28 12:25:41 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 2): IN_PROGRESS
+2026-06-28 12:25:58 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 3): SUCCESSFUL
+2026-06-28 12:25:58 - CICDMigration - INFO - [get_pull_status_v3:138] - Pull completed successfully
+2026-06-28 12:25:58 - CICDMigration - INFO - [pull_assets:207] - Pull operation completed successfully
+2026-06-28 12:26:00 - CICDMigration - INFO - [post_migration_tag:177] - Starting post-migration tagging with tags: ['PM']
+2026-06-28 12:26:02 - CICDMigration - INFO - [lookup_v3:75] - Created tag request for 20 assets
+2026-06-28 12:26:05 - CICDMigration - INFO - [post_migration_tagging_v3:137] - Batch 1/1: Successfully tagged 20 assets
+2026-06-28 12:26:05 - CICDMigration - INFO - [post_migration_tagging_v3:152] - Successfully tagged 20 assets
+2026-06-28 12:26:05 - CICDMigration - INFO - [post_migration_tag:198] - Post-migration tagging completed successfully
+2026-06-28 12:26:11 - CICDMigration - CRITICAL - [add_record:85] - DB error: Unable to add record to DB - (20009, b'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\nDB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\n')
+2026-06-28 12:34:42 - CICDMigration - INFO - [create_logger:55] - ================================================================================
+2026-06-28 12:34:42 - CICDMigration - INFO - [create_logger:56] - CICD Migration Session Started - 2026-06-28 12:34:42
+2026-06-28 12:34:42 - CICDMigration - INFO - [create_logger:57] - ================================================================================
+2026-06-28 12:34:42 - CICDMigration - INFO - [validate_input_data:115] - Input configuration validation successful
+2026-06-28 12:34:46 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:34:48 - CICDMigration - INFO - [tagged_assets:178] - Retrieving assets based on tags: ['Folder-2']
+2026-06-28 12:34:48 - CICDMigration - INFO - [tagged_assets:184] - Processing tag: 'Folder-2'
+2026-06-28 12:34:52 - CICDMigration - INFO - [filter_and_parse_path:152] - Iteration 1/1: Retrieved 20 assets
+2026-06-28 12:34:52 - CICDMigration - INFO - [tagged_assets:203] - Tag 'Folder-2' - Found 20 assets in project 'MunichPLPDemo'
+2026-06-28 12:34:52 - CICDMigration - INFO - [tagged_assets:218] - Total unique assets to migrate: 20
+2026-06-28 12:34:55 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:34:56 - CICDMigration - INFO - [create_projects_and_folders:262] - Creating required projects and folders
+2026-06-28 12:34:56 - CICDMigration - INFO - [create_projects_and_folders:267] - Processing project: MunichPLPDemo
+2026-06-28 12:34:58 - CICDMigration - INFO - [create_projects_and_folders:277] -   Project 'MunichPLPDemo' already exists
+2026-06-28 12:35:00 - CICDMigration - INFO - [create_projects_and_folders:285] -   Processing folder: Leelaprasad_V1
+2026-06-28 12:35:02 - CICDMigration - INFO - [create_projects_and_folders:296] -     Folder 'Leelaprasad_V1' already exists
+2026-06-28 12:35:02 - CICDMigration - INFO - [create_projects_and_folders:301] - Projects and folders setup completed
+2026-06-28 12:35:04 - CICDMigration - INFO - [git_config:93] - Configured git user.name and user.email
+2026-06-28 12:35:04 - CICDMigration - INFO - [git_config:103] - Repository directory already exists: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:35:04 - CICDMigration - INFO - [git_config:104] - Skipping clone and using existing repository
+2026-06-28 12:35:04 - CICDMigration - INFO - [git_config:107] - Fetching latest changes from remote...
+2026-06-28 12:35:06 - CICDMigration - INFO - [git_config:109] - Repository updated successfully
+2026-06-28 12:35:06 - CICDMigration - INFO - [git_operations:146] - Working Directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:35:06 - CICDMigration - INFO - [git_operations:147] - Pulling changes from cloud branch to local branch
+2026-06-28 12:35:06 - CICDMigration - INFO - [git_operations:149] - Checkout to Source branch: DEV
+2026-06-28 12:35:07 - CICDMigration - INFO - [git_operations:152] - Pulling latest changes from Source branch: DEV
+2026-06-28 12:35:14 - CICDMigration - INFO - [git_operations:161] - Checkout to Target branch: QA
+2026-06-28 12:35:16 - CICDMigration - INFO - [git_operations:164] - Pulling latest changes from Target branch: QA
+2026-06-28 12:35:23 - CICDMigration - INFO - [git_operations:173] - Checking out assets from Source to Target branch
+2026-06-28 12:35:23 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.AC-IICS-login.AI_CONNECTION.json
+2026-06-28 12:35:23 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/AC-IICS-login.AI_CONNECTION.xml
+2026-06-28 12:35:23 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_attendance.DTEMPLATE.json
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_attendance.DTEMPLATE.zip
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course.DTEMPLATE.json
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course.DTEMPLATE.zip
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course_score.DTEMPLATE.json
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course_score.DTEMPLATE.zip
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_department.DTEMPLATE.json
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_department.DTEMPLATE.zip
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_enroll.DTEMPLATE.json
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_enroll.DTEMPLATE.zip
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_faculty.DTEMPLATE.json
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_faculty.DTEMPLATE.zip
+2026-06-28 12:35:24 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_score.DTEMPLATE.json
+2026-06-28 12:35:25 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_score.DTEMPLATE.zip
+2026-06-28 12:35:25 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_student.DTEMPLATE.json
+2026-06-28 12:35:25 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_student.DTEMPLATE.zip
+2026-06-28 12:35:25 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_teach.DTEMPLATE.json
+2026-06-28 12:35:25 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_teach.DTEMPLATE.zip
+2026-06-28 12:35:25 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Guide_Practice.GUIDE.json
+2026-06-28 12:35:25 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Guide_Practice.GUIDE.xml
+2026-06-28 12:35:25 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_DivideData_according_to_sem.DTEMPLATE.json
+2026-06-28 12:35:25 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_DivideData_according_to_sem.DTEMPLATE.zip
+2026-06-28 12:35:25 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_joinData_of_all_Semsesters.DTEMPLATE.json
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_joinData_of_all_Semsesters.DTEMPLATE.zip
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Mapping1_Test.DTEMPLATE.json
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Mapping1_Test.DTEMPLATE.zip
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.mapplet_filter_sem_1.DMAPPLET.json
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/mapplet_filter_sem_1.DMAPPLET.zip
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Process1.PROCESS.json
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Process1.PROCESS.xml
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.SC_IICSLogin.AI_SERVICE_CONNECTOR.json
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/SC_IICSLogin.AI_SERVICE_CONNECTOR.xml
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_email_alert.TASKFLOW.json
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_email_alert.TASKFLOW.xml
+2026-06-28 12:35:26 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_initiate_subprocess.TASKFLOW.json
+2026-06-28 12:35:27 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_initiate_subprocess.TASKFLOW.xml
+2026-06-28 12:35:27 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_subProcess.TASKFLOW.json
+2026-06-28 12:35:27 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_subProcess.TASKFLOW.xml
+2026-06-28 12:35:27 - CICDMigration - INFO - [git_operations:197] - Successfully checked out 40/40 assets
+2026-06-28 12:35:27 - CICDMigration - WARNING - [git_operations:202] - No changes to commit
+2026-06-28 12:35:27 - CICDMigration - INFO - [cherrypick:248] - Cherry-pick completed successfully. Commit: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 12:35:27 - CICDMigration - INFO - [cherrypick:260] - Cleaning up repository directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:35:27 - CICDMigration - WARNING - [cherrypick:263] - Failed to cleanup repository: [WinError 5] Access is denied: 'C:\\Users\\leelaprasad.p.SFDC\\Documents\\AutomationsAI\\CICD_Final\\GLISE\\.git\\objects\\info\\commit-graphs\\commit-graph-chain'
+2026-06-28 12:35:29 - CICDMigration - INFO - [pull_assets:187] - Starting pull operation for 20 assets
+2026-06-28 12:35:29 - CICDMigration - INFO - [pull_assets:188] - Commit Hash: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 12:35:29 - CICDMigration - INFO - [pull_v3:35] - Initiating pull using IICS REST V3 API
+2026-06-28 12:35:32 - CICDMigration - INFO - [pull_v3:75] - Pull initiated successfully. Pull Action ID: lIriCOu3cWDhtVEidQYsSN
+2026-06-28 12:35:32 - CICDMigration - INFO - [get_pull_status_v3:110] - Monitoring pull operation status
+2026-06-28 12:35:34 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 1): IN_PROGRESS
+2026-06-28 12:35:51 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 2): IN_PROGRESS
+2026-06-28 12:36:08 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 3): SUCCESSFUL
+2026-06-28 12:36:08 - CICDMigration - INFO - [get_pull_status_v3:138] - Pull completed successfully
+2026-06-28 12:36:08 - CICDMigration - INFO - [pull_assets:207] - Pull operation completed successfully
+2026-06-28 12:36:11 - CICDMigration - INFO - [post_migration_tag:177] - Starting post-migration tagging with tags: ['PM']
+2026-06-28 12:36:14 - CICDMigration - INFO - [lookup_v3:75] - Created tag request for 20 assets
+2026-06-28 12:36:17 - CICDMigration - INFO - [post_migration_tagging_v3:137] - Batch 1/1: Successfully tagged 20 assets
+2026-06-28 12:36:17 - CICDMigration - INFO - [post_migration_tagging_v3:152] - Successfully tagged 20 assets
+2026-06-28 12:36:17 - CICDMigration - INFO - [post_migration_tag:198] - Post-migration tagging completed successfully
+2026-06-28 12:36:23 - CICDMigration - CRITICAL - [add_record:85] - DB error: Unable to add record to DB - (20009, b'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\nDB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\n')
+2026-06-28 12:45:27 - CICDMigration - INFO - [create_logger:55] - ================================================================================
+2026-06-28 12:45:27 - CICDMigration - INFO - [create_logger:56] - CICD Migration Session Started - 2026-06-28 12:45:27
+2026-06-28 12:45:27 - CICDMigration - INFO - [create_logger:57] - ================================================================================
+2026-06-28 12:45:27 - CICDMigration - INFO - [validate_input_data:115] - Input configuration validation successful
+2026-06-28 12:45:31 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:45:32 - CICDMigration - INFO - [tagged_assets:178] - Retrieving assets based on tags: ['Folder-2']
+2026-06-28 12:45:32 - CICDMigration - INFO - [tagged_assets:184] - Processing tag: 'Folder-2'
+2026-06-28 12:45:36 - CICDMigration - INFO - [filter_and_parse_path:152] - Iteration 1/1: Retrieved 20 assets
+2026-06-28 12:45:36 - CICDMigration - INFO - [tagged_assets:203] - Tag 'Folder-2' - Found 20 assets in project 'MunichPLPDemo'
+2026-06-28 12:45:36 - CICDMigration - INFO - [tagged_assets:218] - Total unique assets to migrate: 20
+2026-06-28 12:45:39 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:45:40 - CICDMigration - INFO - [create_projects_and_folders:262] - Creating required projects and folders
+2026-06-28 12:45:40 - CICDMigration - INFO - [create_projects_and_folders:267] - Processing project: MunichPLPDemo
+2026-06-28 12:45:42 - CICDMigration - INFO - [create_projects_and_folders:277] -   Project 'MunichPLPDemo' already exists
+2026-06-28 12:45:43 - CICDMigration - INFO - [create_projects_and_folders:285] -   Processing folder: Leelaprasad_V1
+2026-06-28 12:45:45 - CICDMigration - INFO - [create_projects_and_folders:296] -     Folder 'Leelaprasad_V1' already exists
+2026-06-28 12:45:45 - CICDMigration - INFO - [create_projects_and_folders:301] - Projects and folders setup completed
+2026-06-28 12:45:47 - CICDMigration - INFO - [git_config:93] - Configured git user.name and user.email
+2026-06-28 12:45:47 - CICDMigration - INFO - [git_config:103] - Repository directory already exists: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:45:47 - CICDMigration - INFO - [git_config:104] - Skipping clone and using existing repository
+2026-06-28 12:45:47 - CICDMigration - INFO - [git_config:107] - Fetching latest changes from remote...
+2026-06-28 12:45:49 - CICDMigration - INFO - [git_config:109] - Repository updated successfully
+2026-06-28 12:45:49 - CICDMigration - INFO - [git_operations:146] - Working Directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:45:49 - CICDMigration - INFO - [git_operations:147] - Pulling changes from cloud branch to local branch
+2026-06-28 12:45:49 - CICDMigration - INFO - [git_operations:149] - Checkout to Source branch: DEV
+2026-06-28 12:45:50 - CICDMigration - INFO - [git_operations:152] - Pulling latest changes from Source branch: DEV
+2026-06-28 12:45:57 - CICDMigration - INFO - [git_operations:161] - Checkout to Target branch: QA
+2026-06-28 12:45:58 - CICDMigration - INFO - [git_operations:164] - Pulling latest changes from Target branch: QA
+2026-06-28 12:46:05 - CICDMigration - INFO - [git_operations:173] - Checking out assets from Source to Target branch
+2026-06-28 12:46:05 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.AC-IICS-login.AI_CONNECTION.json
+2026-06-28 12:46:05 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/AC-IICS-login.AI_CONNECTION.xml
+2026-06-28 12:46:05 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_attendance.DTEMPLATE.json
+2026-06-28 12:46:05 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_attendance.DTEMPLATE.zip
+2026-06-28 12:46:05 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course.DTEMPLATE.json
+2026-06-28 12:46:05 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course.DTEMPLATE.zip
+2026-06-28 12:46:05 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course_score.DTEMPLATE.json
+2026-06-28 12:46:06 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course_score.DTEMPLATE.zip
+2026-06-28 12:46:06 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_department.DTEMPLATE.json
+2026-06-28 12:46:06 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_department.DTEMPLATE.zip
+2026-06-28 12:46:06 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_enroll.DTEMPLATE.json
+2026-06-28 12:46:06 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_enroll.DTEMPLATE.zip
+2026-06-28 12:46:06 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_faculty.DTEMPLATE.json
+2026-06-28 12:46:07 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_faculty.DTEMPLATE.zip
+2026-06-28 12:46:07 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_score.DTEMPLATE.json
+2026-06-28 12:46:07 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_score.DTEMPLATE.zip
+2026-06-28 12:46:07 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_student.DTEMPLATE.json
+2026-06-28 12:46:07 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_student.DTEMPLATE.zip
+2026-06-28 12:46:07 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_teach.DTEMPLATE.json
+2026-06-28 12:46:08 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_teach.DTEMPLATE.zip
+2026-06-28 12:46:08 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Guide_Practice.GUIDE.json
+2026-06-28 12:46:08 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Guide_Practice.GUIDE.xml
+2026-06-28 12:46:08 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_DivideData_according_to_sem.DTEMPLATE.json
+2026-06-28 12:46:08 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_DivideData_according_to_sem.DTEMPLATE.zip
+2026-06-28 12:46:08 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_joinData_of_all_Semsesters.DTEMPLATE.json
+2026-06-28 12:46:08 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_joinData_of_all_Semsesters.DTEMPLATE.zip
+2026-06-28 12:46:08 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Mapping1_Test.DTEMPLATE.json
+2026-06-28 12:46:08 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Mapping1_Test.DTEMPLATE.zip
+2026-06-28 12:46:08 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.mapplet_filter_sem_1.DMAPPLET.json
+2026-06-28 12:46:09 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/mapplet_filter_sem_1.DMAPPLET.zip
+2026-06-28 12:46:09 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Process1.PROCESS.json
+2026-06-28 12:46:09 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Process1.PROCESS.xml
+2026-06-28 12:46:09 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.SC_IICSLogin.AI_SERVICE_CONNECTOR.json
+2026-06-28 12:46:09 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/SC_IICSLogin.AI_SERVICE_CONNECTOR.xml
+2026-06-28 12:46:09 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_email_alert.TASKFLOW.json
+2026-06-28 12:46:09 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_email_alert.TASKFLOW.xml
+2026-06-28 12:46:09 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_initiate_subprocess.TASKFLOW.json
+2026-06-28 12:46:09 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_initiate_subprocess.TASKFLOW.xml
+2026-06-28 12:46:10 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_subProcess.TASKFLOW.json
+2026-06-28 12:46:10 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_subProcess.TASKFLOW.xml
+2026-06-28 12:46:10 - CICDMigration - INFO - [git_operations:197] - Successfully checked out 40/40 assets
+2026-06-28 12:46:10 - CICDMigration - WARNING - [git_operations:202] - No changes to commit
+2026-06-28 12:46:10 - CICDMigration - INFO - [cherrypick:248] - Cherry-pick completed successfully. Commit: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 12:46:10 - CICDMigration - INFO - [cherrypick:260] - Cleaning up repository directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 12:46:10 - CICDMigration - WARNING - [cherrypick:263] - Failed to cleanup repository: [WinError 5] Access is denied: 'C:\\Users\\leelaprasad.p.SFDC\\Documents\\AutomationsAI\\CICD_Final\\GLISE\\.git\\objects\\info\\commit-graphs\\commit-graph-chain'
+2026-06-28 12:46:11 - CICDMigration - INFO - [pull_assets:187] - Starting pull operation for 20 assets
+2026-06-28 12:46:11 - CICDMigration - INFO - [pull_assets:188] - Commit Hash: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 12:46:11 - CICDMigration - INFO - [pull_v3:35] - Initiating pull using IICS REST V3 API
+2026-06-28 12:46:14 - CICDMigration - INFO - [pull_v3:75] - Pull initiated successfully. Pull Action ID: jOooWv4ou62lbrpx9zpWAH
+2026-06-28 12:46:14 - CICDMigration - INFO - [get_pull_status_v3:110] - Monitoring pull operation status
+2026-06-28 12:46:15 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 1): IN_PROGRESS
+2026-06-28 12:46:32 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 2): IN_PROGRESS
+2026-06-28 12:46:49 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 3): SUCCESSFUL
+2026-06-28 12:46:49 - CICDMigration - INFO - [get_pull_status_v3:138] - Pull completed successfully
+2026-06-28 12:46:49 - CICDMigration - INFO - [pull_assets:207] - Pull operation completed successfully
+2026-06-28 12:46:51 - CICDMigration - INFO - [post_migration_tag:177] - Starting post-migration tagging with tags: ['PM']
+2026-06-28 12:46:52 - CICDMigration - INFO - [lookup_v3:75] - Created tag request for 20 assets
+2026-06-28 12:46:55 - CICDMigration - INFO - [post_migration_tagging_v3:137] - Batch 1/1: Successfully tagged 20 assets
+2026-06-28 12:46:55 - CICDMigration - INFO - [post_migration_tagging_v3:152] - Successfully tagged 20 assets
+2026-06-28 12:46:55 - CICDMigration - INFO - [post_migration_tag:198] - Post-migration tagging completed successfully
+2026-06-28 12:47:01 - CICDMigration - CRITICAL - [add_record:85] - DB error: Unable to add record to DB - (20009, b'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\nDB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\n')
+2026-06-28 19:14:08 - CICDMigration - INFO - [create_logger:55] - ================================================================================
+2026-06-28 19:14:08 - CICDMigration - INFO - [create_logger:56] - CICD Migration Session Started - 2026-06-28 19:14:08
+2026-06-28 19:14:08 - CICDMigration - INFO - [create_logger:57] - ================================================================================
+2026-06-28 19:14:08 - CICDMigration - INFO - [validate_input_data:115] - Input configuration validation successful
+2026-06-28 19:14:12 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 19:14:13 - CICDMigration - INFO - [tagged_assets:178] - Retrieving assets based on tags: ['Folder-2']
+2026-06-28 19:14:13 - CICDMigration - INFO - [tagged_assets:184] - Processing tag: 'Folder-2'
+2026-06-28 19:14:18 - CICDMigration - INFO - [filter_and_parse_path:152] - Iteration 1/1: Retrieved 20 assets
+2026-06-28 19:14:18 - CICDMigration - INFO - [tagged_assets:203] - Tag 'Folder-2' - Found 20 assets in project 'MunichPLPDemo'
+2026-06-28 19:14:18 - CICDMigration - INFO - [tagged_assets:218] - Total unique assets to migrate: 20
+2026-06-28 19:14:21 - CICDMigration - INFO - [login:46] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 19:14:23 - CICDMigration - INFO - [create_projects_and_folders:262] - Creating required projects and folders
+2026-06-28 19:14:23 - CICDMigration - INFO - [create_projects_and_folders:267] - Processing project: MunichPLPDemo
+2026-06-28 19:14:25 - CICDMigration - INFO - [create_projects_and_folders:277] -   Project 'MunichPLPDemo' already exists
+2026-06-28 19:14:27 - CICDMigration - INFO - [create_projects_and_folders:285] -   Processing folder: Leelaprasad_V1
+2026-06-28 19:14:31 - CICDMigration - INFO - [create_projects_and_folders:296] -     Folder 'Leelaprasad_V1' already exists
+2026-06-28 19:14:31 - CICDMigration - INFO - [create_projects_and_folders:301] - Projects and folders setup completed
+2026-06-28 19:14:33 - CICDMigration - INFO - [git_config:93] - Configured git user.name and user.email
+2026-06-28 19:14:33 - CICDMigration - INFO - [git_config:113] - Cloning Git Repository: https://github.com/m-soumitry/GLISE
+2026-06-28 19:14:47 - CICDMigration - INFO - [git_config:115] - Repository cloned to: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 19:14:47 - CICDMigration - INFO - [git_operations:146] - Working Directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 19:14:47 - CICDMigration - INFO - [git_operations:147] - Pulling changes from cloud branch to local branch
+2026-06-28 19:14:47 - CICDMigration - INFO - [git_operations:149] - Checkout to Source branch: DEV
+2026-06-28 19:14:56 - CICDMigration - INFO - [git_operations:152] - Pulling latest changes from Source branch: DEV
+2026-06-28 19:15:04 - CICDMigration - INFO - [git_operations:161] - Checkout to Target branch: QA
+2026-06-28 19:15:05 - CICDMigration - INFO - [git_operations:164] - Pulling latest changes from Target branch: QA
+2026-06-28 19:15:13 - CICDMigration - INFO - [git_operations:173] - Checking out assets from Source to Target branch
+2026-06-28 19:15:13 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.AC-IICS-login.AI_CONNECTION.json
+2026-06-28 19:15:13 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/AC-IICS-login.AI_CONNECTION.xml
+2026-06-28 19:15:14 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_attendance.DTEMPLATE.json
+2026-06-28 19:15:14 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_attendance.DTEMPLATE.zip
+2026-06-28 19:15:14 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course.DTEMPLATE.json
+2026-06-28 19:15:14 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course.DTEMPLATE.zip
+2026-06-28 19:15:14 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_course_score.DTEMPLATE.json
+2026-06-28 19:15:14 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_course_score.DTEMPLATE.zip
+2026-06-28 19:15:14 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_department.DTEMPLATE.json
+2026-06-28 19:15:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_department.DTEMPLATE.zip
+2026-06-28 19:15:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_enroll.DTEMPLATE.json
+2026-06-28 19:15:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_enroll.DTEMPLATE.zip
+2026-06-28 19:15:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_faculty.DTEMPLATE.json
+2026-06-28 19:15:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_faculty.DTEMPLATE.zip
+2026-06-28 19:15:15 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_score.DTEMPLATE.json
+2026-06-28 19:15:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_score.DTEMPLATE.zip
+2026-06-28 19:15:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_student.DTEMPLATE.json
+2026-06-28 19:15:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_student.DTEMPLATE.zip
+2026-06-28 19:15:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.cdgc_college_teach.DTEMPLATE.json
+2026-06-28 19:15:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/cdgc_college_teach.DTEMPLATE.zip
+2026-06-28 19:15:16 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Guide_Practice.GUIDE.json
+2026-06-28 19:15:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Guide_Practice.GUIDE.xml
+2026-06-28 19:15:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_DivideData_according_to_sem.DTEMPLATE.json
+2026-06-28 19:15:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_DivideData_according_to_sem.DTEMPLATE.zip
+2026-06-28 19:15:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.m_joinData_of_all_Semsesters.DTEMPLATE.json
+2026-06-28 19:15:17 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/m_joinData_of_all_Semsesters.DTEMPLATE.zip
+2026-06-28 19:15:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Mapping1_Test.DTEMPLATE.json
+2026-06-28 19:15:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Mapping1_Test.DTEMPLATE.zip
+2026-06-28 19:15:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.mapplet_filter_sem_1.DMAPPLET.json
+2026-06-28 19:15:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/mapplet_filter_sem_1.DMAPPLET.zip
+2026-06-28 19:15:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.Process1.PROCESS.json
+2026-06-28 19:15:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/Process1.PROCESS.xml
+2026-06-28 19:15:18 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.SC_IICSLogin.AI_SERVICE_CONNECTOR.json
+2026-06-28 19:15:19 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/SC_IICSLogin.AI_SERVICE_CONNECTOR.xml
+2026-06-28 19:15:19 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_email_alert.TASKFLOW.json
+2026-06-28 19:15:19 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_email_alert.TASKFLOW.xml
+2026-06-28 19:15:19 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_initiate_subprocess.TASKFLOW.json
+2026-06-28 19:15:19 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_initiate_subprocess.TASKFLOW.xml
+2026-06-28 19:15:19 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/.tf_subProcess.TASKFLOW.json
+2026-06-28 19:15:20 - CICDMigration - INFO - [git_operations:189] - Checked out: Explore/MunichPLPDemo/Leelaprasad_V1/tf_subProcess.TASKFLOW.xml
+2026-06-28 19:15:20 - CICDMigration - INFO - [git_operations:197] - Successfully checked out 40/40 assets
+2026-06-28 19:15:20 - CICDMigration - WARNING - [git_operations:202] - No changes to commit
+2026-06-28 19:15:20 - CICDMigration - INFO - [cherrypick:248] - Cherry-pick completed successfully. Commit: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 19:15:20 - CICDMigration - INFO - [cherrypick:260] - Cleaning up repository directory: C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\GLISE
+2026-06-28 19:15:20 - CICDMigration - WARNING - [cherrypick:263] - Failed to cleanup repository: [WinError 5] Access is denied: 'C:\\Users\\leelaprasad.p.SFDC\\Documents\\AutomationsAI\\CICD_Final\\GLISE\\.git\\objects\\info\\commit-graphs\\commit-graph-chain'
+2026-06-28 19:15:22 - CICDMigration - INFO - [pull_assets:187] - Starting pull operation for 20 assets
+2026-06-28 19:15:22 - CICDMigration - INFO - [pull_assets:188] - Commit Hash: 99e1f265fedb6e19dc814e44bfb4240da47e5642
+2026-06-28 19:15:22 - CICDMigration - INFO - [pull_v3:35] - Initiating pull using IICS REST V3 API
+2026-06-28 19:15:26 - CICDMigration - INFO - [pull_v3:75] - Pull initiated successfully. Pull Action ID: b3gmAUJRXgKktDJPoUhgUZ
+2026-06-28 19:15:26 - CICDMigration - INFO - [get_pull_status_v3:110] - Monitoring pull operation status
+2026-06-28 19:15:28 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 1): IN_PROGRESS
+2026-06-28 19:15:45 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 2): IN_PROGRESS
+2026-06-28 19:16:02 - CICDMigration - INFO - [get_pull_status_v3:135] - Pull State (check 3): SUCCESSFUL
+2026-06-28 19:16:02 - CICDMigration - INFO - [get_pull_status_v3:138] - Pull completed successfully
+2026-06-28 19:16:02 - CICDMigration - INFO - [pull_assets:207] - Pull operation completed successfully
+2026-06-28 19:16:04 - CICDMigration - INFO - [post_migration_tag:177] - Starting post-migration tagging with tags: ['PM']
+2026-06-28 19:16:06 - CICDMigration - INFO - [lookup_v3:75] - Created tag request for 20 assets
+2026-06-28 19:16:09 - CICDMigration - INFO - [post_migration_tagging_v3:137] - Batch 1/1: Successfully tagged 20 assets
+2026-06-28 19:16:09 - CICDMigration - INFO - [post_migration_tagging_v3:152] - Successfully tagged 20 assets
+2026-06-28 19:16:09 - CICDMigration - INFO - [post_migration_tag:198] - Post-migration tagging completed successfully
+2026-06-28 19:16:15 - CICDMigration - CRITICAL - [add_record:85] - DB error: Unable to add record to DB - (20009, b'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\nDB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (localhost)\nNet-Lib error during Unknown error (10061)\n')

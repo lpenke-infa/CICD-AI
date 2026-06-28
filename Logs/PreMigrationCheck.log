@@ -1,0 +1,709 @@
+2026-06-28 10:09:42,623 - PreMigrationCheck - INFO - [create_logger:66] - ================================================================================
+2026-06-28 10:09:42,624 - PreMigrationCheck - INFO - [create_logger:67] - Pre-Migration Check Session Started - 2026-06-28 10:09:42
+2026-06-28 10:09:42,625 - PreMigrationCheck - INFO - [create_logger:68] - ================================================================================
+2026-06-28 10:09:42,626 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - ================================================================================
+2026-06-28 10:09:42,636 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - Pre-Migration Check Started
+2026-06-28 10:09:42,638 - PreMigrationCheck - INFO - [run_pre_migration_check:101] - ================================================================================
+2026-06-28 10:09:43,384 - PreMigrationCheck - INFO - [run_pre_migration_check:107] - Step 1/6: Logging into source IICS environment
+2026-06-28 10:09:45,000 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:09:46,592 - PreMigrationCheck - INFO - [run_pre_migration_check:124] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 10:09:46,593 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 10:09:46,594 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 10:09:48,911 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 10:09:48,912 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 10:09:50,648 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 10:09:50,650 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 10:09:50,651 - PreMigrationCheck - INFO - [run_pre_migration_check:145] - Found 20 assets
+2026-06-28 10:09:52,336 - PreMigrationCheck - INFO - [run_pre_migration_check:153] - Step 3/6: Checking for checked-out assets
+2026-06-28 10:09:52,337 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 10:10:25,512 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 10:10:27,170 - PreMigrationCheck - INFO - [run_pre_migration_check:168] - Step 4/6: Validating assets
+2026-06-28 10:10:27,172 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 10:10:27,172 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 10:10:28,630 - PreMigrationCheck - INFO - [run_pre_migration_check:183] - Step 5/6: Generating migration statistics
+2026-06-28 10:10:28,630 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 10:10:28,630 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 10:10:30,085 - PreMigrationCheck - INFO - [run_pre_migration_check:196] - Step 6/6: Checking connection status in target environment
+2026-06-28 10:10:31,783 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:10:32,705 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 10:11:03,462 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 10:11:03,464 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 10:11:03,464 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 10:11:05,011 - PreMigrationCheck - INFO - [run_pre_migration_check:235] - Generating comprehensive Excel report
+2026-06-28 10:11:05,011 - PreMigrationCheck - INFO - [write_excel_report:37] - Creating Excel report: Logs\pre_migration_check_20260628_101105.xlsx
+2026-06-28 10:11:05,148 - PreMigrationCheck - INFO - [write_excel_report:69] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 10:11:05,149 - PreMigrationCheck - INFO - [write_excel_report:69] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 10:11:05,150 - PreMigrationCheck - INFO - [write_excel_report:69] - Sheet 'Connections' written with 1 rows
+2026-06-28 10:11:05,151 - PreMigrationCheck - INFO - [write_excel_report:69] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 10:11:05,180 - PreMigrationCheck - INFO - [write_excel_report:79] - Excel report created successfully: Logs\pre_migration_check_20260628_101105.xlsx
+2026-06-28 10:11:05,181 - PreMigrationCheck - INFO - [run_pre_migration_check:261] - ================================================================================
+2026-06-28 10:11:05,181 - PreMigrationCheck - INFO - [run_pre_migration_check:262] - Pre-Migration Check Completed Successfully
+2026-06-28 10:11:05,181 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - Report generated: Logs\pre_migration_check_20260628_101105.xlsx
+2026-06-28 10:11:05,181 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Total assets found: 20
+2026-06-28 10:11:05,182 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Checked-out assets: 0
+2026-06-28 10:11:05,182 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Invalid assets: 0
+2026-06-28 10:11:05,182 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Connections checked: 0
+2026-06-28 10:11:05,182 - PreMigrationCheck - ERROR - [run_pre_migration_check:300] - Pre-migration check failed: name 'datetime' is not defined
+Traceback (most recent call last):
+  File "C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\PreMigrationCheck\main.py", line 268, in run_pre_migration_check
+    logger.info(f"Session Ended - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                                   ^^^^^^^^
+NameError: name 'datetime' is not defined. Did you forget to import 'datetime'?
+2026-06-28 10:17:46,706 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 10:17:46,707 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 10:17:46
+2026-06-28 10:17:46,708 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 10:17:46,709 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 10:17:46,709 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 10:17:46,710 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 10:17:47,386 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 10:17:49,002 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:17:50,631 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 10:17:50,631 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 10:17:50,632 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 10:17:52,341 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 10:17:52,342 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 10:17:53,808 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 10:17:53,809 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 10:17:53,809 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 10:17:55,007 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 10:17:55,007 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 10:18:24,185 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 10:18:25,817 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 10:18:25,822 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 10:18:25,823 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 10:18:26,800 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 10:18:26,801 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 10:18:26,801 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 10:18:27,973 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 10:18:29,600 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:18:30,290 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 10:19:05,103 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 10:19:05,106 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 10:19:05,108 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 10:19:06,671 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 10:19:06,672 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Logs\PreMigrationReport_20260628_101906.xlsx
+2026-06-28 10:19:07,149 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 10:19:07,151 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 10:19:07,153 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 10:19:07,157 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 10:19:07,205 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Logs\PreMigrationReport_20260628_101906.xlsx
+2026-06-28 10:19:07,206 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 10:19:07,206 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 10:19:07,207 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Logs\PreMigrationReport_20260628_101906.xlsx
+2026-06-28 10:19:07,207 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 10:19:07,207 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 10:19:07,208 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 10:19:07,208 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 10:19:07,208 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 10:19:07
+2026-06-28 10:19:07,209 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 10:20:25,901 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 10:20:25,903 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 10:20:25
+2026-06-28 10:20:25,904 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 10:20:25,904 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 10:20:25,905 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 10:20:25,905 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 10:20:26,387 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 10:20:28,041 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:20:29,255 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 10:20:29,256 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 10:20:29,256 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 10:20:31,326 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 10:20:31,329 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 10:20:33,120 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 10:20:33,122 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 10:20:33,123 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 10:20:34,338 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 10:20:34,339 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 10:21:05,972 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 10:21:07,103 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 10:21:07,103 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 10:21:07,103 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 10:21:08,292 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 10:21:08,292 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 10:21:08,292 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 10:21:09,521 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 10:21:10,720 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:21:11,218 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 10:21:44,536 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 10:21:44,539 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 10:21:44,539 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 10:21:46,065 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 10:21:46,066 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Logs\PreMigrationReport_20260628_102146.xlsx
+2026-06-28 10:21:46,071 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 10:21:46,073 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 10:21:46,075 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 10:21:46,079 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 10:21:46,126 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Logs\PreMigrationReport_20260628_102146.xlsx
+2026-06-28 10:21:46,127 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 10:21:46,127 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 10:21:46,127 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Logs\PreMigrationReport_20260628_102146.xlsx
+2026-06-28 10:21:46,128 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 10:21:46,128 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 10:21:46,128 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 10:21:46,129 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 10:21:46,129 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 10:21:46
+2026-06-28 10:21:46,129 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 10:34:33,711 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 10:34:33,711 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 10:34:33
+2026-06-28 10:34:33,712 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 10:34:33,713 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 10:34:33,713 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 10:34:33,716 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 10:34:34,420 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 10:34:36,056 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:34:37,157 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 10:34:37,158 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 10:34:37,158 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 10:34:39,227 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 10:34:39,229 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 10:34:41,090 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 10:34:41,093 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 10:34:41,093 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 10:34:42,499 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 10:34:42,499 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 10:35:16,657 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 10:35:18,277 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 10:35:18,278 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 10:35:18,278 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 10:35:19,537 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 10:35:19,538 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 10:35:19,538 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 10:35:21,036 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 10:35:22,669 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:35:23,578 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 10:35:58,742 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 10:35:58,745 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 10:35:58,745 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 10:36:00,291 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 10:36:00,292 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_103600.xlsx
+2026-06-28 10:36:00,830 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 10:36:00,833 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 10:36:00,835 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 10:36:00,840 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 10:36:00,893 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_103600.xlsx
+2026-06-28 10:36:00,894 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 10:36:00,894 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 10:36:00,894 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_103600.xlsx
+2026-06-28 10:36:00,895 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 10:36:00,895 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 10:36:00,895 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 10:36:00,896 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 10:36:00,896 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 10:36:00
+2026-06-28 10:36:00,896 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 10:49:01,397 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 10:49:01,398 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 10:49:01
+2026-06-28 10:49:01,399 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 10:49:01,400 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 10:49:01,400 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 10:49:01,401 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 10:49:01,886 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 10:49:03,633 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:49:05,120 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 10:49:05,120 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 10:49:05,120 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 10:49:07,444 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 10:49:07,445 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 10:49:09,414 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 10:49:09,417 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 10:49:09,418 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 10:49:11,057 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 10:49:11,058 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 10:49:45,603 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 10:49:46,912 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 10:49:46,912 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 10:49:46,913 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 10:49:48,278 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 10:49:48,279 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 10:49:48,280 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 10:49:49,699 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 10:49:51,295 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:49:52,183 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 10:50:27,013 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 10:50:27,016 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 10:50:27,017 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 10:50:28,514 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 10:50:28,515 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_105028.xlsx
+2026-06-28 10:50:29,063 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 10:50:29,066 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 10:50:29,069 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 10:50:29,076 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 10:50:29,139 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_105028.xlsx
+2026-06-28 10:50:29,139 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 10:50:29,140 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 10:50:29,140 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_105028.xlsx
+2026-06-28 10:50:29,140 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 10:50:29,140 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 10:50:29,142 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 10:50:29,142 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 10:50:29,143 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 10:50:29
+2026-06-28 10:50:29,144 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 10:50:45,072 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 10:50:45,074 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 10:50:45
+2026-06-28 10:50:45,074 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 10:50:45,075 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 10:50:45,076 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 10:50:45,077 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 10:50:45,764 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 10:50:47,382 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:50:49,183 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 10:50:49,184 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 10:50:49,185 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 10:50:51,370 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 10:50:51,371 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 10:50:53,412 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 10:50:53,415 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 10:50:53,416 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 10:50:54,699 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 10:50:54,700 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 10:51:28,842 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 10:51:30,464 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 10:51:30,464 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 10:51:30,465 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 10:51:31,669 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 10:51:31,669 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 10:51:31,670 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 10:51:32,704 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 10:51:34,187 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 10:51:34,865 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 10:52:09,158 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 10:52:09,160 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 10:52:09,160 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 10:52:10,643 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 10:52:10,644 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_105210.xlsx
+2026-06-28 10:52:10,648 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 10:52:10,650 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 10:52:10,652 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 10:52:10,657 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 10:52:10,712 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_105210.xlsx
+2026-06-28 10:52:10,714 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 10:52:10,714 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 10:52:10,715 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_105210.xlsx
+2026-06-28 10:52:10,716 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 10:52:10,716 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 10:52:10,717 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 10:52:10,717 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 10:52:10,719 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 10:52:10
+2026-06-28 10:52:10,720 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 11:50:25,721 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 11:50:25,721 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 11:50:25
+2026-06-28 11:50:25,722 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 11:50:25,722 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 11:50:25,723 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 11:50:25,723 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 11:50:26,284 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 11:50:28,048 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 11:50:29,394 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 11:50:29,395 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 11:50:29,395 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 11:50:32,535 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 11:50:32,536 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 11:50:34,549 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 11:50:34,552 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 11:50:34,552 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 11:50:36,054 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 11:50:36,056 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 11:51:11,888 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 11:51:13,450 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 11:51:13,451 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 11:51:13,452 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 11:51:14,501 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 11:51:14,502 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 11:51:14,503 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 11:51:15,521 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 11:51:17,144 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 11:51:17,949 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 11:51:53,072 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 11:51:53,075 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 11:51:53,075 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 11:51:54,939 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 11:51:54,941 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_115154.xlsx
+2026-06-28 11:51:55,499 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 11:51:55,501 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 11:51:55,502 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 11:51:55,507 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 11:51:55,585 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_115154.xlsx
+2026-06-28 11:51:55,586 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 11:51:55,587 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 11:51:55,587 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_115154.xlsx
+2026-06-28 11:51:55,588 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 11:51:55,589 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 11:51:55,589 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 11:51:55,590 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 11:51:55,591 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 11:51:55
+2026-06-28 11:51:55,593 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 11:52:07,140 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 11:52:07,141 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 11:52:07
+2026-06-28 11:52:07,141 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 11:52:07,141 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 11:52:07,141 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 11:52:07,141 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 11:52:07,735 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 11:52:09,583 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 11:52:10,907 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 11:52:10,907 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 11:52:10,908 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 11:52:12,994 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 11:52:12,995 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 11:52:14,836 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 11:52:14,838 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 11:52:14,838 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 11:52:16,503 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 11:52:16,504 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 11:52:51,001 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 11:52:52,651 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 11:52:52,652 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 11:52:52,654 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 11:52:53,772 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 11:52:53,772 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 11:52:53,772 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 11:52:55,323 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 11:52:56,934 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 11:52:57,653 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 11:53:33,076 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 11:53:33,078 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 11:53:33,079 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 11:53:34,369 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 11:53:34,372 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_115334.xlsx
+2026-06-28 11:53:34,378 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 11:53:34,380 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 11:53:34,381 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 11:53:34,386 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 11:53:34,445 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_115334.xlsx
+2026-06-28 11:53:34,446 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 11:53:34,446 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 11:53:34,447 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_115334.xlsx
+2026-06-28 11:53:34,447 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 11:53:34,447 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 11:53:34,447 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 11:53:34,448 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 11:53:34,449 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 11:53:34
+2026-06-28 11:53:34,449 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 11:54:08,589 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 11:54:08,589 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 11:54:08
+2026-06-28 11:54:08,590 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 11:54:08,590 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 11:54:08,590 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 11:54:08,590 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 11:54:09,174 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 11:54:11,005 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 11:54:12,442 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 11:54:12,443 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 11:54:12,444 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 11:54:14,779 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 11:54:14,780 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 11:54:16,634 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 11:54:16,637 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 11:54:16,638 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 11:54:18,066 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 11:54:18,067 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 11:54:51,653 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 11:54:53,174 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 11:54:53,174 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 11:54:53,174 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 11:54:54,283 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 11:54:54,284 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 11:54:54,284 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 11:54:55,296 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 11:54:56,870 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 11:54:57,615 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 11:55:33,243 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 11:55:33,246 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 11:55:33,246 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 11:55:35,027 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 11:55:35,029 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_115535.xlsx
+2026-06-28 11:55:35,034 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 11:55:35,037 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 11:55:35,041 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 11:55:35,043 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 11:55:35,090 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_115535.xlsx
+2026-06-28 11:55:35,091 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 11:55:35,091 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 11:55:35,091 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_115535.xlsx
+2026-06-28 11:55:35,092 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 11:55:35,092 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 11:55:35,092 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 11:55:35,092 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 11:55:35,093 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 11:55:35
+2026-06-28 11:55:35,093 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 12:04:36,566 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 12:04:36,567 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 12:04:36
+2026-06-28 12:04:36,568 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 12:04:36,569 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 12:04:36,570 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 12:04:36,571 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 12:04:37,231 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 12:04:39,374 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:04:40,851 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 12:04:40,851 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 12:04:40,853 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 12:04:42,893 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 12:04:42,894 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 12:04:44,720 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 12:04:44,723 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 12:04:44,724 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 12:04:46,139 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 12:04:46,140 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 12:05:21,159 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 12:05:22,777 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 12:05:22,778 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 12:05:22,779 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 12:05:23,929 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 12:05:23,932 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 12:05:23,933 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 12:05:25,340 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 12:05:26,960 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:05:27,966 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 12:06:03,255 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 12:06:03,258 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 12:06:03,259 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 12:06:20,465 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 12:06:20,465 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_120620.xlsx
+2026-06-28 12:06:20,967 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 12:06:20,968 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 12:06:20,970 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 12:06:20,975 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 12:06:21,039 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_120620.xlsx
+2026-06-28 12:06:21,039 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 12:06:21,039 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 12:06:21,040 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_120620.xlsx
+2026-06-28 12:06:21,041 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 12:06:21,042 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 12:06:21,042 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 12:06:21,044 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 12:06:21,044 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 12:06:21
+2026-06-28 12:06:21,044 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 12:20:51,456 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 12:20:51,457 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 12:20:51
+2026-06-28 12:20:51,458 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 12:20:51,458 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 12:20:51,459 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 12:20:51,460 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 12:20:52,040 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 12:20:53,762 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:20:55,262 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 12:20:55,264 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 12:20:55,264 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 12:20:57,927 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 12:20:57,927 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 12:20:59,845 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 12:20:59,849 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 12:20:59,849 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 12:21:01,197 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 12:21:01,197 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 12:21:37,274 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 12:21:38,892 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 12:21:38,893 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 12:21:38,894 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 12:21:40,336 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 12:21:40,337 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 12:21:40,338 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 12:21:42,092 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 12:21:43,746 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:21:44,676 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 12:22:19,003 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 12:22:19,005 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 12:22:19,005 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 12:22:20,445 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 12:22:20,446 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_122220.xlsx
+2026-06-28 12:22:21,012 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 12:22:21,014 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 12:22:21,016 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 12:22:21,020 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 12:22:21,072 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_122220.xlsx
+2026-06-28 12:22:21,077 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 12:22:21,077 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 12:22:21,078 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_122220.xlsx
+2026-06-28 12:22:21,078 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 12:22:21,078 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 12:22:21,078 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 12:22:21,079 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 12:22:21,079 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 12:22:21
+2026-06-28 12:22:21,079 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 12:22:37,437 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 12:22:37,438 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 12:22:37
+2026-06-28 12:22:37,438 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 12:22:37,439 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 12:22:37,439 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 12:22:37,439 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 12:22:38,029 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 12:22:39,665 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:22:40,874 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 12:22:40,875 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 12:22:40,876 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 12:22:43,103 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 12:22:43,104 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 12:22:45,225 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 12:22:45,227 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 12:22:45,228 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 12:22:46,592 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 12:22:46,593 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 12:23:22,157 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 12:23:23,549 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 12:23:23,550 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 12:23:23,551 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 12:23:25,089 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 12:23:25,089 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 12:23:25,090 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 12:23:26,505 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 12:23:28,097 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:23:28,835 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 12:24:06,236 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 12:24:06,239 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 12:24:06,240 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 12:24:07,798 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 12:24:07,798 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_122407.xlsx
+2026-06-28 12:24:07,804 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 12:24:07,806 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 12:24:07,807 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 12:24:07,809 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 12:24:07,847 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_122407.xlsx
+2026-06-28 12:24:07,848 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 12:24:07,848 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 12:24:07,848 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_122407.xlsx
+2026-06-28 12:24:07,849 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 12:24:07,849 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 12:24:07,849 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 12:24:07,849 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 12:24:07,850 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 12:24:07
+2026-06-28 12:24:07,850 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 12:32:52,290 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 12:32:52,291 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 12:32:52
+2026-06-28 12:32:52,292 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 12:32:52,292 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 12:32:52,292 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 12:32:52,293 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 12:32:52,984 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 12:32:54,716 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:32:56,019 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 12:32:56,021 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 12:32:56,022 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 12:32:58,486 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 12:32:58,488 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 12:33:00,586 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 12:33:00,590 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 12:33:00,591 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 12:33:02,438 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 12:33:02,438 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 12:33:40,652 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 12:33:42,737 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 12:33:42,737 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 12:33:42,738 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 12:33:43,952 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 12:33:43,952 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 12:33:43,953 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 12:33:45,055 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 12:33:46,784 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:33:47,744 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 12:34:24,223 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 12:34:24,226 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 12:34:24,226 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 12:34:25,810 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 12:34:25,812 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_123425.xlsx
+2026-06-28 12:34:26,312 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 12:34:26,315 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 12:34:26,317 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 12:34:26,323 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 12:34:26,370 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_123425.xlsx
+2026-06-28 12:34:26,371 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 12:34:26,372 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 12:34:26,372 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_123425.xlsx
+2026-06-28 12:34:26,373 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 12:34:26,374 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 12:34:26,376 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 12:34:26,377 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 12:34:26,377 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 12:34:26
+2026-06-28 12:34:26,378 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 12:47:17,217 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 12:47:17,217 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 12:47:17
+2026-06-28 12:47:17,218 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 12:47:17,218 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 12:47:17,219 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 12:47:17,219 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 12:47:18,003 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 12:47:19,672 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:47:21,215 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 12:47:21,216 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 12:47:21,217 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 12:47:23,356 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 12:47:23,357 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 12:47:25,136 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 12:47:25,139 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 12:47:25,140 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 12:47:26,843 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 12:47:26,844 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 12:48:01,896 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 12:48:03,370 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 12:48:03,370 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 12:48:03,370 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 12:48:04,408 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 12:48:04,410 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 12:48:04,410 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 12:48:05,463 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 12:48:07,273 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 12:48:08,046 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 12:48:43,766 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 12:48:43,768 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 12:48:43,769 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 12:48:47,228 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 12:48:47,228 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_124847.xlsx
+2026-06-28 12:48:47,725 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 12:48:47,727 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 12:48:47,729 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 12:48:47,734 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 12:48:47,804 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_124847.xlsx
+2026-06-28 12:48:47,804 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 12:48:47,805 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 12:48:47,806 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_124847.xlsx
+2026-06-28 12:48:47,806 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 12:48:47,808 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 12:48:47,811 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 12:48:47,812 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 12:48:47,812 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 12:48:47
+2026-06-28 12:48:47,812 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
+2026-06-28 19:11:57,065 - PreMigrationCheck - INFO - [create_logger:65] - ================================================================================
+2026-06-28 19:11:57,065 - PreMigrationCheck - INFO - [create_logger:66] - Pre-Migration Check Session Started - 2026-06-28 19:11:57
+2026-06-28 19:11:57,066 - PreMigrationCheck - INFO - [create_logger:67] - ================================================================================
+2026-06-28 19:11:57,066 - PreMigrationCheck - INFO - [run_pre_migration_check:98] - ================================================================================
+2026-06-28 19:11:57,067 - PreMigrationCheck - INFO - [run_pre_migration_check:99] - Pre-Migration Check Started
+2026-06-28 19:11:57,067 - PreMigrationCheck - INFO - [run_pre_migration_check:100] - ================================================================================
+2026-06-28 19:11:57,736 - PreMigrationCheck - INFO - [run_pre_migration_check:106] - Step 1/6: Logging into source IICS environment
+2026-06-28 19:11:59,335 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 19:12:00,756 - PreMigrationCheck - INFO - [run_pre_migration_check:123] - Step 2/6: Retrieving assets with tags: ['Folder-2']
+2026-06-28 19:12:00,757 - PreMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-06-28 19:12:00,758 - PreMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-2
+2026-06-28 19:12:02,809 - PreMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 20
+2026-06-28 19:12:02,810 - PreMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-06-28 19:12:04,876 - PreMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 20 objects
+2026-06-28 19:12:04,879 - PreMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 20
+2026-06-28 19:12:04,880 - PreMigrationCheck - INFO - [run_pre_migration_check:144] - Found 20 assets
+2026-06-28 19:12:06,998 - PreMigrationCheck - INFO - [run_pre_migration_check:152] - Step 3/6: Checking for checked-out assets
+2026-06-28 19:12:06,999 - PreMigrationCheck - INFO - [get_checked_out_assets:26] - Checking checkout status for 20 assets
+2026-06-28 19:12:48,162 - PreMigrationCheck - INFO - [get_checked_out_assets:88] - Found 0 checked-out assets
+2026-06-28 19:12:50,066 - PreMigrationCheck - INFO - [run_pre_migration_check:167] - Step 4/6: Validating assets
+2026-06-28 19:12:50,067 - PreMigrationCheck - INFO - [validate_assets:107] - Validating 20 assets
+2026-06-28 19:12:50,068 - PreMigrationCheck - INFO - [validate_assets:146] - Found 0 invalid assets
+2026-06-28 19:12:57,303 - PreMigrationCheck - INFO - [run_pre_migration_check:182] - Step 5/6: Generating migration statistics
+2026-06-28 19:12:57,304 - PreMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-06-28 19:12:57,304 - PreMigrationCheck - INFO - [generate_migration_statistics:80] - Generated 20 statistics entries
+2026-06-28 19:12:58,897 - PreMigrationCheck - INFO - [run_pre_migration_check:195] - Step 6/6: Checking connection status in target environment
+2026-06-28 19:13:00,644 - PreMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-06-28 19:13:02,275 - PreMigrationCheck - INFO - [get_connection_dependencies:25] - Extracting connection dependencies from 20 assets
+2026-06-28 19:13:40,697 - PreMigrationCheck - INFO - [get_connection_dependencies:79] - Found 0 unique connection dependencies
+2026-06-28 19:13:40,699 - PreMigrationCheck - INFO - [check_connection_status_in_target:97] - Checking status of 0 connections in target
+2026-06-28 19:13:40,699 - PreMigrationCheck - INFO - [check_connection_status_in_target:150] - Connection status check completed for 0 connections
+2026-06-28 19:13:42,737 - PreMigrationCheck - INFO - [run_pre_migration_check:234] - Generating comprehensive Excel report
+2026-06-28 19:13:42,738 - PreMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PreMigrationReport_20260628_191342.xlsx
+2026-06-28 19:13:42,965 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'CheckedOutAssets' written with 1 rows
+2026-06-28 19:13:42,966 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'InvalidAssets' written with 1 rows
+2026-06-28 19:13:42,967 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'Connections' written with 1 rows
+2026-06-28 19:13:42,969 - PreMigrationCheck - INFO - [write_excel_report:66] - Sheet 'MigrationStat' written with 20 rows
+2026-06-28 19:13:43,011 - PreMigrationCheck - INFO - [write_excel_report:76] - Excel report created successfully: Reports\PreMigrationReport_20260628_191342.xlsx
+2026-06-28 19:13:43,012 - PreMigrationCheck - INFO - [run_pre_migration_check:263] - ================================================================================
+2026-06-28 19:13:43,012 - PreMigrationCheck - INFO - [run_pre_migration_check:264] - Pre-Migration Check Completed Successfully
+2026-06-28 19:13:43,012 - PreMigrationCheck - INFO - [run_pre_migration_check:265] - Report generated: Reports\PreMigrationReport_20260628_191342.xlsx
+2026-06-28 19:13:43,012 - PreMigrationCheck - INFO - [run_pre_migration_check:266] - Total assets found: 20
+2026-06-28 19:13:43,013 - PreMigrationCheck - INFO - [run_pre_migration_check:267] - Checked-out assets: 0
+2026-06-28 19:13:43,013 - PreMigrationCheck - INFO - [run_pre_migration_check:268] - Invalid assets: 0
+2026-06-28 19:13:43,013 - PreMigrationCheck - INFO - [run_pre_migration_check:269] - Connections checked: 0
+2026-06-28 19:13:43,014 - PreMigrationCheck - INFO - [run_pre_migration_check:270] - Session Ended - 2026-06-28 19:13:43
+2026-06-28 19:13:43,014 - PreMigrationCheck - INFO - [run_pre_migration_check:271] - ================================================================================
