@@ -60,7 +60,8 @@ def save_config_file(filename: str, config_data: dict) -> str:
     import json
     import os
 
-    default_path = r"C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\Configs"
+    # Use relative path from project root
+    default_path = os.path.join(os.path.dirname(__file__), "Configs")
 
     if not filename.endswith('.json'):
         filename += '.json'
@@ -286,8 +287,8 @@ class Agent:
                     logger.error(f"Download failed with status {response.status_code}")
                     continue
 
-                # Save to Configs folder
-                configs_dir = r"C:\Users\leelaprasad.p.SFDC\Documents\AutomationsAI\CICD_Final\Configs"
+                # Save to Configs folder (relative path from agent.py location)
+                configs_dir = os.path.join(os.path.dirname(__file__), "Configs")
                 os.makedirs(configs_dir, exist_ok=True)
 
                 file_path = os.path.join(configs_dir, filename)

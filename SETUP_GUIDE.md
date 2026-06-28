@@ -1,6 +1,6 @@
-# 🚀 IDMC CI/CD Automation - Complete Setup Guide
+# 🚀 IDMC CICD-AI Automation - Complete Setup Guide
 
-A comprehensive step-by-step guide to set up the IDMC CI/CD Automation and Slack Bot from scratch.
+A comprehensive step-by-step guide to set up the IDMC CICD-AI Automation and Slack Bot from scratch.
 
 ## 📋 Table of Contents
 
@@ -128,30 +128,30 @@ Choose one:
 ### Step 1: Extract Project Files
 
 ```bash
-# Extract the CICD_Final.zip to your desired location
+# Extract the CICD-AI.zip to your desired location
 
 # Windows Example
-C:\Projects\CICD_Final\
+C:\Projects\CICD-AI\
 
 # Mac/Linux Example
-~/Projects/CICD_Final/
+~/Projects/CICD-AI/
 ```
 
 ### Step 2: Open Terminal in Project Directory
 
 #### Windows
 - Open File Explorer
-- Navigate to `C:\Projects\CICD_Final`
+- Navigate to `C:\Projects\CICD-AI`
 - Type `cmd` in the address bar and press Enter
 - **OR** Shift + Right-click → "Open PowerShell window here"
 
 #### Mac
 - Open Terminal
-- Run: `cd ~/Projects/CICD_Final`
+- Run: `cd ~/Projects/CICD-AI`
 
 #### Linux
 - Open Terminal
-- Run: `cd ~/Projects/CICD_Final`
+- Run: `cd ~/Projects/CICD-AI`
 
 ### Step 3: Create Virtual Environment
 
@@ -306,7 +306,7 @@ pip list | findstr slack
 
 ### Step 1: Create `.env` File
 
-In your project directory `C:\Projects\CICD_Final\`:
+In your project directory `C:\Projects\CICD-AI\`:
 
 **Windows (Command Prompt):**
 ```bash
@@ -408,8 +408,8 @@ cat .env
 
 ```bash
 # Make sure you're in project directory
-cd C:\Projects\CICD_Final  # Windows
-cd ~/Projects/CICD_Final   # Mac/Linux
+cd C:\Projects\CICD-AI  # Windows
+cd ~/Projects/CICD-AI   # Mac/Linux
 
 # Make sure virtual environment is activated
 # You should see (venv) in prompt
@@ -626,8 +626,8 @@ chmod 600 .env  # Owner read/write only
 **Solution:**
 ```bash
 # Make sure you're running from project root
-cd C:\Projects\CICD_Final  # Windows
-cd ~/Projects/CICD_Final   # Mac/Linux
+cd C:\Projects\CICD-AI  # Windows
+cd ~/Projects/CICD-AI   # Mac/Linux
 
 python agent.py
 ```
