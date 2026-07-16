@@ -86,9 +86,12 @@ def run_pre_migration_check(config_path: str, say_callback=None) -> dict:
     with open(config_path, 'r', encoding='utf-8') as f:
         config = json.load(f)
 
-    # Support both file_dir and logFileDir for logs
-    log_dir = config.get('logFileDir', config.get('file_dir', 'Logs'))
-    logger = create_logger(log_dir)
+    # Log directory is static ('Logs'); ignore any custom value in the config
+    # and never require it to be present.
+    _custom_log_dir = config.get('logFileDir') or config.get('file_dir')
+    logger = create_logger('Logs')
+    if _custom_log_dir and _custom_log_dir != 'Logs':
+        logger.warning(f"Custom log directory '{_custom_log_dir}' ignored; using standard 'Logs' directory")
 
     # Handle ProjectName - could be string or array (from CICD config)
     project_name = config.get('ProjectName')
@@ -98,6 +101,28 @@ def run_pre_migration_check(config_path: str, say_callback=None) -> dict:
     logger.info("=" * 80)
     logger.info("Pre-Migration Check Started")
     logger.info("=" * 80)
+
+    # Validate configuration before doing any work (fail fast with a clear message
+    # instead of raising a raw KeyError deep in the flow)
+    try:
+        from common.config_validation import validate_config
+        validation = validate_config(config, config_type='pre')
+        for warning in validation.get('warnings', []):
+            logger.warning(warning)
+        config.update(validation['config'])
+    except ValueError as e:
+        logger.error(f"Configuration validation failed: {str(e)}")
+        if say_callback:
+            say_callback(f"❌ *Configuration validation failed:*\n{str(e)}")
+        return {
+            "success": False,
+            "message": str(e),
+            "asset_count": 0,
+            "checked_out_count": 0,
+            "invalid_count": 0,
+            "connection_count": 0,
+            "report_path": None
+        }
 
     try:
         # Step 1: Login to source environment
@@ -141,10 +166,48 @@ def run_pre_migration_check(config_path: str, say_callback=None) -> dict:
                 "connection_count": 0
             }
 
-        logger.info(f"Found {len(assets)} assets")
+        # The tag query returns every tagged asset across ALL projects. Filter to
+        # the target project here so every downstream count (Slack summary,
+        # statistics, checked-out, connections) is consistent and matches the
+        # migration flow, which also filters by project.
+        project_name = config['ProjectName']
+        all_tagged_count = len(assets)
+        assets = [
+            asset for asset in assets
+            if (asset.get('path') or '').startswith(f"{project_name}/")
+        ]
+        skipped_count = all_tagged_count - len(assets)
+        logger.info(
+            f"Tagged assets: {all_tagged_count} total, "
+            f"{len(assets)} in project '{project_name}', {skipped_count} in other projects"
+        )
+
+        if not assets:
+            msg = (
+                f"No tagged assets belong to project '{project_name}' "
+                f"({all_tagged_count} tagged asset(s) found in other projects)"
+            )
+            if say_callback:
+                say_callback(f"⚠️  {msg}")
+            logger.warning(msg)
+            return {
+                "success": False,
+                "message": msg,
+                "asset_count": 0,
+                "checked_out_count": 0,
+                "invalid_count": 0,
+                "connection_count": 0
+            }
+
+        logger.info(f"Found {len(assets)} assets in project '{project_name}'")
 
         if say_callback:
-            say_callback(f"✅ Found *{len(assets)}* assets ready for migration")
+            say_callback(f"✅ Found *{len(assets)}* assets ready for migration in project *{project_name}*")
+            if skipped_count:
+                say_callback(
+                    f"ℹ️  {skipped_count} additional tagged asset(s) belong to other "
+                    f"projects and were excluded."
+                )
 
         # Step 3: Check for checked-out assets
         if say_callback:
@@ -230,7 +293,7 @@ def run_pre_migration_check(config_path: str, say_callback=None) -> dict:
 
         # Write Excel report
         if say_callback:
-            say_callback("📄 **Generating Report...**")
+            say_callback("📄 *Generating Report...*")
         logger.info("Generating comprehensive Excel report")
 
         # Define header rows for empty sheets
@@ -246,8 +309,10 @@ def run_pre_migration_check(config_path: str, say_callback=None) -> dict:
             'MigrationStat': stats if stats else [stats_header]
         }
 
-        # Reports directory - use reportFileDir if specified, otherwise default to 'Reports'
-        report_dir = config.get('reportFileDir', 'Reports')
+        # Reports directory is static ('Reports'); ignore any custom value.
+        if config.get('reportFileDir') and config['reportFileDir'] != 'Reports':
+            logger.warning(f"Custom reportFileDir '{config['reportFileDir']}' ignored; using standard 'Reports' directory")
+        report_dir = 'Reports'
 
         # Generate timestamped report filename
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -270,33 +335,89 @@ def run_pre_migration_check(config_path: str, say_callback=None) -> dict:
         logger.info(f"Session Ended - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         logger.info("=" * 80)
 
+        # Flag blocking-class issues that can cause the migration to fail, so the
+        # summary reflects their severity instead of a clean "completed" that
+        # invites the user to proceed blindly:
+        #   - invalid assets          -> likely fail to deploy
+        #   - checked-out assets      -> uncommitted changes
+        #   - missing target connections -> deployment WILL fail (asset depends
+        #     on a connection that does not exist in the target org)
+        invalid_count = len(invalid_assets)
+        checked_out_count = len(checked_out_assets)
+        missing_connections = [
+            c.get('Connection Name', 'Unknown')
+            for c in connection_status
+            if str(c.get('Connection Status', '')).strip().lower() != 'available'
+        ]
+        missing_connection_count = len(missing_connections)
+        has_issues = invalid_count > 0 or checked_out_count > 0 or missing_connection_count > 0
+
         if say_callback:
+            # Per-line markers so issues stand out from clean counts.
+            checked_out_line = (
+                f"   • ⚠️ Checked-Out Assets: *{checked_out_count}*  _(uncommitted changes)_"
+                if checked_out_count else f"   • Checked-Out Assets: {checked_out_count}"
+            )
+            invalid_line = (
+                f"   • ⛔ Invalid Assets: *{invalid_count}*  _(likely to fail migration)_"
+                if invalid_count else f"   • Invalid Assets: {invalid_count}"
+            )
+            connection_line = (
+                f"   • ⛔ Connections Checked: *{len(connection_status)}* "
+                f"({missing_connection_count} missing in target — _deployment will fail_)"
+                if missing_connection_count else f"   • Connections Checked: {len(connection_status)}"
+            )
+
+            if has_issues:
+                header = "⚠️ *PRE-MIGRATION CHECK COMPLETED — ISSUES FOUND*"
+                reasons = []
+                if missing_connection_count:
+                    reasons.append(
+                        f"*{missing_connection_count}* connection(s) missing in the target "
+                        f"(`{', '.join(missing_connections)}`) — the deployment *will* fail until these exist"
+                    )
+                if invalid_count:
+                    reasons.append(f"*{invalid_count}* invalid asset(s) likely to fail migration")
+                if checked_out_count:
+                    reasons.append(f"*{checked_out_count}* checked-out asset(s) with uncommitted changes")
+                reason_text = "\n".join(f"   • {r}" for r in reasons)
+                footer = f"""⚠️ *Review needed before migrating:*
+{reason_text}
+
+Please review the report above.
+If you still want to migrate despite these issues, reply "*yes, proceed anyway*"."""
+            else:
+                header = "✅ *PRE-MIGRATION CHECK COMPLETED!*"
+                footer = """Would you like to proceed with *CI/CD Migration*?
+Reply with "*yes*" to proceed."""
+
             final_summary = f"""{"=" * 50}
-✅ *PRE-MIGRATION CHECK COMPLETED!*
+{header}
 {"=" * 50}
 
 📊 *Summary:*
    • Assets Found: *{len(assets)}*
-   • Checked-Out Assets: {len(checked_out_assets)}
-   • Invalid Assets: {len(invalid_assets)}
-   • Connections Checked: {len(connection_status)}
+{checked_out_line}
+{invalid_line}
+{connection_line}
 
 📄 *Report Generated:* `{report_path}`
 
 {"=" * 50}
 
-Would you like to proceed with *CI/CD Migration*?
-Reply with "*yes*" to proceed."""
+{footer}"""
             say_callback(final_summary)
 
         return {
             "success": True,
             "message": "Pre-migration check completed successfully",
             "asset_count": len(assets),
-            "checked_out_count": len(checked_out_assets),
-            "invalid_count": len(invalid_assets),
+            "checked_out_count": checked_out_count,
+            "invalid_count": invalid_count,
             "connection_count": len(connection_status),
-            "report_path": report_path
+            "missing_connection_count": missing_connection_count,
+            "report_path": report_path,
+            "has_issues": has_issues
         }
 
     except Exception as e:

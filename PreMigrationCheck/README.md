@@ -22,38 +22,39 @@ tools/pre_migration_tool.py → PreMigrationCheck/main.py
 
 ### 1. `__init__.py`
 - **Total Lines:** 6
-- **Purpose:** Package initialization
+- **Purpose:** Package initialization (`__version__ = "1.0.0"`)
 - **Functions:** None (just imports)
 
 ---
 
 ### 2. `asset_validation.py`
-- **Total Lines:** 147
+- **Total Lines:** 222
 - **Purpose:** Validates assets for migration readiness
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `get_checked_out_assets()` | 11 | ~80 | Gets list of assets that are checked out (locked) and cannot be migrated |
-| `validate_assets()` | 92 | ~55 | Validates assets to find invalid/corrupted assets |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `get_checked_out_assets()` | 45 | Reads each asset's `sourceControl.checkedOutBy` (already present in the tag/objects listing) and collects those that are checked out; returns `(checked_out_list, excel_rows)` |
+| `validate_assets()` | 101 | Flags assets whose `documentState` is not `VALID`, scoped to the tagged assets in the project |
+| `_fetch_document_states()` | 160 | Helper that fetches `documentState` per asset via the `frs/api/v1/BaseEntities` endpoint (paginated, 200/page) |
 
 **What it checks:**
 - ✅ Checked-out assets (locked by users)
-- ✅ Invalid assets (corrupted or incomplete)
+- ✅ Invalid assets (any `documentState` other than `VALID`)
 
 ---
 
 ### 3. `connection_check.py`
-- **Total Lines:** 151
+- **Total Lines:** 157
 - **Purpose:** Validates connections availability in target environment
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `get_connection_dependencies()` | 10 | ~73 | Extracts all connection dependencies from source assets |
-| `check_connection_status_in_target()` | 83 | ~68 | Checks if required connections exist in target environment |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `get_connection_dependencies()` | 17 | Extracts unique connection names from each asset's `metadata.connections` |
+| `check_connection_status_in_target()` | 91 | Queries target org per connection; marks each `EXISTS`, `MISSING`, or `ERROR` |
 
 **What it checks:**
 - ✅ Connection dependencies in source assets
@@ -68,10 +69,10 @@ tools/pre_migration_tool.py → PreMigrationCheck/main.py
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `retry_with_backoff()` | 10 | ~30 | Retry decorator with exponential backoff (3 retries) |
-| `login()` | 40 | ~53 | Authenticates to IICS and returns session data |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `retry_with_backoff()` | 10 | Retries a callable with exponential backoff (up to 3 retries) |
+| `login()` | 40 | Authenticates to IICS and returns session data |
 
 **Returns:**
 ```python
@@ -86,16 +87,18 @@ tools/pre_migration_tool.py → PreMigrationCheck/main.py
 ---
 
 ### 5. `main.py` ⭐ (Core Orchestrator)
-- **Total Lines:** 336
+- **Total Lines:** 458
 - **Purpose:** Main orchestration of pre-migration check workflow
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `create_logger()` | 28 | ~44 | Creates and configures logger instance |
-| `run_pre_migration_check()` | 72 | ~236 | **Main workflow** - Runs all 6 validation steps |
-| `main()` | 308 | ~28 | Command-line entry point |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `create_logger()` | 28 | Creates and configures the `PreMigrationCheck` logger |
+| `run_pre_migration_check()` | 72 | **Main workflow** - Runs all 6 validation steps; accepts optional `say_callback` |
+| `main()` | 430 | Command-line entry point |
+
+Config is validated up front via `common.config_validation.validate_config(config_type='pre')`.
 
 ---
 
@@ -105,9 +108,9 @@ tools/pre_migration_tool.py → PreMigrationCheck/main.py
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `generate_migration_statistics()` | 8 | ~73 | Creates statistics for Excel report (Project, Folder, Asset, Type, Tags) |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `generate_migration_statistics()` | 8 | Creates statistics for Excel report (Project, Folder, Asset, AssetType, Tags), filtered by project path prefix |
 
 **Output Format:**
 ```python
@@ -130,10 +133,10 @@ tools/pre_migration_tool.py → PreMigrationCheck/main.py
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `get_tagged_objects()` | 11 | ~76 | Gets objects with a specific tag from IICS API |
-| `get_assets_by_tags()` | 87 | ~33 | Gets assets matching ANY of the provided tags (OR logic) |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `get_tagged_objects()` | 11 | Gets all objects for a single tag via paginated API (200/page, per-page retries) |
+| `get_assets_by_tags()` | 87 | Aggregates unique assets across a list of tags (OR logic, deduped by `id`) |
 
 **API Endpoints Used:**
 ```
@@ -148,9 +151,9 @@ GET /public/core/v3/tagging/{tag}/objects
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `write_excel_report()` | 11 | ~73 | Writes multi-sheet Excel report with pandas/openpyxl |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `write_excel_report()` | 11 | Writes a multi-sheet `.xlsx` (pandas `ExcelWriter`, openpyxl engine); creates header-only sheets for empty sheets and returns the file path (raises if no sheet has data) |
 
 **Excel Sheets Created:**
 1. **CheckedOutAssets** - Locked assets
@@ -276,13 +279,18 @@ Reports/PreMigrationReport_20260628_143045.xlsx
 | Project | Project name |
 | Folder | Folder path |
 | Asset | Asset name |
+| Checked Out By | User holding the checkout |
+| Checked Out Time | Checkout timestamp |
 
 #### Sheet 2: InvalidAssets
 | Column | Description |
 |--------|-------------|
 | Project Name | Project name |
 | Asset | Asset name |
-| Asset Type | Type code (DTEMPLATE, MTT, etc.) |
+| Asset Type | Type code (documentType, e.g. MAPPING, TASKFLOW) |
+| Status | Document state (any value other than `VALID`) |
+
+> **Note:** The `Status` column appears only when there are invalid assets. When no invalid assets are found, the empty sheet is created with headers `Project Name`, `Asset`, `Asset Type` only (the `Status` column is omitted).
 
 #### Sheet 3: Connections
 | Column | Description |
@@ -311,7 +319,9 @@ Reports/PreMigrationReport_20260628_143045.xlsx
     "checked_out_count": 2,
     "invalid_count": 1,
     "connection_count": 10,
-    "report_path": "Reports/PreMigrationReport_20260628_143045.xlsx"
+    "missing_connection_count": 3,
+    "report_path": "Reports/PreMigrationReport_20260628_143045.xlsx",
+    "has_issues": True
 }
 ```
 
@@ -392,8 +402,8 @@ import requests
 | Metric | Count |
 |--------|-------|
 | **Total Files** | 8 |
-| **Total Lines** | ~1,018 |
-| **Total Functions** | 11 |
+| **Total Lines** | ~1,221 |
+| **Total Functions** | 14 |
 | **Validation Steps** | 6 |
 | **Excel Sheets** | 4 |
 | **API Calls** | ~5-10 per run |

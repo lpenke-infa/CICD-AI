@@ -1,6 +1,13 @@
 """
 Connection Status Check Module for Pre-Migration Check
+
+Connection dependencies are discovered via the IICS export API (export the
+in-project assets with includeDependencies=True, then read the export's object
+list and pick out the CONNECTION entries). This matches the working reference
+implementation - the /objects/{id} 'metadata.connections' field used previously
+does not exist, so it always found zero.
 """
+import json
 import requests
 import logging
 from typing import List, Dict
@@ -10,80 +17,84 @@ from time import sleep
 def get_connection_dependencies(session_id: str, base_api_url: str, assets: List[Dict],
                                 project_name: str, logger: logging.Logger) -> List[str]:
     """
-    Extract connection names from assets
+    Discover connection dependencies for the in-project assets via the export API.
 
     Args:
-        session_id: IICS session ID
-        base_api_url: Base API URL
-        assets: List of asset dictionaries
+        session_id: Source IICS session ID
+        base_api_url: Source base API URL
+        assets: List of asset dictionaries (tagged assets)
         project_name: Project name to filter
         logger: Logger instance
 
     Returns:
-        List of unique connection names
+        List of unique connection names the assets depend on.
     """
     logger.info(f"Extracting connection dependencies from {len(assets)} assets")
 
-    connection_names = set()
     headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'INFA-SESSION-ID': session_id,
     }
 
-    for asset in assets:
-        path = asset.get('path', '')
+    # Build the export body: every in-project asset, with dependencies included.
+    export_body = [
+        {"id": asset['id'], "includeDependencies": True}
+        for asset in assets
+        if asset.get('id') and (asset.get('path') or '').startswith(f"{project_name}/")
+    ]
 
-        # Filter by project
-        if not path.startswith(f"{project_name}/"):
-            continue
+    if not export_body:
+        logger.info("No in-project assets to check for connection dependencies")
+        return []
 
-        asset_id = asset.get('id')
-        if not asset_id:
-            continue
+    try:
+        # Step 1: kick off an export job for the assets + their dependencies
+        export_url = f"{base_api_url}/public/core/v3/export"
+        payload = json.dumps({"name": project_name, "objects": export_body})
+        export_resp = requests.post(export_url, data=payload, headers=headers, timeout=60)
+        export_resp.raise_for_status()
+        export_id = export_resp.json().get('id')
 
-        # Get asset details to find connections
-        try:
-            url = f"{base_api_url}/public/core/v3/objects/{asset_id}"
+        if not export_id:
+            logger.error("Export API did not return a job id; cannot resolve dependencies")
+            return []
 
-            response = requests.get(url, headers=headers, timeout=30)
+        # Step 2: read the export's resolved object list (includes dependencies).
+        # The job may take a moment to populate, so retry a few times.
+        dep_url = f"{base_api_url}/public/core/v3/export/{export_id}?expand=objects"
+        objects = []
+        for attempt in range(5):
+            dep_resp = requests.get(dep_url, headers=headers, timeout=60)
+            dep_resp.raise_for_status()
+            dep_data = dep_resp.json()
+            objects = dep_data.get('objects', [])
+            if objects:
+                break
+            sleep(2)
 
-            # Skip 404s - asset might not support individual lookup
-            if response.status_code == 404:
-                logger.debug(f"Asset {asset.get('name')} - 404 (skipping)")
-                continue
+        # Step 3: pick out the connection dependencies (unique, order-preserving)
+        connection_names = list(dict.fromkeys(
+            obj.get('name')
+            for obj in objects
+            if obj.get('type') == 'Connection' and obj.get('name')
+        ))
 
-            response.raise_for_status()
-            asset_details = response.json()
+        logger.info(f"Found {len(connection_names)} unique connection dependencies")
+        return connection_names
 
-            # Extract connections from asset metadata
-            # Note: Connection extraction logic depends on asset type
-            # This is a simplified version
-            metadata = asset_details.get('metadata', {})
-
-            # Look for connection references in various fields
-            if 'connections' in metadata:
-                for conn in metadata['connections']:
-                    if isinstance(conn, dict):
-                        conn_name = conn.get('name')
-                        if conn_name:
-                            connection_names.add(conn_name)
-                    elif isinstance(conn, str):
-                        connection_names.add(conn)
-
-        except requests.exceptions.RequestException as e:
-            logger.debug(f"Could not get details for asset {asset.get('name')}: {str(e)}")
-        except Exception as e:
-            logger.debug(f"Error extracting connections from {asset.get('name')}: {str(e)}")
-
-    logger.info(f"Found {len(connection_names)} unique connection dependencies")
-    return list(connection_names)
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Failed to resolve connection dependencies via export API: {str(e)}")
+        return []
 
 
 def check_connection_status_in_target(session_id: str, base_api_url: str,
                                       connection_names: List[str], logger: logging.Logger) -> List[Dict]:
     """
-    Check if connections exist in target environment
+    Check which of the given connections exist in the target environment.
+
+    Lists all CONNECTION objects in the target once, then compares by name -
+    more efficient than one query per connection.
 
     Args:
         session_id: Target IICS session ID
@@ -92,60 +103,55 @@ def check_connection_status_in_target(session_id: str, base_api_url: str,
         logger: Logger instance
 
     Returns:
-        List of connection status dictionaries
+        List of {Connection Name, Connection Status} dicts. Status is
+        'Available' or 'Not Available'.
     """
     logger.info(f"Checking status of {len(connection_names)} connections in target")
 
-    connection_status_list = []
+    if not connection_names:
+        logger.info("Connection status check completed for 0 connections")
+        return []
+
     headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'INFA-SESSION-ID': session_id,
     }
 
+    # Fetch all target connection names once
+    target_connection_names = set()
+    try:
+        url = f"{base_api_url}/public/core/v3/objects?q=type=='CONNECTION'"
+        skip = 0
+        while True:
+            page_url = f"{url}&skip={skip}"
+            response = requests.get(page_url, headers=headers, timeout=30)
+            response.raise_for_status()
+            objects = response.json().get('objects', [])
+            if not objects:
+                break
+            for obj in objects:
+                if obj.get('name'):
+                    target_connection_names.add(obj['name'])
+            if len(objects) < 200:
+                break
+            skip += 200
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Failed to list target connections: {str(e)}")
+        # Fall back to reporting everything as unknown rather than crashing
+        return [
+            {'Connection Name': name, 'Connection Status': 'ERROR'}
+            for name in connection_names
+        ]
+
+    connection_status_list = []
     for conn_name in connection_names:
-        try:
-            # Search for connection by name
-            url = f"{base_api_url}/public/core/v3/objects?q=type=='CONNECTION' and name=='{conn_name}'"
-
-            retries = 3
-            for attempt in range(retries):
-                try:
-                    response = requests.get(url, headers=headers, timeout=30)
-                    response.raise_for_status()
-                    data = response.json()
-
-                    objects = data.get('objects', [])
-
-                    status_entry = {
-                        'Connection Name': conn_name,
-                        'Connection Status': 'EXISTS' if len(objects) > 0 else 'MISSING'
-                    }
-                    connection_status_list.append(status_entry)
-
-                    logger.debug(f"Connection {conn_name}: {status_entry['Connection Status']}")
-                    break
-
-                except requests.exceptions.RequestException as e:
-                    if attempt < retries - 1:
-                        wait_time = 2 ** attempt
-                        logger.warning(f"Retry {attempt + 1} for connection {conn_name}: {str(e)}")
-                        sleep(wait_time)
-                    else:
-                        logger.error(f"Failed to check connection {conn_name}")
-                        status_entry = {
-                            'Connection Name': conn_name,
-                            'Connection Status': 'ERROR'
-                        }
-                        connection_status_list.append(status_entry)
-
-        except Exception as e:
-            logger.error(f"Error checking connection {conn_name}: {str(e)}")
-            status_entry = {
-                'Connection Name': conn_name,
-                'Connection Status': 'ERROR'
-            }
-            connection_status_list.append(status_entry)
+        status = 'Available' if conn_name in target_connection_names else 'Not Available'
+        connection_status_list.append({
+            'Connection Name': conn_name,
+            'Connection Status': status
+        })
+        logger.debug(f"Connection {conn_name}: {status}")
 
     logger.info(f"Connection status check completed for {len(connection_status_list)} connections")
     return connection_status_list
