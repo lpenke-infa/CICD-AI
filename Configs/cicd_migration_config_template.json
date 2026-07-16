@@ -1,7 +1,7 @@
 {
   "_comment": "CI/CD Migration Configuration Template",
 
-  "ProjectName": ["MyProject"],
+  "ProjectName": "MyProject",
 
   "IICS_SRC_username": "source_user@example.com",
   "IICS_SRC_password": "source_password",
