@@ -33,11 +33,11 @@ tools/post_migration_tool.py → PostMigrationCheck/main.py
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `retry_with_backoff()` | 10 | ~30 | Retry decorator with exponential backoff (3 retries) |
-| `login()` | 40 | ~56 | Authenticates to IICS and returns session data |
-| `iics_login()` | 96 | ~14 | Alias for backward compatibility |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `retry_with_backoff()` | 10 | Retries a callable with exponential backoff (up to 3 retries) |
+| `login()` | 40 | Authenticates to IICS and returns session data |
+| `iics_login()` | 96 | Thin wrapper that delegates to `login()` |
 
 **Returns:**
 ```python
@@ -52,16 +52,16 @@ tools/post_migration_tool.py → PostMigrationCheck/main.py
 ---
 
 ### 3. `main.py` ⭐ (Core Orchestrator)
-- **Total Lines:** 202
+- **Total Lines:** 234
 - **Purpose:** Main orchestration of post-migration validation workflow
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `create_logger()` | 24 | ~44 | Creates and configures logger instance |
-| `run_post_migration_check()` | 68 | ~108 | **Main workflow** - Runs 3-step validation |
-| `main()` | 176 | ~26 | Command-line entry point |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `create_logger()` | 24 | Creates and configures the `PostMigrationCheck` logger |
+| `run_post_migration_check()` | 68 | **Main workflow** - Runs the 3-step validation |
+| `main()` | 208 | Command-line entry point |
 
 ---
 
@@ -71,9 +71,9 @@ tools/post_migration_tool.py → PostMigrationCheck/main.py
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `generate_migration_statistics()` | 8 | ~80 | Creates statistics for Excel report (Project, Folder, Asset, Type, Tags) |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `generate_migration_statistics()` | 8 | Splits each asset `path` into Project/Folder/Asset (optionally filtered by project) for the Excel report |
 
 **Output Format:**
 ```python
@@ -96,10 +96,10 @@ tools/post_migration_tool.py → PostMigrationCheck/main.py
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `get_tagged_objects()` | 11 | ~76 | Gets objects with a specific tag from IICS API |
-| `get_assets_by_tags()` | 87 | ~33 | Gets assets matching ANY of the provided tags (OR logic) |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `get_tagged_objects()` | 11 | Gets all objects for a single tag via paginated API (200/page, per-page retries) |
+| `get_assets_by_tags()` | 87 | Aggregates unique assets across a list of tags (OR logic, deduped by `id`) |
 
 **API Endpoints Used:**
 ```
@@ -114,9 +114,9 @@ GET /public/core/v3/tagging/{tag}/objects
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `write_excel_report()` | 11 | ~65 | Writes multi-sheet Excel report with pandas/openpyxl |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `write_excel_report()` | 11 | Writes a multi-sheet Excel file (pandas/openpyxl); one sheet per key in the passed dict; returns the file path |
 
 **Excel Sheets Created:**
 1. **MigrationStat** - Detailed migration statistics
@@ -248,15 +248,16 @@ Reports/PostMigrationReport_20260628_143545.xlsx
 }
 ```
 
-**Failure Response:**
+**Failure Response (no assets found):**
 ```python
 {
     "success": False,
     "message": "No assets found with specified tags",
-    "asset_count": 0,
-    "report_path": None
+    "asset_count": 0
 }
 ```
+
+**Note:** On unhandled exceptions the function re-raises rather than returning a dict.
 
 ---
 
@@ -410,8 +411,8 @@ import requests
 | Metric | Count |
 |--------|-------|
 | **Total Files** | 6 |
-| **Total Lines** | ~602 |
-| **Total Functions** | 7 |
+| **Total Lines** | ~634 |
+| **Total Functions** | 10 |
 | **Validation Steps** | 3 |
 | **Excel Sheets** | 1 |
 | **API Calls** | ~2-5 per run |

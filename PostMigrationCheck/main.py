@@ -83,8 +83,12 @@ def run_post_migration_check(config_path: str) -> dict:
         config = json.load(f)
 
     # Support flexible field names
-    log_dir = config.get('logFileDir', config.get('file_dir', 'Logs'))
-    logger = create_logger(log_dir)
+    # Log directory is static ('Logs'); ignore any custom value in the config
+    # and never require it to be present.
+    _custom_log_dir = config.get('logFileDir') or config.get('file_dir')
+    logger = create_logger('Logs')
+    if _custom_log_dir and _custom_log_dir != 'Logs':
+        logger.warning(f"Custom log directory '{_custom_log_dir}' ignored; using standard 'Logs' directory")
 
     # Handle ProjectName - could be string or array (from CICD config)
     project_name = config.get('ProjectName')
@@ -125,6 +129,32 @@ def run_post_migration_check(config_path: str) -> dict:
                 "asset_count": 0
             }
 
+        # The tag query returns every tagged asset across ALL projects. Filter to
+        # the target project here so the reported asset count matches the report
+        # (statistics also filter by project).
+        all_tagged_count = len(assets)
+        assets = [
+            asset for asset in assets
+            if (asset.get('path') or '').startswith(f"{project_name}/")
+        ]
+        skipped_count = all_tagged_count - len(assets)
+        logger.info(
+            f"Tagged assets: {all_tagged_count} total, "
+            f"{len(assets)} in project '{project_name}', {skipped_count} in other projects"
+        )
+
+        if not assets:
+            msg = (
+                f"No tagged assets belong to project '{project_name}' "
+                f"({all_tagged_count} tagged asset(s) found in other projects)"
+            )
+            logger.warning(msg)
+            return {
+                "success": False,
+                "message": msg,
+                "asset_count": 0
+            }
+
         # Generate statistics
         logger.info("Generating migration statistics")
         stats = migration_statistics.generate_migration_statistics(
@@ -138,8 +168,10 @@ def run_post_migration_check(config_path: str) -> dict:
             'MigrationStat': stats if stats else []
         }
 
-        # Reports directory - use reportFileDir if specified, otherwise default to 'Reports'
-        report_dir = config.get('reportFileDir', 'Reports')
+        # Reports directory is static ('Reports'); ignore any custom value.
+        if config.get('reportFileDir') and config['reportFileDir'] != 'Reports':
+            logger.warning(f"Custom reportFileDir '{config['reportFileDir']}' ignored; using standard 'Reports' directory")
+        report_dir = 'Reports'
 
         # Generate timestamped report filename
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
