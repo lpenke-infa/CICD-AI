@@ -2,9 +2,7 @@
 Git operations for cherry-picking assets between branches
 """
 import os
-import time
 import subprocess
-import shutil
 from urllib.parse import urlparse
 from typing import List, Tuple, Optional
 from .config import GIT_OPERATION_TIMEOUT
@@ -156,8 +154,6 @@ def git_operations(
         logger=logger
     )
 
-    time.sleep(5)
-
     logger.info(f"Checkout to Target branch: {input_data['Git_TGT_Branch']}")
     run_git_command(['git', 'checkout', input_data["Git_TGT_Branch"]], cwd=repo_dir, logger=logger)
 
@@ -168,18 +164,15 @@ def git_operations(
         logger=logger
     )
 
-    time.sleep(5)
-
     logger.info("Checking out assets from Source to Target branch")
     checked_out_count = 0
 
+    # Note: do NOT pre-check whether the asset's directory already exists in the
+    # working tree. In a migration the asset usually does NOT exist on the target
+    # branch yet - that's the point. `git checkout <src_branch> -- <path>` pulls
+    # the file (and creates its parent directories) from the source branch
+    # regardless, so a pre-existence check would wrongly skip every new asset.
     for asset in final_asset_list:
-        asset_path = os.path.join(repo_dir, asset)
-
-        if not os.path.exists(os.path.dirname(asset_path)):
-            logger.warning(f"Asset directory does not exist, skipping: {asset}")
-            continue
-
         try:
             run_git_command(
                 ['git', 'checkout', input_data["Git_SRC_Branch"], '--', asset],
@@ -189,6 +182,9 @@ def git_operations(
             logger.info(f"Checked out: {asset}")
             checked_out_count += 1
         except Exception as e:
+            # A path that genuinely doesn't exist on the source branch (e.g. the
+            # 'zip' variant when the asset was stored as a different format) will
+            # fail here - that's expected; only some format variants exist.
             logger.warning(f"Failed to checkout {asset}: {str(e)}")
 
     if checked_out_count == 0:
@@ -211,8 +207,6 @@ def git_operations(
 
     logger.info("Pushing changes to remote repository")
     run_git_command(['git', 'push', git_repo, input_data["Git_TGT_Branch"]], cwd=repo_dir, logger=logger)
-
-    time.sleep(5)
 
     result = run_git_command(['git', 'log', '-1', '--pretty=format:%H'], cwd=repo_dir, logger=logger)
     tgt_commit_hash = result.stdout.strip()
@@ -254,10 +248,8 @@ def cherrypick(input_data: dict, final_asset_list: List[str], logger) -> str:
         raise
 
     finally:
+        # Match the working reference: do NOT delete the cloned repo. On Windows,
+        # git's read-only pack/commit-graph files make shutil.rmtree fail with
+        # 'Access is denied' (WinError 5). The clone is left in place and reused
+        # on the next run (git_config fetches into the existing directory).
         os.chdir(original_cwd)
-        if repo_dir and os.path.exists(repo_dir):
-            try:
-                logger.info(f"Cleaning up repository directory: {repo_dir}")
-                shutil.rmtree(repo_dir)
-            except Exception as e:
-                logger.warning(f"Failed to cleanup repository: {str(e)}")

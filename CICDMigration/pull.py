@@ -90,7 +90,8 @@ def get_pull_status_v3(
     session_id: str,
     base_api_url: str,
     pull_action_id: str,
-    logger
+    logger,
+    progress_callback=None
 ) -> dict:
     """
     Monitor pull operation status until completion
@@ -119,6 +120,8 @@ def get_pull_status_v3(
 
     max_iterations = 120
     iteration = 0
+    import time as time_module
+    start_time = time_module.time()
 
     try:
         while iteration < max_iterations:
@@ -133,6 +136,11 @@ def get_pull_status_v3(
 
             state = result['status']['state']
             logger.info(f"Pull State (check {iteration}): {state}")
+
+            # Send progress update to Slack
+            if progress_callback and iteration % 3 == 0:  # Update every 3rd check (every ~45 seconds)
+                elapsed = int(time_module.time() - start_time)
+                progress_callback(f"⏳ Pull in progress... (check {iteration}/{max_iterations}, {elapsed}s elapsed, state: {state})")
 
             if state == 'SUCCESSFUL':
                 logger.info("Pull completed successfully")
@@ -167,7 +175,8 @@ def pull_assets(
     asset_metadata: List[Dict],
     commit_hash: str,
     tgt_data: dict,
-    logger
+    logger,
+    progress_callback=None
 ) -> dict:
     """
     Pull assets from Git to IICS target environment
@@ -201,7 +210,8 @@ def pull_assets(
         tgt_data['sessionId'],
         tgt_data['baseApiUrl'],
         pull_action_id,
-        logger
+        logger,
+        progress_callback
     )
 
     logger.info("Pull operation completed successfully")

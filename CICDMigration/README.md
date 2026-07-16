@@ -28,26 +28,27 @@ tools/cicd_tool.py → CICDMigration/main.py
 ---
 
 ### 2. `cherrypick.py`
-- **Total Lines:** 268
+- **Total Lines:** 255
 - **Purpose:** Git operations for asset migration
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `run_git_command()` | 19 | ~48 | Executes Git commands with error handling and logging |
-| `git_config()` | 67 | ~61 | Configures Git repository (clone/pull, set credentials) |
-| `git_operations()` | 128 | ~102 | Performs cherry-pick operations between branches |
-| `cherrypick()` | 230 | ~38 | Main entry point for Git-based asset migration |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `run_git_command()` | 13 | Executes Git commands via subprocess (no `shell=True`) with timeout, error handling and logging |
+| `git_config()` | 61 | Configures Git user, clones/fetches repo; returns auth URL, domain, repo dir |
+| `git_operations()` | 122 | Checks out source & target branches, brings each asset file across, commits & pushes |
+| `cherrypick()` | 218 | Main entry point; orchestrates `git_config` + `git_operations`, cleans up repo dir |
 
-**Git Workflow:**
-1. Clone/pull repository
-2. Configure Git user credentials
-3. Checkout source branch
-4. Checkout target branch
-5. Cherry-pick commits with asset changes
-6. Push to remote target branch
-7. Return commit hash
+**Git Workflow (branch/file checkout — not `git cherry-pick`):**
+1. Clone/fetch repository and configure Git user credentials
+2. Checkout the target branch
+3. For each asset, `git checkout <SRC_Branch> -- <asset file>` to bring the source version onto the target branch
+4. `git add -A`, commit, and push to the remote target branch
+5. Return the target commit hash
+
+> **Note:** Despite the module name, no `git cherry-pick` command is used — assets
+> are transferred by checking individual files out of the source branch onto the target branch.
 
 ---
 
@@ -58,88 +59,127 @@ tools/cicd_tool.py → CICDMigration/main.py
 #### Constants
 
 ```python
-# API Configuration
+# API / operation configuration
 API_TIMEOUT = 30
 MAX_RETRIES = 3
 RETRY_BACKOFF_FACTOR = 2
+GIT_OPERATION_TIMEOUT = 300
 PULL_STATUS_CHECK_INTERVAL = 15
+ASSETS_PER_PAGE = 200
 TAG_BATCH_SIZE = 100
 
-# Asset Type Extensions (24+ types)
-TYPE_EXTENSIONS = {
-    "DTEMPLATE": [["dtemplate.xml"], ["dtemplate.xml", "zip"]],
-    "MTT": [["mtt.xml"], ["mtt.xml", "zip"]],
-    "TASKFLOW": [["taskflow.xml"], ["taskflow.xml", "zip"]],
-    # ... 20+ more types
+# Asset type → Git file-format mapping (24 types)
+# Each value is a list of [dot-prefix-flag, extension] entries.
+DICT_FILE_FORMAT = {
+    "DTEMPLATE": [[1, "json"], [0, "zip"]],
+    "MTT": [...],
+    "TASKFLOW": [...],
+    # ... 21 more types
 }
 ```
 
-**Supported Asset Types:**
-- Data Integration: DTEMPLATE, MTT, DSS, DTT, DMASK, DRS
-- Taskflows: TASKFLOW, WORKFLOW
-- Connections: AI_CONNECTION, CONNECTION
-- Business Services: BSERVICE, PROCESS
-- Data Quality: CLEANSE, PARSE, VERIFIER, DEDUPLICATE
-- And 15+ more types
+**Git-migratable asset types (24, keys of `DICT_FILE_FORMAT`):**
+DTEMPLATE, MTT, TASKFLOW, AtScaleDTemplate, DTT, DBMI_TASK, DICTIONARY,
+BSERVICE, CLEANSE, DMAPPLET, PARSE, RULE_SPECIFICATION, VERIFIER, LABELER,
+AI_CONNECTION, PROCESS_OBJECT, GUIDE, AI_SERVICE_CONNECTOR, PROCESS,
+MI_FILE_LISTENER, MI_TASK, STRUCTURE_DISCOVERY, UDF, FWCONFIG
 
 ---
 
 ### 4. `createProjectsAndFolders.py`
-- **Total Lines:** 307
+- **Total Lines:** 302
 - **Purpose:** Creates required project and folder structure in target environment
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `extract_folder_and_project()` | 16 | ~36 | Extracts unique project/folder combinations from assets |
-| `is_project_or_folder_exists()` | 52 | ~34 | Checks if project or folder exists in target |
-| `create_project()` | 86 | ~59 | Creates a new project in target IICS |
-| `get_project_id()` | 145 | ~44 | Retrieves project ID by name |
-| `create_folder()` | 189 | ~57 | Creates a new folder in target IICS |
-| `create_projects_and_folders()` | 246 | ~61 | Main entry point - creates all required projects and folders |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `extract_folder_and_project()` | 11 | Extracts unique project→folder structure from asset metadata |
+| `is_project_or_folder_exists()` | 47 | Checks via API if a project/folder location exists |
+| `create_project()` | 81 | Creates a new project in target IICS |
+| `get_project_id()` | 140 | Retrieves project ID by name |
+| `create_folder()` | 184 | Creates a new folder under a project |
+| `create_projects_and_folders()` | 241 | Main entry point - creates all required projects and folders |
 
-**API Endpoints:**
-```
-POST /public/core/v3/projects       - Create project
-GET  /public/core/v3/projects       - List projects
-GET  /public/core/v3/projects/{id}  - Get project details
-POST /public/core/v3/folders        - Create folder
-```
+**API Endpoints:** IICS `/frs/v1/Projects` (and folder) endpoints for lookup/create.
 
 ---
 
 ### 5. `database.py`
-- **Total Lines:** 104
-- **Purpose:** Records migration audit trail in SQL Server database
+- **Total Lines:** 124
+- **Purpose:** Records migration audit trail in a local SQLite database
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `add_record()` | 15 | ~89 | Inserts migration record into database (optional) |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `add_record()` | 38 | Inserts migration record into the SQLite database (optional; never raises) |
+
+**Storage:** Uses Python's built-in `sqlite3` module — a single local file, no server
+required (no SQL Server, no `pymssql`). The database file defaults to
+`Database/deployments.db` in the project root and can be overridden with the
+`DB_PATH` environment variable. The table is created automatically on first use.
 
 **Database Schema:**
 ```sql
-CREATE TABLE dbo.Deployment_Details (
-    ProjectName VARCHAR(255),
-    IICSSourceOrg VARCHAR(255),
-    IICSSourceOrgID VARCHAR(255),
-    CommitHash VARCHAR(255),
-    Tag VARCHAR(255),
-    Deployment_Date DATE,
-    Rollback_Date DATE,
-    IICSTargetOrgID VARCHAR(255),
-    IICSTargetOrg VARCHAR(255),
-    AssetsMigrated INT
+CREATE TABLE IF NOT EXISTS Deployment_Details (
+    Id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    ProjectName     TEXT    NOT NULL,
+    IICSSourceOrg   TEXT,
+    IICSSourceOrgID TEXT,
+    CommitHash      TEXT,
+    Tag             TEXT,
+    Deployment_Date TEXT    NOT NULL,
+    Rollback_Date   TEXT,
+    IICSTargetOrgID TEXT,
+    IICSTargetOrg   TEXT,
+    AssetsMigrated  INTEGER
 );
 ```
 
-**Note:** Database logging is optional and requires pymssql package.
+**Note:** Database logging is optional. `add_record()` never raises — on any failure
+it logs the error and returns `False`, so a database problem cannot abort a successful
+migration.
 
 ---
 
-### 6. `logger.py`
+### 6. `credentials_db.py`
+- **Total Lines:** 220
+- **Purpose:** Stores IDMC connection credentials in a separate local SQLite database
+
+#### Functions
+
+| Function | Line | Purpose |
+|----------|------|---------|
+| `save_credentials()` | 48 | Inserts or updates the credentials row for an org (upsert keyed by OrgName) |
+| `get_credentials()` | 106 | Fetches the stored credentials for an org (returns dict or None) |
+| `list_credentials()` | 148 | Lists all stored credential rows (passwords omitted) |
+| `delete_credentials()` | 188 | Deletes the credentials row for an org |
+
+**Storage:** Uses Python's built-in `sqlite3` module in a database file separate from the
+migration audit DB. Defaults to `Database/idmc_credentials.db` in the project root and can
+be overridden with the `IDMC_CREDS_DB_PATH` environment variable. One row per org
+(table `Idmc_Credentials`), with columns `OrgName` (primary key), `Entity`, `Username`,
+`Password`, `Region`, `UpdatedAt`.
+
+**Table Schema:**
+```sql
+CREATE TABLE IF NOT EXISTS Idmc_Credentials (
+    OrgName    TEXT    PRIMARY KEY,
+    Entity     TEXT,
+    Username   TEXT    NOT NULL,
+    Password   TEXT    NOT NULL,
+    Region     TEXT,
+    UpdatedAt  TEXT
+);
+```
+
+> **Security:** Passwords are stored in plain text, so the database file must be kept
+> local and excluded from version control (git-ignored).
+
+---
+
+### 7. `logger.py`
 - **Total Lines:** 59
 - **Purpose:** Logging configuration for CICD operations
 
@@ -151,7 +191,7 @@ CREATE TABLE dbo.Deployment_Details (
 
 **Log Format:**
 ```
-2026-06-28 10:39:06,503 - CICDMigration - INFO - [function:line] - Message
+2026-06-28 10:39:06 - CICDMigration - INFO - [function:line] - Message
 ```
 
 **Log File:**
@@ -161,16 +201,15 @@ Logs/CICDMigration.log  (append mode)
 
 ---
 
-### 7. `login.py`
-- **Total Lines:** 79
+### 8. `login.py`
+- **Total Lines:** 63
 - **Purpose:** IICS authentication
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `login()` | 11 | ~56 | Authenticates to IICS and returns session data |
-| `iics_login()` | 67 | ~12 | Alias for backward compatibility |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `login()` | 11 | Authenticates to IICS and returns session data |
 
 **Returns:**
 ```python
@@ -184,83 +223,81 @@ Logs/CICDMigration.log  (append mode)
 
 ---
 
-### 8. `main.py` ⭐ (Core Orchestrator)
-- **Total Lines:** 218
+### 9. `main.py` ⭐ (Core Orchestrator)
+- **Total Lines:** 211
 - **Purpose:** Main orchestration of 8-step migration workflow
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `load_configuration()` | 27 | ~25 | Loads and parses configuration JSON file |
-| `run_migration()` | 52 | ~144 | **Main workflow** - Orchestrates all 8 migration steps |
-| `main()` | 196 | ~22 | Command-line entry point |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `load_configuration()` | 22 | Loads and parses configuration JSON file |
+| `run_migration()` | 47 | **Main workflow** - Orchestrates all 8 migration steps |
+| `main()` | 191 | Command-line entry point |
+
+Config is validated up front via `common.config_validation.validate_config(..., config_type='cicd')` (through `utils.validate_input_data`).
 
 ---
 
-### 9. `postMigrationTag.py`
-- **Total Lines:** 204
+### 10. `postMigrationTag.py`
+- **Total Lines:** 206
 - **Purpose:** Applies tags to migrated assets in target environment
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `lookup_v3()` | 16 | ~72 | Looks up asset IDs in target environment by path |
-| `post_migration_tagging_v3()` | 88 | ~73 | Applies tags to assets in batches |
-| `post_migration_tag()` | 161 | ~43 | Main entry point for post-migration tagging |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `lookup_v3()` | 11 | Looks up asset IDs in target environment by path; builds tag request bodies |
+| `post_migration_tagging_v3()` | 83 | Applies tags to assets in batches (with optional progress callback) |
+| `post_migration_tag()` | 161 | Main entry point for post-migration tagging |
 
 **Tagging Strategy:**
-- Batch processing (100 assets per batch)
+- Batch processing (`TAG_BATCH_SIZE` = 100 assets per batch)
 - Retry logic for failed tags
 - Validates asset existence before tagging
 
 **API Endpoints:**
 ```
-POST /public/core/v3/lookup  - Lookup asset IDs
-POST /public/core/v3/tagging - Apply tags
+POST /public/core/v3/lookup     - Lookup asset IDs
+POST /public/core/v3/TagObjects - Apply tags
 ```
 
 ---
 
-### 10. `pull.py`
-- **Total Lines:** 213
+### 11. `pull.py`
+- **Total Lines:** 218
 - **Purpose:** Imports assets from Git to target IICS environment
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `pull_v3()` | 17 | ~77 | Initiates pull operation from Git commit |
-| `get_pull_status_v3()` | 94 | ~77 | Polls pull operation status until completion |
-| `pull_assets()` | 171 | ~42 | Main entry point for asset pull operations |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `pull_v3()` | 12 | Initiates a pull from a Git commit; returns response with pullActionId |
+| `get_pull_status_v3()` | 89 | Polls pull status until SUCCESSFUL/FAILED/CANCELLED (max 120 checks) |
+| `pull_assets()` | 174 | Main entry point; orchestrates `pull_v3` + status monitoring |
 
 **Pull Workflow:**
-1. Initiate pull from specific Git commit
-2. Poll status every 15 seconds
+1. Initiate pull from a specific Git commit
+2. Poll status every `PULL_STATUS_CHECK_INTERVAL` (15) seconds
 3. Wait for completion (can take several minutes)
 4. Validate success
 
-**API Endpoints:**
-```
-POST /public/core/v3/commit/pull          - Initiate pull
-GET  /public/core/v3/commit/pull/{taskId} - Check status
-```
+**API Endpoints:** IICS `/public/core/v3/pull` (initiate) and pull-status endpoints.
 
 ---
 
-### 11. `taggedAssets.py`
-- **Total Lines:** 228
+### 12. `taggedAssets.py`
+- **Total Lines:** 223
 - **Purpose:** Retrieves tagged assets from source environment
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `generate_git_path()` | 16 | ~34 | Generates Git file paths for asset types |
-| `retrieve_tagged_assets()` | 50 | ~50 | Retrieves assets with specified tags from IICS |
-| `filter_and_parse_path()` | 100 | ~62 | Filters assets by project and parses metadata |
-| `tagged_assets()` | 162 | ~66 | Main entry point - gets tagged assets with Git paths |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `generate_git_path()` | 11 | Generates Git file paths for an asset from its path/formats/type |
+| `retrieve_tagged_assets()` | 45 | Retrieves assets with a tag from IICS (paginated) |
+| `filter_and_parse_path()` | 95 | Filters assets by project and builds git_paths + metadata |
+| `tagged_assets()` | 157 | Main entry point - gets tagged assets across all tags, deduped |
 
 **Returns:**
 ```python
@@ -283,22 +320,22 @@ asset_metadata = [
 
 ---
 
-### 12. `utils.py`
-- **Total Lines:** 116
+### 13. `utils.py`
+- **Total Lines:** 106
 - **Purpose:** Utility functions for retry logic and validation
 
 #### Functions
 
-| Function | Line | Lines | Purpose |
-|----------|------|-------|---------|
-| `retry_with_backoff()` | 10 | ~36 | Decorator for retry with exponential backoff |
-| `sanitize_for_log()` | 46 | ~26 | Sanitizes sensitive data (passwords) for logging |
-| `validate_input_data()` | 72 | ~44 | Validates all required configuration fields |
+| Function | Line | Purpose |
+|----------|------|---------|
+| `retry_with_backoff()` | 10 | Retries a callable with exponential backoff on `RequestException` |
+| `sanitize_for_log()` | 46 | Redacts credentials embedded in URLs before logging |
+| `validate_input_data()` | 72 | Delegates to `common.config_validation.validate_config(config_type='cicd')` |
 
 **Retry Configuration:**
 - Max retries: 3
-- Backoff factor: 2 (1s, 2s, 4s)
-- Applies to all API calls
+- Backoff factor: 2, with full jitter — each wait is `random.uniform(0, 2 ** attempt)` seconds (randomized, not fixed)
+- Applies only to HTTP/API calls (wraps `requests` calls); retries on `requests.exceptions.RequestException`. Git commands are not retried.
 
 ---
 
@@ -363,26 +400,34 @@ Creating structure:
 
 ---
 
-### Step 5: Cherry-pick Assets via Git 🌿
-- Clones/pulls Git repository
-- Configures Git credentials
-- Checks out source branch (e.g., DEV)
-- Checks out target branch (e.g., QA)
-- Cherry-picks commits with asset changes
-- Pushes to remote target branch
-- Returns commit hash
+### Step 5: Transfer Assets via Git (per-file checkout) 🌿
+- Clones/fetches Git repository
+- Configures Git credentials (`user.name` / `user.email`)
+- Checks out and pulls the source branch (e.g., DEV)
+- Checks out and pulls the target branch (e.g., QA)
+- For each asset, `git checkout <source-branch> -- <asset file>` brings the source version onto the target branch
+- `git add -A`, commits, and pushes to the remote target branch
+- Returns the target commit hash
+
+> **Note:** Despite the module name (`cherrypick.py`), no `git cherry-pick` command is
+> used — assets are transferred by checking individual files out of the source branch
+> onto the target branch.
 
 **Input:** Git config, asset Git paths  
 **Output:** Commit hash for pull operation
 
 **Git Commands:**
 ```bash
-git clone <repo>
-git config user.name / user.email
+git config --global user.name / user.email
+git clone <repo>                              # or: git -C <repo> fetch --all if it exists
 git checkout <source-branch>
+git pull <repo> <source-branch>
 git checkout <target-branch>
-git cherry-pick <commit>
-git push origin <target-branch>
+git pull <repo> <target-branch>
+git checkout <source-branch> -- <asset file>  # once per asset
+git add -A
+git commit -m "Migration: <tag>"
+git push <repo> <target-branch>
 ```
 
 ---
@@ -417,7 +462,7 @@ RUNNING → RUNNING → RUNNING → SUCCESS
 ---
 
 ### Step 8: Record in Database 💾
-- Inserts migration record into audit database
+- Inserts migration record into the local SQLite audit database (`Database/deployments.db`)
 - Records source/target org details
 - Stores commit hash for rollback
 - Logs asset count and timestamp
@@ -425,7 +470,8 @@ RUNNING → RUNNING → RUNNING → SUCCESS
 **Input:** Migration metadata  
 **Output:** Database record (optional)
 
-**Note:** Database step is optional and will continue on failure.
+**Note:** Database step is optional and will continue on failure. `add_record()` never raises;
+it logs and returns `False` so a DB problem cannot abort a successful migration.
 
 ---
 
@@ -496,7 +542,7 @@ Logs/CICDMigration.log
 
 **Format:**
 ```
-2026-06-28 10:39:06,503 - CICDMigration - INFO - [function:line] - Message
+2026-06-28 10:39:06 - CICDMigration - INFO - [function:line] - Message
 ```
 
 **Contents:**
@@ -584,7 +630,7 @@ Bot: 🚀 Starting CI/CD Migration Process...
 ### Via Python
 
 ```python
-from CICD.main import run_migration
+from CICDMigration.main import run_migration
 
 result = run_migration('path/to/config.json')
 
@@ -643,14 +689,22 @@ All exceptions include:
 
 ### Retry Logic
 
-All API calls use exponential backoff with 3 retries:
-- Retry 1: Wait 1 second
-- Retry 2: Wait 2 seconds  
-- Retry 3: Wait 4 seconds
+HTTP/API calls use exponential backoff with full jitter and up to 3 attempts. On each
+failure the wait is a random value in `[0, backoff_factor ** attempt)` seconds
+(`random.uniform(0, backoff_factor ** attempt)`), so the delays are randomized rather
+than fixed:
+- Retry after attempt 1: random wait in [0, 1) second
+- Retry after attempt 2: random wait in [0, 2) seconds
+- Retry after attempt 3 exhausts the retries (the exception is raised)
+
+The jitter avoids a thundering herd when multiple requests retry in lockstep.
 
 Applies to:
-- IICS API calls (login, asset retrieval, pull, tagging)
-- Git operations (clone, push, cherry-pick)
+- IICS API calls only (login, asset retrieval, project/folder creation, pull initiation, lookup, tagging)
+
+**Not** retried:
+- Git operations (`run_git_command`, `git_config`, `git_operations` in `cherrypick.py`) —
+  these run without the retry decorator and fail immediately on error
 
 ### Common Errors
 
@@ -659,7 +713,7 @@ Applies to:
 | No assets found | No assets with pre-migration tags | Run pre-migration check first |
 | Authentication failed | Invalid credentials | Verify username/password/region |
 | Git clone failed | Invalid repo URL or token | Check Git_Repository_URL and Git_password |
-| Cherry-pick failed | Conflicting changes | Manually resolve Git conflicts |
+| Git checkout failed | Branch missing, or no assets could be checked out from the source branch | Verify source/target branches exist and the asset files are present on the source branch |
 | Pull operation failed | Invalid commit or permissions | Verify commit hash and permissions |
 | Tagging failed | Assets not found in target | Check pull operation succeeded |
 | Project creation failed | Duplicate project name | Check if project already exists |
@@ -682,17 +736,16 @@ import json
 import traceback
 import os
 import subprocess
-import shutil
 import time
 from typing import Dict, List, Tuple
 from datetime import datetime
+import sqlite3  # Built-in; used for database logging
 import requests
-import pymssql  # Optional for database logging
 ```
 
 **Required Packages:**
 - `requests` - IICS API calls
-- `pymssql` - Database logging (optional)
+- `sqlite3` - Database logging (Python standard library, no install needed)
 - `git` - Git command-line tool must be installed
 
 **System Requirements:**
@@ -706,13 +759,13 @@ import pymssql  # Optional for database logging
 
 | Metric | Count |
 |--------|-------|
-| **Total Files** | 12 |
-| **Total Lines** | ~1,918 |
-| **Total Functions** | 31 |
+| **Total Files** | 13 |
+| **Total Lines** | ~2,050 |
+| **Total Functions** | 34 (top-level) |
 | **Total Classes** | 0 (uses standard exceptions) |
 | **Migration Steps** | 8 |
 | **API Endpoints** | ~10 |
-| **Supported Asset Types** | 24+ |
+| **Git-migratable Asset Types** | 24 |
 | **Avg Execution Time** | 5-15 minutes |
 
 ---
@@ -769,23 +822,24 @@ Step 2/8: Retrieving Tagged Assets from Source...
 
 ---
 
-### Issue: Git Cherry-pick Failed
+### Issue: Git Asset Checkout Failed
 
 **Symptoms:**
 ```
-Step 5/8: Cherry-picking Assets via Git...
-❌ Git operation failed: CONFLICT
+Step 5/8: Transferring Assets via Git...
+❌ Git operation failed / No assets were successfully checked out
 ```
 
 **Causes:**
-- Conflicting changes in branches
-- Asset modified in both branches
+- Source or target branch does not exist
+- Asset files are not present on the source branch
 - Git repository out of sync
+- Invalid credentials for push
 
 **Solution:**
-1. Manually resolve conflicts in Git
-2. Sync branches before migration
-3. Use fresh clone
+1. Verify source and target branches exist in the repository
+2. Confirm the tagged asset files are committed on the source branch
+3. Sync/fetch branches before migration
 4. Contact Git administrator
 
 ---
@@ -842,15 +896,15 @@ Step 8/8: Recording Migration in Database...
 ```
 
 **Causes:**
-- Database connection issues
-- pymssql not installed
-- Invalid database credentials
+- Unable to create/write the SQLite file
+- No write permission for the `Database/` directory
+- Invalid `DB_PATH` override
 
 **Solution:**
 1. Migration succeeded - database is optional
-2. Install pymssql if needed
-3. Check database connectivity
-4. Verify credentials
+2. Ensure the `Database/` directory is writable (it is created automatically)
+3. Check any `DB_PATH` environment override points to a valid path
+4. Review the logged DB error for details
 
 ---
 
@@ -869,10 +923,10 @@ Migrate multiple projects:
 
 ### Custom Asset Types
 
-Add new asset types in `config.py`:
+Add new asset types to the `DICT_FILE_FORMAT` mapping in `config.py`:
 ```python
-TYPE_EXTENSIONS = {
-    "CUSTOM_TYPE": [["custom.xml"], ["custom.xml", "zip"]]
+DICT_FILE_FORMAT = {
+    "CUSTOM_TYPE": [[1, "json"], [0, "zip"]]
 }
 ```
 
@@ -908,26 +962,27 @@ repo/
 ## API Endpoints Used
 
 ```
-# Authentication
-POST /saas/public/core/v3/login
+# Authentication (login.py)
+POST https://{region}.informaticacloud.com/saas/public/core/v3/login
 
-# Asset Retrieval
-GET /public/core/v3/tagging/{tag}/objects
+# Asset Retrieval by tag (taggedAssets.py)
+GET  /public/core/v3/objects?q=tag=='{tag}'&skip={skip}
 
-# Project/Folder Management
-POST /public/core/v3/projects
-GET  /public/core/v3/projects
-POST /public/core/v3/folders
+# Project/Folder Management (createProjectsAndFolders.py)
+GET  /public/core/v3/objects?q=location=='{path}'   # existence check
+POST /frs/v1/Projects                               # create project
+GET  /frs/v1/Projects?$filter=(name eq '{name}')    # get project id
+POST /frs/v1/Projects('{projectId}')/Folders        # create folder
 
-# Asset Pull
-POST /public/core/v3/commit/pull
-GET  /public/core/v3/commit/pull/{taskId}
+# Asset Pull (pull.py)
+POST /public/core/v3/pull                            # initiate pull
+GET  /public/core/v3/pull/{pullActionId}?expand=objects   # poll status
 
-# Asset Lookup
+# Asset Lookup (postMigrationTag.py)
 POST /public/core/v3/lookup
 
-# Tagging
-POST /public/core/v3/tagging
+# Tagging (postMigrationTag.py)
+POST /public/core/v3/TagObjects
 ```
 
 ---
@@ -940,7 +995,8 @@ POST /public/core/v3/tagging
 2. **Git Tokens** - Use personal access tokens with minimal permissions
 3. **Rotate Secrets** - Regularly rotate passwords and tokens
 4. **Audit Logs** - Review logs before sharing
-5. **Database** - Secure database connection strings
+5. **Database** - The SQLite files live under `Database/`. The credentials DB
+   (`idmc_credentials.db`) stores passwords in plain text, so keep it local and git-ignored
 6. **Git Cleanup** - Temporary repos are cleaned up automatically
 
 ---

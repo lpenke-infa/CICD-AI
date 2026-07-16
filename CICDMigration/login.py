@@ -62,19 +62,3 @@ def login(username: str, password: str, region: str, logger) -> Dict[str, str]:
     except requests.exceptions.RequestException as e:
         logger.critical(f"IDMC Login Failed: {str(e)}")
         raise
-
-
-def iics_login(username: str, password: str, region: str, logger) -> Dict[str, str]:
-    """
-    Wrapper function for IICS login
-
-    Args:
-        username: IICS username
-        password: IICS password
-        region: IICS region
-        logger: Logger instance
-
-    Returns:
-        Dictionary containing session and org information
-    """
-    return login(username, password, region, logger)

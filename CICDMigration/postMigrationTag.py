@@ -84,7 +84,8 @@ def post_migration_tagging_v3(
     session_id: str,
     base_api_url: str,
     tag_request_body: List[Dict],
-    logger
+    logger,
+    progress_callback=None
 ) -> bool:
     """
     Apply post-migration tags to assets in batches
@@ -138,6 +139,10 @@ def post_migration_tagging_v3(
                     f"Batch {batch_num}/{total_batches}: "
                     f"Successfully tagged {len(current_batch)} assets"
                 )
+
+                # Send progress update to Slack
+                if progress_callback:
+                    progress_callback(f"🏷️  Tagging progress: batch {batch_num}/{total_batches} ({tagged_count}/{len(tag_request_body)} assets tagged)")
             else:
                 logger.error(
                     f"Batch {batch_num}/{total_batches}: "
@@ -157,7 +162,8 @@ def post_migration_tag(
     asset_metadata: List[Dict],
     tgt_data: dict,
     post_migration_tags: List[str],
-    logger
+    logger,
+    progress_callback=None
 ) -> bool:
     """
     Apply post-migration tags to assets in target environment
@@ -192,7 +198,8 @@ def post_migration_tag(
         tgt_data['sessionId'],
         tgt_data['baseApiUrl'],
         tag_request_body,
-        logger
+        logger,
+        progress_callback
     )
 
     logger.info("Post-migration tagging completed successfully")

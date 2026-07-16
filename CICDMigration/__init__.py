@@ -5,7 +5,7 @@ IICS CI/CD automation modules for asset migration.
 """
 
 from .logger import create_logger
-from .login import iics_login
+from .login import login
 from .taggedAssets import tagged_assets
 from .cherrypick import cherrypick
 from .createProjectsAndFolders import create_projects_and_folders
@@ -16,7 +16,7 @@ from .utils import validate_input_data
 
 __all__ = [
     'create_logger',
-    'iics_login',
+    'login',
     'tagged_assets',
     'cherrypick',
     'create_projects_and_folders',

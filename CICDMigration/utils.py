@@ -2,6 +2,7 @@
 Utility functions for IICS CI/CD automation
 """
 import time
+import random
 import requests
 from typing import Callable, Any, Optional
 from .config import MAX_RETRIES, RETRY_BACKOFF_FACTOR, API_TIMEOUT
@@ -35,9 +36,12 @@ def retry_with_backoff(
             if attempt == max_retries - 1:
                 raise
 
-            wait_time = backoff_factor ** attempt
+            # Exponential backoff with full jitter to avoid a thundering herd
+            # when multiple requests retry in lockstep.
+            base_wait = backoff_factor ** attempt
+            wait_time = random.uniform(0, base_wait)
             if logger:
-                logger.warning(f"Attempt {attempt + 1} failed: {str(e)}. Retrying in {wait_time}s...")
+                logger.warning(f"Attempt {attempt + 1} failed: {str(e)}. Retrying in {wait_time:.2f}s...")
             time.sleep(wait_time)
 
     raise Exception(f"Failed after {max_retries} attempts")
@@ -71,7 +75,7 @@ def sanitize_for_log(text: str) -> str:
 
 def validate_input_data(input_data: dict, logger: Any) -> bool:
     """
-    Validate required fields in input configuration
+    Validate configuration using comprehensive modular validation
 
     Args:
         input_data: Configuration dictionary
@@ -80,37 +84,23 @@ def validate_input_data(input_data: dict, logger: Any) -> bool:
     Returns:
         True if valid, raises Exception otherwise
     """
-    required_fields = [
-        'ProjectName',
-        'IICS_SRC_username', 'IICS_SRC_password', 'IICS_SRC_region',
-        'IICS_TGT_username', 'IICS_TGT_password', 'IICS_TGT_region',
-        'PreMigration_Tag', 'PostMigration_Tag',
-        'Git_Repository_URL', 'Git_config_useremail', 'Git_config_username',
-        'Git_password', 'Git_SRC_Branch', 'Git_TGT_Branch',
-        'Publish', 'logFileDir'
-    ]
+    try:
+        # Use new modular validation
+        from common.config_validation import validate_config
 
-    missing_fields = [field for field in required_fields if field not in input_data]
+        result = validate_config(input_data, config_type='cicd')
 
-    if missing_fields:
-        error_msg = f"Missing required fields in configuration: {', '.join(missing_fields)}"
-        logger.critical(error_msg)
-        raise ValueError(error_msg)
+        # Log any warnings
+        if result['warnings']:
+            for warning in result['warnings']:
+                logger.warning(warning)
 
-    if not isinstance(input_data['ProjectName'], list) or len(input_data['ProjectName']) == 0:
-        error_msg = "ProjectName must be a non-empty list"
-        logger.critical(error_msg)
-        raise ValueError(error_msg)
+        # Update input_data with validated/normalized values
+        input_data.update(result['config'])
 
-    if not isinstance(input_data['PreMigration_Tag'], list) or len(input_data['PreMigration_Tag']) == 0:
-        error_msg = "PreMigration_Tag must be a non-empty list"
-        logger.critical(error_msg)
-        raise ValueError(error_msg)
+        logger.info("Input configuration validation successful")
+        return True
 
-    if not isinstance(input_data['PostMigration_Tag'], list) or len(input_data['PostMigration_Tag']) == 0:
-        error_msg = "PostMigration_Tag must be a non-empty list"
-        logger.critical(error_msg)
-        raise ValueError(error_msg)
-
-    logger.info("Input configuration validation successful")
-    return True
+    except ValueError as e:
+        logger.critical(str(e))
+        raise

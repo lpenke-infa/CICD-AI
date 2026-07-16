@@ -1,15 +1,38 @@
 """
-Database operations for IICS CI/CD automation
+Database operations for IICS CI/CD automation.
+
+Uses SQLite (a single local file, no server required) to record one row per
+migration. The database file lives in the project's 'Database' folder by
+default; the full path can be overridden with the DB_PATH environment variable.
 """
+import os
+import sqlite3
 import datetime
-import pymssql
 from typing import Optional
 
 
-SERVER = ''
-DATABASE = ''
-DB_USER = r''
-DB_PASSWORD = r''
+# Path to the SQLite database file. Defaults to 'Database/deployments.db' in the
+# project root (two levels up from this file: CICDMigration/ -> project root).
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DB_PATH = os.getenv('DB_PATH', os.path.join(_PROJECT_ROOT, 'Database', 'deployments.db'))
+
+
+# Table schema. Created automatically on first use if it does not exist.
+_CREATE_TABLE_SQL = """
+    CREATE TABLE IF NOT EXISTS Deployment_Details (
+        Id              INTEGER PRIMARY KEY AUTOINCREMENT,
+        ProjectName     TEXT    NOT NULL,
+        IICSSourceOrg   TEXT,
+        IICSSourceOrgID TEXT,
+        CommitHash      TEXT,
+        Tag             TEXT,
+        Deployment_Date TEXT    NOT NULL,
+        Rollback_Date   TEXT,
+        IICSTargetOrgID TEXT,
+        IICSTargetOrg   TEXT,
+        AssetsMigrated  INTEGER
+    )
+"""
 
 
 def add_record(
@@ -24,7 +47,11 @@ def add_record(
     logger
 ) -> bool:
     """
-    Add deployment record to database using parameterized query
+    Add a deployment record to the SQLite database using a parameterized query.
+
+    The table is created automatically if it does not exist. This function never
+    raises: on any failure it logs the error and returns False, so a database
+    problem cannot abort a successful migration.
 
     Args:
         project_name: Name of the project
@@ -38,28 +65,27 @@ def add_record(
         logger: Logger instance
 
     Returns:
-        True if successful, False otherwise
+        True if the record was inserted, False otherwise.
     """
-    conn: Optional[pymssql.Connection] = None
-    cursor: Optional[pymssql.Cursor] = None
+    conn: Optional[sqlite3.Connection] = None
 
     try:
-        today = datetime.date.today()
+        today = datetime.date.today().isoformat()
 
-        conn = pymssql.connect(
-            host=SERVER,
-            user=DB_USER,
-            password=DB_PASSWORD,
-            database=DATABASE
-        )
+        # Ensure the parent directory (e.g. Database/) exists before connecting
+        os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
+        conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
 
+        # Ensure the table exists before inserting
+        cursor.execute(_CREATE_TABLE_SQL)
+
         query = """
-            INSERT INTO dbo.Deployment_Details
+            INSERT INTO Deployment_Details
             (ProjectName, IICSSourceOrg, IICSSourceOrgID, CommitHash, Tag,
              Deployment_Date, Rollback_Date, IICSTargetOrgID, IICSTargetOrg, AssetsMigrated)
-            VALUES (%s, %s, %s, %s, %s, %s, NULL, %s, %s, %d)
+            VALUES (?, ?, ?, ?, ?, ?, NULL, ?, ?, ?)
         """
 
         cursor.execute(
@@ -78,7 +104,7 @@ def add_record(
         )
 
         conn.commit()
-        logger.info('Record inserted into Database successfully')
+        logger.info(f"Record inserted into database successfully: {DB_PATH}")
         return True
 
     except Exception as e:
@@ -91,14 +117,8 @@ def add_record(
         return False
 
     finally:
-        if cursor:
-            try:
-                cursor.close()
-            except Exception as e:
-                logger.error(f"Error closing cursor: {str(e)}")
         if conn:
             try:
                 conn.close()
             except Exception as e:
                 logger.error(f"Error closing connection: {str(e)}")
-

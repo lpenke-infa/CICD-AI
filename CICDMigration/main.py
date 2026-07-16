@@ -9,7 +9,7 @@ from typing import Dict
 from datetime import datetime
 
 from .logger import create_logger
-from .login import iics_login
+from .login import login
 from .taggedAssets import tagged_assets
 from .cherrypick import cherrypick
 from .createProjectsAndFolders import create_projects_and_folders
@@ -62,7 +62,14 @@ def run_migration(config_path: str) -> Dict:
     try:
         input_data = load_configuration(config_path)
 
-        logger = create_logger(input_data['logFileDir'])
+        # Log directory is static ('Logs'); always use it, ignoring/​warning on
+        # any custom value, and never require it to be present in the config.
+        logger = create_logger('Logs')
+        if input_data.get('logFileDir') and input_data['logFileDir'] != 'Logs':
+            logger.warning(
+                f"Custom logFileDir '{input_data['logFileDir']}' ignored; using standard 'Logs' directory"
+            )
+        input_data['logFileDir'] = 'Logs'
         logger.info("=" * 80)
         logger.info("IICS CI/CD Migration Process Started")
         logger.info("=" * 80)
@@ -70,7 +77,7 @@ def run_migration(config_path: str) -> Dict:
         validate_input_data(input_data, logger)
 
         logger.info("Step 1: Authenticating to Source IICS Organization")
-        src_data = iics_login(
+        src_data = login(
             input_data['IICS_SRC_username'],
             input_data['IICS_SRC_password'],
             input_data['IICS_SRC_region'],
@@ -82,7 +89,7 @@ def run_migration(config_path: str) -> Dict:
         git_paths, asset_metadata = tagged_assets(
             src_data,
             input_data['PreMigration_Tag'],
-            input_data['ProjectName'][0],
+            input_data['ProjectName'],
             logger
         )
 
@@ -94,7 +101,7 @@ def run_migration(config_path: str) -> Dict:
         logger.info(f"Found {len(asset_metadata)} assets to migrate")
 
         logger.info("Step 3: Authenticating to Target IICS Organization")
-        tgt_data = iics_login(
+        tgt_data = login(
             input_data['IICS_TGT_username'],
             input_data['IICS_TGT_password'],
             input_data['IICS_TGT_region'],
@@ -133,7 +140,7 @@ def run_migration(config_path: str) -> Dict:
         logger.info("Step 8: Recording Migration in Database")
         try:
             db_success = add_record(
-                input_data['ProjectName'][0],
+                input_data['ProjectName'],
                 src_data['orgName'],
                 src_data['orgId'],
                 commit_hash,
@@ -170,20 +177,11 @@ def run_migration(config_path: str) -> Dict:
     except Exception as e:
         if logger:
             logger.critical(f"Migration failed: {str(e)}")
-            logger.info(f"Session Ended with Error - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-            logger.info("=" * 80)
-        else:
-            print(f"ERROR: {str(e)}")
-        raise
-
-    except Exception as e:
-        if logger:
-            logger.critical(f"Unexpected error: {str(e)}")
             logger.critical(traceback.format_exc())
             logger.info(f"Session Ended with Error - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
             logger.info("=" * 80)
         else:
-            print(f"CRITICAL ERROR: {str(e)}")
+            print(f"ERROR: {str(e)}")
             print(traceback.format_exc())
         raise
 

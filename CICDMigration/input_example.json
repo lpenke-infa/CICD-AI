@@ -1,5 +1,5 @@
 {
-    "ProjectName": ["YourProjectName"],
+    "ProjectName": "YourProjectName",
 
     "IICS_SRC_username": "source_username",
     "IICS_SRC_password": "source_password",

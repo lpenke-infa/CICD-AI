@@ -1,7 +1,7 @@
 """
 Configuration constants for IICS CI/CD automation
 """
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 API_TIMEOUT = 30
 MAX_RETRIES = 3
@@ -11,7 +11,7 @@ PULL_STATUS_CHECK_INTERVAL = 15
 ASSETS_PER_PAGE = 200
 TAG_BATCH_SIZE = 100
 
-DICT_FILE_FORMAT: Dict[str, List[Tuple[int, str]]] = {
+DICT_FILE_FORMAT: Dict[str, List[List]] = {
     'DTEMPLATE': [[1, 'json'], [0, 'zip']],
     'MTT': [[1, 'json'], [0, 'zip']],
     'TASKFLOW': [[1, 'json'], [0, 'xml']],
