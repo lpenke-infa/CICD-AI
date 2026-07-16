@@ -348,27 +348,9 @@ ANTHROPIC_AUTH_TOKEN=your-aws-auth-token
 # Option 2: Direct Anthropic API
 # ANTHROPIC_BEDROCK_BASE_URL=https://api.anthropic.com
 # ANTHROPIC_AUTH_TOKEN=sk-ant-your-anthropic-api-key
-
-# ============================================
-# IDMC Source Environment (Optional - can provide via chat)
-# ============================================
-IICS_SRC_username=
-IICS_SRC_password=
-IICS_SRC_region=dm-us
-
-# ============================================
-# IDMC Target Environment (Optional - can provide via chat)
-# ============================================
-IICS_TGT_username=
-IICS_TGT_password=
-IICS_TGT_region=dm-us
-
-# ============================================
-# Additional Configuration (Optional)
-# ============================================
-# Logging level: DEBUG, INFO, WARNING, ERROR
-LOG_LEVEL=INFO
 ```
+
+> ℹ️ These four variables are the only values the app reads from the environment. **IDMC credentials are NOT set in `.env`** — they are provided via configuration JSON files (in `Configs/`) or entered through the Slack conversation when prompted.
 
 ### Step 3: Fill in Your Credentials
 
@@ -379,9 +361,8 @@ Replace these values:
 3. **ANTHROPIC_BEDROCK_BASE_URL**: Your Claude AI endpoint
 4. **ANTHROPIC_AUTH_TOKEN**: Your AI authentication token
 
-**⚠️ IDMC credentials are optional** - you can provide them:
-- In `.env` file (for permanent setup)
-- Via configuration JSON files
+**⚠️ IDMC credentials are NOT set here** - they are provided:
+- Via configuration JSON files (in `Configs/`)
 - Through Slack conversation when prompted
 
 ### Step 4: Verify `.env` File
@@ -450,7 +431,7 @@ python agent.py
    • CI/CD Migration (modular tool)
    • Post-Migration Validation (modular tool)
    • IDMC Operations (modular tool)
-   • Conversational AI powered by Claude Sonnet 4
+   • Conversational AI powered by Claude Opus 4.8
    • Real-time progress updates
 
 ⚡ Bot is now listening for messages and mentions...
@@ -466,13 +447,13 @@ python agent.py
 
 **Expected Response:**
 ```
-Hello! I'm your IDMC CI/CD Automation Assistant.
-
-What would you like to do?
-1️⃣ Pre-Migration Check
-2️⃣ CI/CD Migration
-3️⃣ Post-Migration Validation
-4️⃣ IDMC Asset Management
+👋 Welcome to the IICS CI/CD Migration Assistant!
+I can help you with:
+1. Pre-Migration Check — Validate assets before migration
+2. CI/CD Migration — Migrate assets from source to target environment
+3. Post-Migration Check — Validate migrated assets
+4. IDMC Operations (Development - In Progress) — Query/manage assets, tags, projects, folders, schedules, users
+What would you like to do? (Reply with number or description)
 ```
 
 🎉 **Success!** Your bot is running!

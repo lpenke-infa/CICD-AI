@@ -1,8 +1,10 @@
 # IICS CICD-AI Automation Suite
 
-AI-powered automation for Informatica Intelligent Cloud Services (IICS) with conversational Slack interface powered by Claude Sonnet 4.
+AI-powered automation for Informatica Intelligent Cloud Services (IICS) with conversational Slack interface powered by Claude Opus 4.8.
 
 > 📘 **New User?** Start with **[SETUP_GUIDE.md](SETUP_GUIDE.md)** for complete installation instructions from scratch.
+>
+> 💬 **Just using the bot?** See the **[USER_MANUAL.md](USER_MANUAL.md)** for a day-to-day guide to chatting with the Slack assistant.
 
 ---
 
@@ -13,7 +15,7 @@ Automates end-to-end IICS operations through a conversational Slack bot:
 1. **Pre-Migration Validation** - Verify assets and connections before migration
 2. **CI/CD Migration** - Automated 8-step Git-based migration between environments  
 3. **Post-Migration Validation** - Verify successful migration with reports
-4. **IDMC Operations** - Query, manage, and tag assets via natural language
+4. **IDMC Operations** - Query, manage, and tag assets via natural language *(Development - In Progress)*
 
 **Example:**
 ```
@@ -33,7 +35,7 @@ Bot: [Generates Excel report with 156 mappings]
 ## Quick Start
 
 ### Prerequisites
-- Python 3.7+
+- Python 3.9+ (3.11 recommended)
 - Git installed
 - IICS access credentials
 - Slack workspace (for bot interface)
@@ -70,11 +72,15 @@ python agent.py
 
 ```
 CICD-AI/
-├── agent.py                   # Main Slack bot with Claude Sonnet 4
+├── agent.py                   # Main Slack bot with Claude Opus 4.8
 ├── requirements.txt           # Python dependencies
 ├── .env                       # Environment configuration
 ├── README.md                  # This file (overview)
 ├── SETUP_GUIDE.md             # Complete setup guide
+├── USER_MANUAL.md             # Day-to-day user guide for the Slack bot
+├── system_prompt_v*.txt       # Versioned system prompts (v3 current)
+│
+├── Database/                  # SQLite databases (deployments.db, idmc_credentials.db)
 │
 ├── CICDMigration/             # 8-step migration workflow
 │   └── README.md              # → Detailed migration docs
@@ -85,11 +91,14 @@ CICD-AI/
 ├── PostMigrationCheck/        # Post-migration validation
 │   └── README.md              # → Detailed validation docs
 │
-├── IDMCFunctionalities/       # 35+ IDMC API functions
+├── IDMCFunctionalities/       # 35 IDMC API functions
 │   └── README.md              # → Detailed IDMC API docs
 │
-├── tools/                     # Modular tool wrappers
+├── tools/                     # Modular tool wrappers (@tool + execute_*)
+├── common/                    # Shared config validation
 ├── Configs/                   # Configuration templates
+├── docs/                      # Documentation assets
+│   └── images/                # Screenshots for USER_MANUAL.md
 ├── Logs/                      # Runtime logs
 └── Reports/                   # Generated Excel reports
 ```
@@ -98,10 +107,12 @@ CICD-AI/
 
 | Module | Purpose | Files | Functions | Details |
 |--------|---------|-------|-----------|---------|
-| **CICDMigration** | Git-based asset migration (8 steps) | 12 | 31 | [README](CICDMigration/README.md) |
-| **PreMigrationCheck** | Validate assets before migration | 7 | 15 | [README](PreMigrationCheck/README.md) |
-| **PostMigrationCheck** | Verify migration success | 6 | 12 | [README](PostMigrationCheck/README.md) |
-| **IDMCFunctionalities** | IDMC API operations (35 functions) | 2 | 35 | [README](IDMCFunctionalities/README.md) |
+| **CICDMigration** | Git-based asset migration (8 steps) | 13 | 34 | [README](CICDMigration/README.md) |
+| **PreMigrationCheck** | Validate assets before migration | 8 | 14 | [README](PreMigrationCheck/README.md) |
+| **PostMigrationCheck** | Verify migration success | 6 | 10 | [README](PostMigrationCheck/README.md) |
+| **IDMCFunctionalities** | IDMC API operations (35 functions) — *Development - In Progress* | 2 | 35 | [README](IDMCFunctionalities/README.md) |
+| **tools** | LangChain tool wrappers used by the bot | 5 | 12 | — |
+| **common** | Shared config validation | 2 | 15 | — |
 
 ---
 
@@ -109,7 +120,7 @@ CICD-AI/
 
 ### 🤖 AI-Powered Conversational Interface
 - Natural language queries via Slack
-- Claude Sonnet 4 understands intent and context
+- Claude Opus 4.8 understands intent and context
 - Interactive configuration collection
 - Real-time progress updates
 
@@ -156,7 +167,7 @@ Bot: 🚀 Starting CI/CD Migration...
      Step 2/8: 🏷️  Retrieving Tagged Assets...
      Step 3/8: 🔐 Authenticating to Target...
      Step 4/8: 📁 Creating Projects/Folders...
-     Step 5/8: 🌿 Cherry-picking via Git...
+     Step 5/8: 🌿 Transferring Assets via Git...
      Step 6/8: ⬇️  Pulling Assets to Target...
      Step 7/8: 🏷️  Applying Tags...
      Step 8/8: 💾 Recording in Database...
@@ -214,6 +225,8 @@ Bot: ✅ Configuration file saved: config_prod.json
 
 ### Environment Variables (.env)
 
+The application reads only these four environment variables:
+
 ```env
 # Slack Configuration (Required)
 SLACK_BOT_TOKEN=xoxb-your-bot-token
@@ -222,16 +235,9 @@ SLACK_APP_TOKEN=xapp-your-app-token
 # Claude AI Configuration (Required)
 ANTHROPIC_BEDROCK_BASE_URL=https://your-bedrock-endpoint
 ANTHROPIC_AUTH_TOKEN=your-auth-token
-
-# IDMC Credentials (Optional - can provide via chat)
-IICS_SRC_username=source@example.com
-IICS_SRC_password=src_password
-IICS_SRC_region=dm-us
-
-IICS_TGT_username=target@example.com
-IICS_TGT_password=tgt_password
-IICS_TGT_region=dm-us
 ```
+
+**Note:** IICS/IDMC credentials are **not** read from the environment. Supply them via configuration files (see `Configs/` templates below) or directly through the Slack chat. Optional database path overrides `DB_PATH` and `IDMC_CREDS_DB_PATH` are also available for the SQLite files.
 
 ### Configuration Files
 
@@ -279,7 +285,7 @@ Templates available in `Configs/`:
                │
                ▼
 ┌─────────────────────────────────────┐
-│  Claude Sonnet 4 (Intent & Context) │
+│  Claude Opus 4.8 (Intent & Context) │
 │  • Understands natural language     │
 │  • Routes to appropriate tool       │
 │  • Maintains conversation context   │
@@ -335,7 +341,7 @@ See [CICDMigration/README.md](CICDMigration/README.md) for detailed workflow doc
 
 **Note:** The bot automatically filters out PROJECT and FOLDER when tagging.
 
-Full list in [CICDMigration/config.py](CICDMigration/config.py)
+Full list of Git-migratable asset types in the `DICT_FILE_FORMAT` mapping in [CICDMigration/config.py](CICDMigration/config.py) (24 types).
 
 ---
 
@@ -424,14 +430,16 @@ See [SETUP_GUIDE.md](SETUP_GUIDE.md#troubleshooting) for detailed troubleshootin
 
 | Component | Technology |
 |-----------|------------|
-| **AI/LLM** | Claude Sonnet 4 (Anthropic) |
-| **Bot Framework** | Slack Bolt SDK |
-| **Language** | Python 3.7+ |
+| **AI/LLM** | Claude Opus 4.8 (via Bedrock gateway, OpenAI-compatible endpoint) |
+| **LLM Client** | `langchain_openai.ChatOpenAI` pointed at the gateway `base_url` |
+| **Bot Framework** | Slack Bolt SDK (Socket Mode) |
+| **Language** | Python 3.9+ |
 | **AI Framework** | LangChain |
 | **Version Control** | Git |
 | **API Client** | requests, httpx |
 | **Report Generation** | pandas, openpyxl |
-| **Database** | SQL Server (optional, pymssql) |
+| **Config Validation** | pydantic |
+| **Database** | SQLite (built-in `sqlite3`, no external server) |
 
 ---
 
@@ -439,10 +447,10 @@ See [SETUP_GUIDE.md](SETUP_GUIDE.md#troubleshooting) for detailed troubleshootin
 
 | Metric | Value |
 |--------|-------|
-| **Total Files** | 32 |
-| **Total Lines of Code** | ~6,300 |
-| **Total Functions** | 112 |
-| **Supported Asset Types** | 70+ |
+| **Total Python Files** | 37 (excluding `__pycache__`) |
+| **Total Lines of Code** | ~8,855 |
+| **Total Functions** | ~150 |
+| **Supported Asset Types** | 70+ (IDMC queries); 24 Git-migratable |
 | **IDMC API Functions** | 35 |
 | **Migration Steps** | 8 |
 

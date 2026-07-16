@@ -1,6 +1,7 @@
 # Core Dependencies
 requests==2.31.0
-pymssql==2.2.8
+# Migration records are stored in SQLite via Python's built-in sqlite3 module
+# (no external DB driver or server required).
 
 # Excel Report Generation
 pandas>=2.0.0
@@ -19,3 +20,7 @@ langgraph>=0.2.0
 python-dotenv>=1.0.0
 httpx>=0.27.0
 urllib3>=2.0.0
+
+# Configuration Validation
+pydantic>=2.0.0
+pydantic[email]>=2.0.0
