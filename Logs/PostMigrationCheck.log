@@ -1,173 +1,116 @@
-2026-06-28 10:38:56,276 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 10:38:56,277 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 10:38:56
-2026-06-28 10:38:56,277 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 10:38:58,373 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 10:38:59,607 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 10:38:59,609 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
-2026-06-28 10:39:02,603 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
-2026-06-28 10:39:02,603 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
-2026-06-28 10:39:04,899 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
-2026-06-28 10:39:04,902 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
-2026-06-28 10:39:06,466 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
-2026-06-28 10:39:06,466 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
-2026-06-28 10:39:06,466 - PostMigrationCheck - INFO - [execute_post_migration_check:142] - Statistics generated: 20 entries
-2026-06-28 10:39:06,467 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\post_migration_validation.xlsx
-2026-06-28 10:39:06,475 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
-2026-06-28 10:39:06,503 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\post_migration_validation.xlsx
-2026-06-28 10:55:14,936 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 10:55:14,937 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 10:55:14
-2026-06-28 10:55:14,937 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 10:55:17,109 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 10:55:18,216 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 10:55:18,217 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
-2026-06-28 10:55:20,933 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
-2026-06-28 10:55:20,934 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
-2026-06-28 10:55:23,512 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
-2026-06-28 10:55:23,514 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
-2026-06-28 10:55:25,219 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
-2026-06-28 10:55:25,220 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
-2026-06-28 10:55:25,221 - PostMigrationCheck - INFO - [execute_post_migration_check:142] - Statistics generated: 20 entries
-2026-06-28 10:55:25,222 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260628_105525.xlsx
-2026-06-28 10:55:25,226 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
-2026-06-28 10:55:25,255 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260628_105525.xlsx
-2026-06-28 11:58:11,213 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 11:58:11,214 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 11:58:11
-2026-06-28 11:58:11,215 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 11:58:13,975 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 11:58:15,217 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 11:58:15,218 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
-2026-06-28 11:58:17,930 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
-2026-06-28 11:58:17,931 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
-2026-06-28 11:58:20,759 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
-2026-06-28 11:58:20,762 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
-2026-06-28 11:58:22,370 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
-2026-06-28 11:58:22,370 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
-2026-06-28 11:58:22,370 - PostMigrationCheck - INFO - [execute_post_migration_check:142] - Statistics generated: 20 entries
-2026-06-28 11:58:22,371 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260628_115822.xlsx
-2026-06-28 11:58:22,379 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
-2026-06-28 11:58:22,411 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260628_115822.xlsx
-2026-06-28 12:08:56,617 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 12:08:56,618 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 12:08:56
-2026-06-28 12:08:56,619 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 12:08:58,765 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 12:08:59,966 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 12:08:59,967 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
-2026-06-28 12:09:02,821 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
-2026-06-28 12:09:02,821 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
-2026-06-28 12:09:06,061 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
-2026-06-28 12:09:06,066 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
-2026-06-28 12:09:07,509 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
-2026-06-28 12:09:07,510 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
-2026-06-28 12:09:07,510 - PostMigrationCheck - INFO - [execute_post_migration_check:142] - Statistics generated: 20 entries
-2026-06-28 12:09:07,511 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260628_120907.xlsx
-2026-06-28 12:09:07,521 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
-2026-06-28 12:09:07,546 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260628_120907.xlsx
-2026-06-28 12:26:34,543 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 12:26:34,545 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 12:26:34
-2026-06-28 12:26:34,545 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 12:26:37,942 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 12:26:40,334 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 12:26:40,335 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
-2026-06-28 12:26:44,167 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
-2026-06-28 12:26:44,167 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
-2026-06-28 12:26:47,237 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
-2026-06-28 12:26:47,241 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
-2026-06-28 12:26:48,879 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
-2026-06-28 12:26:48,880 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
-2026-06-28 12:26:48,882 - PostMigrationCheck - INFO - [execute_post_migration_check:142] - Statistics generated: 20 entries
-2026-06-28 12:26:48,884 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260628_122648.xlsx
-2026-06-28 12:26:48,893 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
-2026-06-28 12:26:48,934 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260628_122648.xlsx
-2026-06-28 12:37:09,762 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 12:37:09,764 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 12:37:09
-2026-06-28 12:37:09,764 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 12:37:12,224 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 12:37:13,976 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 12:37:13,977 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
-2026-06-28 12:37:17,071 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
-2026-06-28 12:37:17,071 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
-2026-06-28 12:37:19,801 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
-2026-06-28 12:37:19,804 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
-2026-06-28 12:37:20,989 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
-2026-06-28 12:37:20,989 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
-2026-06-28 12:37:20,990 - PostMigrationCheck - INFO - [execute_post_migration_check:142] - Statistics generated: 20 entries
-2026-06-28 12:37:20,991 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260628_123720.xlsx
-2026-06-28 12:37:20,999 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
-2026-06-28 12:37:21,029 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260628_123720.xlsx
-2026-06-28 12:49:13,661 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 12:49:13,661 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 12:49:13
-2026-06-28 12:49:13,662 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 12:49:15,905 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 14:23:11,715 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 14:23:11,716 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 14:23:11
-2026-06-28 14:23:11,716 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 14:23:13,877 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 14:23:14,846 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 14:23:14,850 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
-2026-06-28 14:23:16,780 - PostMigrationCheck - ERROR - [get_tagged_objects:83] - Failed to retrieve tagged objects: 400 Client Error: Bad Request for url: https://na1.dm-us.informaticacloud.com/saas/public/core/v3/objects?q=tag=='PM'
-2026-06-28 14:23:16,781 - PostMigrationCheck - ERROR - [get_assets_by_tags:116] - Failed to retrieve assets for tag 'PM': 400 Client Error: Bad Request for url: https://na1.dm-us.informaticacloud.com/saas/public/core/v3/objects?q=tag=='PM'
-2026-06-28 14:23:16,784 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 0
-2026-06-28 14:26:23,629 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 14:26:23,629 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 14:26:23
-2026-06-28 14:26:23,630 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 14:26:25,983 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 14:26:27,395 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 14:26:27,396 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
-2026-06-28 14:26:29,823 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
-2026-06-28 14:26:29,824 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
-2026-06-28 14:26:32,319 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
-2026-06-28 14:26:32,323 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
-2026-06-28 14:26:33,749 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: ['MunichPLPDemo']
-2026-06-28 14:26:33,750 - PostMigrationCheck - WARNING - [generate_migration_statistics:83] - No statistics generated. Project filter: ['MunichPLPDemo'], Assets found: 60
-2026-06-28 14:26:33,750 - PostMigrationCheck - WARNING - [generate_migration_statistics:84] - Sample asset path: MunichDEMO/Leelaprasad_V1/AC-IICS-login
-2026-06-28 14:26:33,751 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 0 statistics entries
-2026-06-28 14:26:33,752 - PostMigrationCheck - INFO - [execute_post_migration_check:149] - Statistics generated: 0 entries
-2026-06-28 14:26:33,752 - PostMigrationCheck - WARNING - [execute_post_migration_check:151] - No statistics matched project: ['MunichPLPDemo']
-2026-06-28 14:26:33,753 - PostMigrationCheck - WARNING - [execute_post_migration_check:152] - Sample asset paths: ['MunichDEMO/Leelaprasad_V1/AC-IICS-login', 'MunichPLPDemo/Leelaprasad_V1/AC-IICS-login', 'MunichDEMO/Leelaprasad_V1/cdgc_college_attendance']
-2026-06-28 14:26:33,754 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260628_142633.xlsx
-2026-06-28 14:26:33,755 - PostMigrationCheck - ERROR - [write_excel_report:39] - No data to write to Excel file
-2026-06-28 14:26:33,755 - PostMigrationCheck - ERROR - [write_excel_report:73] - Failed to create Excel report: No data available to generate report
-2026-06-28 14:27:24,706 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 14:27:24,706 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 14:27:24
-2026-06-28 14:27:24,707 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 14:27:26,881 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 14:27:27,928 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 14:27:27,930 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
-2026-06-28 14:27:30,398 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
-2026-06-28 14:27:30,398 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
-2026-06-28 14:27:33,430 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
-2026-06-28 14:27:33,432 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
-2026-06-28 14:27:34,928 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: ['MunichPLPDemo']
-2026-06-28 14:27:34,930 - PostMigrationCheck - WARNING - [generate_migration_statistics:83] - No statistics generated. Project filter: ['MunichPLPDemo'], Assets found: 60
-2026-06-28 14:27:34,931 - PostMigrationCheck - WARNING - [generate_migration_statistics:84] - Sample asset path: MunichDEMO/Leelaprasad_V1/AC-IICS-login
-2026-06-28 14:27:34,932 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 0 statistics entries
-2026-06-28 14:27:34,933 - PostMigrationCheck - INFO - [execute_post_migration_check:149] - Statistics generated: 0 entries
-2026-06-28 14:27:34,934 - PostMigrationCheck - WARNING - [execute_post_migration_check:151] - No statistics matched project: ['MunichPLPDemo']
-2026-06-28 14:27:34,934 - PostMigrationCheck - WARNING - [execute_post_migration_check:152] - Sample asset paths: ['MunichDEMO/Leelaprasad_V1/AC-IICS-login', 'MunichPLPDemo/Leelaprasad_V1/AC-IICS-login', 'MunichDEMO/Leelaprasad_V1/cdgc_college_attendance']
-2026-06-28 14:27:34,935 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260628_142734.xlsx
-2026-06-28 14:27:34,936 - PostMigrationCheck - ERROR - [write_excel_report:39] - No data to write to Excel file
-2026-06-28 14:27:34,936 - PostMigrationCheck - ERROR - [write_excel_report:73] - Failed to create Excel report: No data available to generate report
-2026-06-28 14:29:42,590 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 14:29:42,593 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 14:29:42
-2026-06-28 14:29:42,593 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 14:29:45,051 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 14:29:46,288 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 14:29:46,289 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: Folder-1
-2026-06-28 14:29:48,242 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 0
-2026-06-28 14:29:48,245 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 0
-2026-06-28 19:16:32,564 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
-2026-06-28 19:16:32,565 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-06-28 19:16:32
-2026-06-28 19:16:32,565 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
-2026-06-28 19:16:35,290 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
-2026-06-28 19:16:37,521 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
-2026-06-28 19:16:37,522 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
-2026-06-28 19:16:41,383 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
-2026-06-28 19:16:41,384 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
-2026-06-28 19:16:44,163 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
-2026-06-28 19:16:44,166 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
-2026-06-28 19:16:45,606 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
-2026-06-28 19:16:45,606 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
-2026-06-28 19:16:45,607 - PostMigrationCheck - INFO - [execute_post_migration_check:149] - Statistics generated: 20 entries
-2026-06-28 19:16:45,608 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260628_191645.xlsx
-2026-06-28 19:16:45,619 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
-2026-06-28 19:16:45,655 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260628_191645.xlsx
+2026-07-13 12:16:16,751 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
+2026-07-13 12:16:16,752 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-07-13 12:16:16
+2026-07-13 12:16:16,752 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
+2026-07-13 12:16:18,638 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-07-13 12:16:19,481 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-07-13 12:16:19,482 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
+2026-07-13 12:16:21,479 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
+2026-07-13 12:16:21,481 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-07-13 12:16:23,593 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
+2026-07-13 12:16:23,596 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
+2026-07-13 12:16:24,467 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-07-13 12:16:24,468 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
+2026-07-13 12:16:24,469 - PostMigrationCheck - INFO - [execute_post_migration_check:172] - Statistics generated: 20 entries
+2026-07-13 12:16:24,470 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260713_121624.xlsx
+2026-07-13 12:16:24,478 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
+2026-07-13 12:16:24,510 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260713_121624.xlsx
+2026-07-13 14:57:51,134 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
+2026-07-13 14:57:51,135 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-07-13 14:57:51
+2026-07-13 14:57:51,136 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
+2026-07-13 14:57:53,135 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-07-13 14:57:54,130 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-07-13 14:57:54,131 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
+2026-07-13 14:57:56,787 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
+2026-07-13 14:57:56,788 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-07-13 14:57:59,226 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
+2026-07-13 14:57:59,229 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
+2026-07-13 14:58:00,158 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-07-13 14:58:00,159 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
+2026-07-13 14:58:00,160 - PostMigrationCheck - INFO - [execute_post_migration_check:172] - Statistics generated: 20 entries
+2026-07-13 14:58:00,161 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260713_145800.xlsx
+2026-07-13 14:58:00,856 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
+2026-07-13 14:58:00,899 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260713_145800.xlsx
+2026-07-14 12:02:30,315 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
+2026-07-14 12:02:30,317 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-07-14 12:02:30
+2026-07-14 12:02:30,317 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
+2026-07-14 12:02:32,823 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-07-14 12:02:33,865 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-07-14 12:02:33,866 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
+2026-07-14 12:02:35,971 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
+2026-07-14 12:02:35,972 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-07-14 12:02:38,130 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
+2026-07-14 12:02:38,139 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
+2026-07-14 12:02:40,402 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-07-14 12:02:40,402 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
+2026-07-14 12:02:40,402 - PostMigrationCheck - INFO - [execute_post_migration_check:172] - Statistics generated: 20 entries
+2026-07-14 12:02:40,403 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260714_120240.xlsx
+2026-07-14 12:02:40,410 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
+2026-07-14 12:02:40,447 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260714_120240.xlsx
+2026-07-14 12:08:04,623 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
+2026-07-14 12:08:04,624 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-07-14 12:08:04
+2026-07-14 12:08:04,624 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
+2026-07-14 12:08:06,536 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-07-14 12:08:07,627 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-07-14 12:08:07,627 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: PM
+2026-07-14 12:08:09,608 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 60
+2026-07-14 12:08:09,609 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-07-14 12:08:11,694 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 60 objects
+2026-07-14 12:08:11,698 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 60
+2026-07-14 12:08:11,700 - PostMigrationCheck - INFO - [execute_post_migration_check:169] - Tagged assets: 60 total, 20 in project 'MunichPLPDemo', 40 in other projects
+2026-07-14 12:08:13,577 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: MunichPLPDemo
+2026-07-14 12:08:13,578 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 20 statistics entries
+2026-07-14 12:08:13,578 - PostMigrationCheck - INFO - [execute_post_migration_check:207] - Statistics generated: 20 entries
+2026-07-14 12:08:13,579 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260714_120813.xlsx
+2026-07-14 12:08:14,146 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 20 rows
+2026-07-14 12:08:14,194 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260714_120813.xlsx
+2026-07-14 17:41:03,591 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
+2026-07-14 17:41:03,592 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-07-14 17:41:03
+2026-07-14 17:41:03,593 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
+2026-07-14 17:41:05,463 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-07-14 17:41:06,277 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-07-14 17:41:06,277 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: CICD_DEMO_TEST
+2026-07-14 17:41:07,867 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 3
+2026-07-14 17:41:07,871 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-07-14 17:41:09,577 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 3 objects
+2026-07-14 17:41:09,580 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 3
+2026-07-14 17:41:09,581 - PostMigrationCheck - INFO - [execute_post_migration_check:174] - Tagged assets: 3 total, 3 in project 'Munich_Leelaprasad_DEMO', 0 in other projects
+2026-07-14 17:41:10,446 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: Munich_Leelaprasad_DEMO
+2026-07-14 17:41:10,447 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 3 statistics entries
+2026-07-14 17:41:10,448 - PostMigrationCheck - INFO - [execute_post_migration_check:212] - Statistics generated: 3 entries
+2026-07-14 17:41:10,449 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260714_174110.xlsx
+2026-07-14 17:41:10,455 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 3 rows
+2026-07-14 17:41:10,478 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260714_174110.xlsx
+2026-07-14 18:42:24,364 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
+2026-07-14 18:42:24,366 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-07-14 18:42:24
+2026-07-14 18:42:24,367 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
+2026-07-14 18:42:26,223 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-07-14 18:42:27,082 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-07-14 18:42:27,086 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: CICD_DEMO_TEST
+2026-07-14 18:42:28,788 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 3
+2026-07-14 18:42:28,788 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-07-14 18:42:30,460 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 3 objects
+2026-07-14 18:42:30,466 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 3
+2026-07-14 18:42:30,470 - PostMigrationCheck - INFO - [execute_post_migration_check:174] - Tagged assets: 3 total, 3 in project 'Munich_Leelaprasad_DEMO', 0 in other projects
+2026-07-14 18:42:31,295 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: Munich_Leelaprasad_DEMO
+2026-07-14 18:42:31,296 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 3 statistics entries
+2026-07-14 18:42:31,297 - PostMigrationCheck - INFO - [execute_post_migration_check:212] - Statistics generated: 3 entries
+2026-07-14 18:42:31,298 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260714_184231.xlsx
+2026-07-14 18:42:31,314 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 3 rows
+2026-07-14 18:42:31,342 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260714_184231.xlsx
+2026-07-16 13:36:49,697 - PostMigrationCheck - INFO - [create_logger:61] - ================================================================================
+2026-07-16 13:36:49,698 - PostMigrationCheck - INFO - [create_logger:62] - Post-Migration Check Session Started - 2026-07-16 13:36:49
+2026-07-16 13:36:49,698 - PostMigrationCheck - INFO - [create_logger:63] - ================================================================================
+2026-07-16 13:36:51,709 - PostMigrationCheck - INFO - [login:75] - IDMC Platform Authentication Successful: Status 200
+2026-07-16 13:36:52,624 - PostMigrationCheck - INFO - [get_assets_by_tags:100] - Retrieving assets for 1 tag(s)
+2026-07-16 13:36:52,626 - PostMigrationCheck - INFO - [get_tagged_objects:27] - Retrieving objects with tag: CICD_DEMO_TEST
+2026-07-16 13:36:54,333 - PostMigrationCheck - INFO - [get_tagged_objects:44] - Total objects found: 3
+2026-07-16 13:36:54,333 - PostMigrationCheck - INFO - [get_tagged_objects:51] - Fetching in 1 iteration(s)
+2026-07-16 13:36:56,112 - PostMigrationCheck - INFO - [get_tagged_objects:79] - Successfully retrieved 3 objects
+2026-07-16 13:36:56,116 - PostMigrationCheck - INFO - [get_assets_by_tags:119] - Total unique assets retrieved: 3
+2026-07-16 13:36:56,117 - PostMigrationCheck - INFO - [execute_post_migration_check:174] - Tagged assets: 3 total, 3 in project 'Munich_Leelaprasad_DEMO', 0 in other projects
+2026-07-16 13:36:57,063 - PostMigrationCheck - INFO - [generate_migration_statistics:20] - Generating statistics for project: Munich_Leelaprasad_DEMO
+2026-07-16 13:36:57,064 - PostMigrationCheck - INFO - [generate_migration_statistics:86] - Generated 3 statistics entries
+2026-07-16 13:36:57,066 - PostMigrationCheck - INFO - [execute_post_migration_check:212] - Statistics generated: 3 entries
+2026-07-16 13:36:57,067 - PostMigrationCheck - INFO - [write_excel_report:34] - Creating Excel report: Reports\PostMigrationReport_20260716_133657.xlsx
+2026-07-16 13:36:57,077 - PostMigrationCheck - INFO - [write_excel_report:56] - Sheet 'MigrationStat' written with 3 rows
+2026-07-16 13:36:57,102 - PostMigrationCheck - INFO - [write_excel_report:66] - Excel report created successfully: Reports\PostMigrationReport_20260716_133657.xlsx
