@@ -1,7 +1,3 @@
-"""
-CICD Migration Tool - Reusable module for CI/CD operations
-"""
-
 import logging
 from typing import Optional, Callable, Dict, Any
 from langchain_core.tools import tool
@@ -82,7 +78,7 @@ def execute_cicd_migration(
             raise FileNotFoundError(f"Configuration file not found: {config_file_path}")
 
         from CICDMigration.logger import create_logger
-        from CICDMigration.login import iics_login
+        from CICDMigration.login import login
         from CICDMigration.taggedAssets import tagged_assets
         from CICDMigration.cherrypick import cherrypick
         from CICDMigration.createProjectsAndFolders import create_projects_and_folders
@@ -92,9 +88,17 @@ def execute_cicd_migration(
         from CICDMigration.utils import validate_input_data
         from CICDMigration.main import load_configuration
 
-        # Load and validate configuration
+        # Load and validate configuration.
+        # The log directory is static ('Logs') - always use it, ignoring any
+        # value in the config (warn if the user supplied a different one). This
+        # also means a config that omits logFileDir never fails here.
         input_data = load_configuration(config_file_path)
-        logger_instance = create_logger(input_data['logFileDir'])
+        logger_instance = create_logger('Logs')
+        if input_data.get('logFileDir') and input_data['logFileDir'] != 'Logs':
+            logger_instance.warning(
+                f"Custom logFileDir '{input_data['logFileDir']}' ignored; using standard 'Logs' directory"
+            )
+        input_data['logFileDir'] = 'Logs'
         validate_input_data(input_data, logger_instance)
 
         # Show configuration preview
@@ -112,7 +116,7 @@ def execute_cicd_migration(
    • Region: `{input_data['IICS_TGT_region']}`
 
 📦 *Migration Details:*
-   • Project: `{input_data['ProjectName'][0]}`
+   • Project: `{input_data['ProjectName']}`
    • Pre-Migration Tags: `{', '.join(input_data['PreMigration_Tag'])}`
    • Post-Migration Tags: `{', '.join(input_data['PostMigration_Tag'])}`
 
@@ -131,7 +135,7 @@ Proceeding with migration..."""
         if say_callback:
             say_callback("🔐 *STEP 1/8:* Authenticating to Source IICS...")
 
-        src_data = iics_login(
+        src_data = login(
             input_data['IICS_SRC_username'],
             input_data['IICS_SRC_password'],
             input_data['IICS_SRC_region'],
@@ -148,7 +152,7 @@ Proceeding with migration..."""
         git_paths, asset_metadata = tagged_assets(
             src_data,
             input_data['PreMigration_Tag'],
-            input_data['ProjectName'][0],
+            input_data['ProjectName'],
             logger_instance
         )
 
@@ -162,7 +166,7 @@ Proceeding with migration..."""
         if say_callback:
             say_callback("🔐 *STEP 3/8:* Authenticating to Target IICS...")
 
-        tgt_data = iics_login(
+        tgt_data = login(
             input_data['IICS_TGT_username'],
             input_data['IICS_TGT_password'],
             input_data['IICS_TGT_region'],
@@ -199,7 +203,7 @@ Proceeding with migration..."""
         if say_callback:
             say_callback("⬇️  *STEP 6/8:* Pulling Assets to Target Environment...")
 
-        pull_assets(asset_metadata, commit_hash, tgt_data, logger_instance)
+        pull_assets(asset_metadata, commit_hash, tgt_data, logger_instance, progress_callback=say_callback)
 
         if say_callback:
             say_callback(f"✅ Assets pulled successfully to *{tgt_data['orgName']}*")
@@ -212,7 +216,8 @@ Proceeding with migration..."""
             asset_metadata,
             tgt_data,
             input_data["PostMigration_Tag"],
-            logger_instance
+            logger_instance,
+            progress_callback=say_callback
         )
 
         if say_callback:
@@ -223,8 +228,11 @@ Proceeding with migration..."""
             say_callback("💾 *STEP 8/8:* Recording Migration in Database...")
 
         try:
-            add_record(
-                input_data['ProjectName'][0],
+            # add_record returns False on failure (it does not raise), so check
+            # the return value rather than relying on an exception - otherwise a
+            # failed insert would still report "record created".
+            db_success = add_record(
+                input_data['ProjectName'],
                 src_data['orgName'],
                 src_data['orgId'],
                 commit_hash,
@@ -235,7 +243,10 @@ Proceeding with migration..."""
                 logger_instance
             )
             if say_callback:
-                say_callback("✅ Database record created")
+                if db_success:
+                    say_callback("✅ Database record created")
+                else:
+                    say_callback("⚠️  Database recording skipped (migration still successful)")
         except Exception as e:
             logger_instance.warning(f"Database recording failed: {str(e)}")
             if say_callback:
@@ -266,7 +277,7 @@ Reply with "*yes*" to proceed."""
             "config_path": config_file_path,
             "migration_completed": True,
             "post_migration_tag": input_data.get("PostMigration_Tag", []),
-            "project_name": input_data['ProjectName'][0],
+            "project_name": input_data['ProjectName'],
             "target_username": input_data['IICS_TGT_username'],
             "target_password": input_data['IICS_TGT_password'],
             "target_region": input_data['IICS_TGT_region']

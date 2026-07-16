@@ -26,7 +26,7 @@ def post_migration_check_tool(config_file_path: str) -> str:
         - IICS_TGT_username: Target environment username
         - IICS_TGT_password: Target environment password
         - IICS_TGT_region: Target region (e.g., dm-us)
-        - PostMigration_Tag: List of tags to check (e.g., ["Migrated", "PostMigration"])
+        - PostMigration_Tag: List containing exactly one tag to check (e.g., ["Migrated"])
         - ProjectName: Project name to validate
         - logFileDir: Directory for logs (e.g., "Logs")
         - file_dir: Directory for report (e.g., "Reports")
@@ -92,7 +92,36 @@ def execute_post_migration_check(
         with open(config_file_path, 'r', encoding='utf-8') as f:
             config = json.load(f)
 
-        logger_instance = create_logger(config['logFileDir'])
+        # Log directory is static ('Logs'); ignore any custom value in the config.
+        logger_instance = create_logger('Logs')
+        if config.get('logFileDir') and config['logFileDir'] != 'Logs':
+            logger_instance.warning(
+                f"Custom logFileDir '{config['logFileDir']}' ignored; using standard 'Logs' directory"
+            )
+
+        # Normalize ProjectName (may be a string or an array from a CICD config)
+        # so validation sees a string, matching how the flow uses it below.
+        if isinstance(config.get('ProjectName'), list) and config['ProjectName']:
+            config['ProjectName'] = config['ProjectName'][0]
+
+        # Validate configuration before doing any work (fail fast with a clear
+        # message instead of raising a raw KeyError deep in the flow)
+        try:
+            from common.config_validation import validate_config
+            validation = validate_config(config, config_type='post')
+            for warning in validation.get('warnings', []):
+                logger_instance.warning(warning)
+            config.update(validation['config'])
+        except ValueError as e:
+            logger_instance.error(f"Configuration validation failed: {str(e)}")
+            if say_callback:
+                say_callback(f"❌ *Configuration validation failed:*\n{str(e)}")
+            return {
+                "success": False,
+                "message": str(e),
+                "asset_count": 0,
+                "report_path": None
+            }
 
         # Step 1: Authenticate to Target IICS
         if say_callback:
@@ -132,8 +161,43 @@ def execute_post_migration_check(
                 "report_path": None
             }
 
+        # The tag query returns every tagged asset across ALL projects. Filter to
+        # the target project here so the Slack count and the report both reflect
+        # only assets in this project (the report's statistics filter by project).
+        project_name = config['ProjectName']
+        all_tagged_count = len(assets)
+        assets = [
+            asset for asset in assets
+            if (asset.get('path') or '').startswith(f"{project_name}/")
+        ]
+        skipped_count = all_tagged_count - len(assets)
+        logger_instance.info(
+            f"Tagged assets: {all_tagged_count} total, "
+            f"{len(assets)} in project '{project_name}', {skipped_count} in other projects"
+        )
+
+        if not assets:
+            msg = (
+                f"No tagged assets belong to project '{project_name}' "
+                f"({all_tagged_count} tagged asset(s) found in other projects)"
+            )
+            if say_callback:
+                say_callback(f"⚠️  {msg}")
+            logger_instance.warning(msg)
+            return {
+                "success": False,
+                "message": msg,
+                "asset_count": 0,
+                "report_path": None
+            }
+
         if say_callback:
-            say_callback(f"✅ Found *{len(assets)}* migrated assets")
+            say_callback(f"✅ Found *{len(assets)}* migrated assets in project *{project_name}*")
+            if skipped_count:
+                say_callback(
+                    f"ℹ️  {skipped_count} additional tagged asset(s) belong to other "
+                    f"projects and were excluded."
+                )
 
         # Step 3: Generate Validation Report
         if say_callback:
@@ -154,9 +218,13 @@ def execute_post_migration_check(
             'MigrationStat': stats if stats else []
         }
 
-        # Reports directory - use reportFileDir if specified, otherwise default to 'Reports'
+        # Reports directory is static ('Reports'); ignore any custom value.
         from datetime import datetime
-        report_dir = config.get('reportFileDir', 'Reports')
+        if config.get('reportFileDir') and config['reportFileDir'] != 'Reports':
+            logger_instance.warning(
+                f"Custom reportFileDir '{config['reportFileDir']}' ignored; using standard 'Reports' directory"
+            )
+        report_dir = 'Reports'
 
         # Generate timestamped report filename
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')

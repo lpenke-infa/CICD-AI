@@ -1,7 +1,3 @@
-"""
-IDMC Operations Tool - Reusable module for IDMC API operations
-"""
-
 import os
 import logging
 import json
