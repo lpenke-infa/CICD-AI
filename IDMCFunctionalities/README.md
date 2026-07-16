@@ -1,5 +1,7 @@
 # IDMC Operations Tool
 
+> **Status: Development - In Progress.** IDMC Operations is not fully working yet. The bot's welcome menu marks this feature as "Development - In Progress", and the function reference below documents the intended API surface. Treat the behavior described here as a work in progress rather than a fully validated, production-ready capability.
+
 ## Overview
 
 The IDMC Operations Tool provides direct access to IDMC (Informatica Intelligent Data Management Cloud) API operations through a conversational AI interface. It wraps 35+ IDMC API functions for managing assets, tags, projects, folders, schedules, users, agents, and permissions without requiring code knowledge.
@@ -28,7 +30,7 @@ tools/idmc_tool.py → IDMCFunctionalities/idmc_functions.py
 ---
 
 ### 2. `idmc_functions.py`
-- **Total Lines:** 1,670
+- **Total Lines:** 1,709
 - **Purpose:** Comprehensive IDMC API wrapper with 35 functions
 
 #### All Functions Overview
@@ -36,40 +38,40 @@ tools/idmc_tool.py → IDMCFunctionalities/idmc_functions.py
 | # | Function | Line | Purpose |
 |---|----------|------|---------|
 | 1 | `IdmcLogin()` | 84 | Authenticate to IDMC |
-| 2 | `IdmcGetObjects()` | 125 | Query IDMC objects by type/path |
-| 3 | `IdmcTagAssets()` | 188 | Add tags to assets |
-| 4 | `IdmcUntagAssets()` | 234 | Remove tags from assets |
-| 5 | `IdmcCheckout()` | 280 | Check out assets for editing |
-| 6 | `IdmcCheckin()` | 317 | Check in assets with comments |
-| 7 | `IdmcUndoCheckout()` | 358 | Undo checkout operation |
-| 8 | `IdmcGetOperationStatus()` | 394 | Get async operation status |
-| 9 | `IdmcLogout()` | 431 | Logout from IDMC |
-| 10 | `IdmcCreateProject()` | 452 | Create new project |
-| 11 | `IdmcUpdateProject()` | 494 | Update project details |
-| 12 | `IdmcDeleteProject()` | 538 | Delete empty project |
-| 13 | `IdmcCreateFolder()` | 574 | Create new folder |
-| 14 | `IdmcUpdateFolder()` | 627 | Update folder details |
-| 15 | `IdmcDeleteFolder()` | 679 | Delete empty folder |
-| 16 | `IdmcGetSchedules()` | 721 | Get schedule information |
-| 17 | `IdmcCreateSchedule()` | 776 | Create new schedule |
-| 18 | `IdmcUpdateSchedule()` | 859 | Update schedule details |
-| 19 | `IdmcDeleteSchedule()` | 934 | Delete schedule |
-| 20 | `IdmcGetScimTokens()` | 960 | Get SCIM tokens |
-| 21 | `IdmcCreateScimToken()` | 993 | Create SCIM token |
-| 22 | `IdmcDeleteScimToken()` | 1027 | Delete SCIM token |
-| 23 | `IdmcGetAgents()` | 1058 | Get secure agents |
-| 24 | `IdmcGetAgentStatus()` | 1115 | Get agent status |
-| 25 | `IdmcGetRuntimeEnvironments()` | 1162 | Get runtime environments |
-| 26 | `IdmcGetUsers()` | 1213 | Get organization users |
-| 27 | `IdmcCreateUser()` | 1271 | Create new user |
-| 28 | `IdmcDeleteUser()` | 1334 | Delete user |
-| 29 | `IdmcGetObjectPermissions()` | 1362 | Get object permissions |
-| 30 | `IdmcCreateObjectPermission()` | 1413 | Create object permission |
-| 31 | `IdmcUpdateObjectPermission()` | 1481 | Update object permission |
-| 32 | `IdmcDeleteObjectPermission()` | 1524 | Delete object permission |
-| 33 | `IdmcExportMeteringData()` | 1562 | Export metering data |
-| 34 | `IdmcGetMeteringJobStatus()` | 1610 | Get metering job status |
-| 35 | `IdmcDownloadMeteringData()` | 1644 | Download metering data |
+| 2 | `IdmcGetObjects()` | 131 | Query IDMC objects by type/path |
+| 3 | `IdmcTagAssets()` | 199 | Add tags to assets |
+| 4 | `IdmcUntagAssets()` | 273 | Remove tags from assets |
+| 5 | `IdmcCheckout()` | 319 | Check out assets for editing |
+| 6 | `IdmcCheckin()` | 356 | Check in assets with comments |
+| 7 | `IdmcUndoCheckout()` | 397 | Undo checkout operation |
+| 8 | `IdmcGetOperationStatus()` | 433 | Get async operation status |
+| 9 | `IdmcLogout()` | 470 | Logout from IDMC |
+| 10 | `IdmcCreateProject()` | 491 | Create new project |
+| 11 | `IdmcUpdateProject()` | 533 | Update project details |
+| 12 | `IdmcDeleteProject()` | 577 | Delete empty project |
+| 13 | `IdmcCreateFolder()` | 613 | Create new folder |
+| 14 | `IdmcUpdateFolder()` | 666 | Update folder details |
+| 15 | `IdmcDeleteFolder()` | 718 | Delete empty folder |
+| 16 | `IdmcGetSchedules()` | 760 | Get schedule information |
+| 17 | `IdmcCreateSchedule()` | 815 | Create new schedule |
+| 18 | `IdmcUpdateSchedule()` | 898 | Update schedule details |
+| 19 | `IdmcDeleteSchedule()` | 973 | Delete schedule |
+| 20 | `IdmcGetScimTokens()` | 999 | Get SCIM tokens |
+| 21 | `IdmcCreateScimToken()` | 1032 | Create SCIM token |
+| 22 | `IdmcDeleteScimToken()` | 1066 | Delete SCIM token |
+| 23 | `IdmcGetAgents()` | 1097 | Get secure agents |
+| 24 | `IdmcGetAgentStatus()` | 1154 | Get agent status |
+| 25 | `IdmcGetRuntimeEnvironments()` | 1201 | Get runtime environments |
+| 26 | `IdmcGetUsers()` | 1252 | Get organization users |
+| 27 | `IdmcCreateUser()` | 1310 | Create new user |
+| 28 | `IdmcDeleteUser()` | 1373 | Delete user |
+| 29 | `IdmcGetObjectPermissions()` | 1401 | Get object permissions |
+| 30 | `IdmcCreateObjectPermission()` | 1452 | Create object permission |
+| 31 | `IdmcUpdateObjectPermission()` | 1520 | Update object permission |
+| 32 | `IdmcDeleteObjectPermission()` | 1563 | Delete object permission |
+| 33 | `IdmcExportMeteringData()` | 1601 | Export metering data |
+| 34 | `IdmcGetMeteringJobStatus()` | 1649 | Get metering job status |
+| 35 | `IdmcDownloadMeteringData()` | 1683 | Download metering data |
 
 ---
 
@@ -93,10 +95,7 @@ Authenticates to IDMC and returns session information.
     "SessionId": "IDS_xxx",
     "BaseApiUrl": "https://dm-us.informaticacloud.com",
     "OrgId": "xxx",
-    "OrgName": "MyOrg",
-    "ServerUrl": "https://dm-us.informaticacloud.com/saas",
-    "UserId": "xxx",
-    "UserName": "user@example.com"
+    "OrgName": "MyOrg"
 }
 ```
 
@@ -126,7 +125,7 @@ Logs out from IDMC session.
 
 ### 📦 Asset Management (5 functions)
 
-#### 3. `IdmcGetObjects(SessionId, BaseApiUrl, ObjectType=None, PathFilter=None, MaxFetch=10000)`
+#### 3. `IdmcGetObjects(SessionId, BaseApiUrl, ObjectType=None, PathFilter=None, QueryFilter=None, MaxFetch=10000)`
 
 Retrieves IDMC objects with optional filtering.
 
@@ -135,6 +134,7 @@ Retrieves IDMC objects with optional filtering.
 - `BaseApiUrl` (str) - Base API URL
 - `ObjectType` (str, optional) - Filter by type (e.g., "DTEMPLATE", "MTT", "TASKFLOW")
 - `PathFilter` (str, optional) - Filter by path pattern
+- `QueryFilter` (str, optional) - Additional raw query filter string
 - `MaxFetch` (int) - Maximum objects to fetch (default: 10000)
 
 **Supported Object Types:**
@@ -232,18 +232,18 @@ Adds tags to assets.
 **Parameters:**
 - `SessionId` (str) - Active session ID
 - `BaseApiUrl` (str) - Base API URL
-- `Assets` (list) - List of asset dictionaries with `Id` and `Tags`
+- `Assets` (list) - List of asset dictionaries with `id` and `tags`
 
 **Asset Format:**
 ```python
 Assets = [
     {
-        "Id": "asset_id_1",
-        "Tags": ["Production", "Release_v1.0"]
+        "id": "asset_id_1",
+        "tags": ["Production", "Release_v1.0"]
     },
     {
-        "Id": "asset_id_2",
-        "Tags": ["Development", "Testing"]
+        "id": "asset_id_2",
+        "tags": ["Development", "Testing"]
     }
 ]
 ```
@@ -252,15 +252,16 @@ Assets = [
 ```python
 {
     "Status": "success",
-    "Tagged": 2
+    "SuccessCount": 2,
+    "FailedCount": 0
 }
 ```
 
 **Usage:**
 ```python
 assets = [
-    {"Id": "abc123", "Tags": ["Production"]},
-    {"Id": "def456", "Tags": ["Production", "v1.0"]}
+    {"id": "abc123", "tags": ["Production"]},
+    {"id": "def456", "tags": ["Production", "v1.0"]}
 ]
 result = IdmcTagAssets(session_id, base_url, assets)
 ```
@@ -386,13 +387,13 @@ Creates a new schedule.
 
 **Parameters:**
 - `ScheduleName` (str) - Schedule name
-- `StartTime` (str) - Start time (ISO format)
-- `Interval` (int) - Interval value
-- `Frequency` (str) - "Daily", "Weekly", "Monthly", "Once"
-- `Status` (str) - "enabled" or "disabled"
+- `StartTime` (str) - Start time in UTC ISO format (e.g., "2024-09-18T22:00:00.000Z")
+- `Interval` (str) - "None", "Minutely", "Hourly", "Daily", "Weekly", "Biweekly", "Monthly"
+- `Frequency` (int, optional) - Repeat frequency (depends on interval)
+- `Status` (str) - "enabled" or "disabled" (default: "enabled")
 - `TimeZoneId` (str) - Timezone (default: "UTC")
-- `DayFlags` (list, optional) - Days of week for weekly schedules
-- `OtherParams` (dict, optional) - Additional parameters
+- `DayFlags` (dict, optional) - Day flags, e.g. {"sun": True, "mon": False, ...}
+- `OtherParams` (dict, optional) - Additional parameters (dayOfMonth, weekDay, etc.)
 
 ---
 
@@ -409,6 +410,61 @@ Updates existing schedule.
 #### 19. `IdmcDeleteSchedule(SessionId, BaseApiUrl, ScheduleId)`
 
 Deletes a schedule.
+
+---
+
+### 🔑 SCIM Token Management (3 functions)
+
+#### 20. `IdmcGetScimTokens(SessionId, BaseApiUrl)`
+
+Gets all SCIM tokens for the organization.
+
+**Parameters:**
+- `SessionId` (str) - Active session ID
+- `BaseApiUrl` (str) - Base API URL
+
+**Returns:**
+```python
+{
+    "Status": "success",
+    "Count": 1,
+    "Tokens": [...]
+}
+```
+
+---
+
+#### 21. `IdmcCreateScimToken(SessionId, BaseApiUrl)`
+
+Creates a new SCIM token.
+
+**Parameters:**
+- `SessionId` (str) - Active session ID
+- `BaseApiUrl` (str) - Base API URL
+
+**Returns:**
+```python
+{
+    "Status": "success",
+    "TokenId": "xxx",
+    "TokenValue": "xxx",
+    "Expiry": "xxx",
+    "TokenStatus": "xxx"
+}
+```
+
+**Note:** Maximum 2 tokens per organization. Delete an existing token if the limit is reached.
+
+---
+
+#### 22. `IdmcDeleteScimToken(SessionId, BaseApiUrl, TokenId)`
+
+Deletes a SCIM token.
+
+**Parameters:**
+- `SessionId` (str) - Active session ID
+- `BaseApiUrl` (str) - Base API URL
+- `TokenId` (str) - Token ID to delete
 
 ---
 
@@ -554,22 +610,36 @@ Gets permissions for an object.
 
 ---
 
-#### 30. `IdmcCreateObjectPermission(SessionId, BaseApiUrl, ObjectId, PrincipalType, PrincipalName, Permissions, GrantToPrincipal=True)`
+#### 30. `IdmcCreateObjectPermission(SessionId, BaseApiUrl, ObjectId, PrincipalType, PrincipalName, Read=False, Update=False, Delete=False, Execute=False, ChangePermission=False)`
 
 Creates object permission.
 
 **Parameters:**
 - `ObjectId` (str) - Object ID
-- `PrincipalType` (str) - "User" or "Group"
-- `PrincipalName` (str) - User or group name
-- `Permissions` (list) - List of permissions: ["Read", "Write", "Execute", "Delete"]
-- `GrantToPrincipal` (bool) - Grant to principal
+- `PrincipalType` (str) - "USER" or "GROUP"
+- `PrincipalName` (str) - Username or group name
+- `Read` (bool) - Read permission
+- `Update` (bool) - Update permission
+- `Delete` (bool) - Delete permission
+- `Execute` (bool) - Execute permission
+- `ChangePermission` (bool) - Change permission permission
 
 ---
 
-#### 31. `IdmcUpdateObjectPermission(SessionId, BaseApiUrl, ObjectId, AclId, PrincipalType, PrincipalName, Permissions)`
+#### 31. `IdmcUpdateObjectPermission(SessionId, BaseApiUrl, ObjectId, AclId, PrincipalType, PrincipalName, Read=False, Update=False, Delete=False, Execute=False, ChangePermission=False)`
 
 Updates object permission.
+
+**Parameters:**
+- `ObjectId` (str) - Object ID
+- `AclId` (str) - ACL ID to update
+- `PrincipalType` (str) - "USER" or "GROUP"
+- `PrincipalName` (str) - Username or group name
+- `Read` (bool) - Read permission
+- `Update` (bool) - Update permission
+- `Delete` (bool) - Delete permission
+- `Execute` (bool) - Execute permission
+- `ChangePermission` (bool) - Change permission permission
 
 ---
 
@@ -581,9 +651,18 @@ Deletes object permission.
 
 ### 📊 Metering & Analytics (3 functions)
 
-#### 33. `IdmcExportMeteringData(SessionId, BaseApiUrl, StartDate, EndDate, JobType, OrgId=None, OtherParams=None)`
+#### 33. `IdmcExportMeteringData(SessionId, BaseApiUrl, StartDate, EndDate, JobType, CombinedMeterUsage="FALSE", AllLinkedOrgs="FALSE", MeterId=None, CallbackUrl=None)`
 
 Exports metering data for a date range.
+
+**Parameters:**
+- `StartDate` (str) - Start date in ISO 8601 format (e.g., "2024-08-12T00:00:00Z")
+- `EndDate` (str) - End date in ISO 8601 format (max 30-day range)
+- `JobType` (str) - "PROJECT_FOLDER", "ASSET", or "JOB"
+- `CombinedMeterUsage` (str) - "TRUE" or "FALSE" (default: "FALSE")
+- `AllLinkedOrgs` (str) - "TRUE" or "FALSE" (default: "FALSE")
+- `MeterId` (str, optional) - Meter ID (for asset/job level)
+- `CallbackUrl` (str, optional) - Callback URL for status updates
 
 ---
 
@@ -730,51 +809,59 @@ The tool wraps these IDMC REST APIs:
 ```
 # Authentication
 POST /saas/public/core/v3/login
-POST /saas/public/core/v3/logout
+POST /api/v2/logout
 
 # Asset Management
 GET  /public/core/v3/objects
 POST /public/core/v3/checkout
 POST /public/core/v3/checkin
-GET  /public/core/v3/operation/{id}
+POST /public/core/v3/undoCheckout
+GET  /public/core/v3/sourceControlAction/{id}
 
 # Tagging
-POST /public/core/v3/tagging
+POST /public/core/v3/TagObjects
+POST /public/core/v3/UntagObjects
 
 # Projects & Folders
 POST /public/core/v3/projects
 GET  /public/core/v3/projects
-PUT  /public/core/v3/projects/{id}
+PATCH /public/core/v3/projects/{id}
 DELETE /public/core/v3/projects/{id}
 POST /public/core/v3/folders
-PUT  /public/core/v3/folders/{id}
+PATCH /public/core/v3/folders/{id}
 DELETE /public/core/v3/folders/{id}
 
 # Schedules
 GET  /public/core/v3/schedule
 POST /public/core/v3/schedule
-PUT  /public/core/v3/schedule/{id}
+PATCH /public/core/v3/schedule/{id}
 DELETE /public/core/v3/schedule/{id}
 
-# Agents
-GET  /public/core/v3/agent
-GET  /public/core/v3/agentgroup
+# SCIM Tokens
+GET  /public/core/v3/scimTokens
+POST /public/core/v3/scimTokens
+DELETE /public/core/v3/scimTokens/{id}
+
+# Agents & Runtime Environments
+GET  /api/v2/agent
+GET  /api/v2/agent/details
+GET  /api/v2/runtimeEnvironment
 
 # Users
-GET  /public/core/v3/user
-POST /public/core/v3/user
-DELETE /public/core/v3/user/{id}
+GET  /public/core/v3/users
+POST /public/core/v3/users
+DELETE /public/core/v3/users/{id}
 
 # Permissions
-GET  /public/core/v3/acl
-POST /public/core/v3/acl
-PUT  /public/core/v3/acl/{id}
-DELETE /public/core/v3/acl/{id}
+GET  /public/core/v3/objects/{id}/permissions
+POST /public/core/v3/objects/{id}/permissions
+PUT  /public/core/v3/objects/{id}/permissions/{aclId}
+DELETE /public/core/v3/objects/{id}/permissions/{aclId}
 
 # Metering
-POST /api/v1/metering/meteringData
-GET  /api/v1/metering/meteringData/{jobId}
-GET  /api/v1/metering/meteringData/{jobId}/download
+POST /public/core/v3/license/metering/ExportMeteringData
+GET  /public/core/v3/license/metering/ExportMeteringData/{jobId}
+GET  /public/core/v3/license/metering/ExportMeteringData/{jobId}/download
 ```
 
 ---
@@ -860,9 +947,9 @@ All functions return consistent error format:
 | Metric | Count |
 |--------|-------|
 | **Total Files** | 2 |
-| **Total Lines** | ~1,751 |
+| **Total Lines** | ~1,790 |
 | **Total Functions** | 35 |
-| **Function Categories** | 9 |
+| **Function Categories** | 11 |
 | **API Endpoints** | 25+ |
 | **Supported Asset Types** | 70+ |
 | **Execution Time** | 1-5 seconds per operation |
@@ -993,7 +1080,7 @@ if result["Status"] == "success":
 
 Use in Python scripts:
 ```python
-from IDMC.idmc_functions import IdmcLogin, IdmcGetObjects, IdmcTagAssets
+from IDMCFunctionalities.idmc_functions import IdmcLogin, IdmcGetObjects, IdmcTagAssets
 
 # Login
 login = IdmcLogin("user@example.com", "password", "dm-us")
@@ -1003,7 +1090,7 @@ base_url = login["BaseApiUrl"]
 # Get and tag assets
 objects = IdmcGetObjects(session_id, base_url, ObjectType="DTEMPLATE")
 assets_to_tag = [
-    {"Id": obj["id"], "Tags": ["Production"]}
+    {"id": obj["id"], "tags": ["Production"]}
     for obj in objects["Objects"]
 ]
 IdmcTagAssets(session_id, base_url, assets_to_tag)
@@ -1071,9 +1158,9 @@ result = IdmcGetObjects(
 Tag multiple assets at once:
 ```python
 assets = [
-    {"Id": "id1", "Tags": ["Tag1", "Tag2"]},
-    {"Id": "id2", "Tags": ["Tag1", "Tag3"]},
-    {"Id": "id3", "Tags": ["Tag2", "Tag3"]}
+    {"id": "id1", "tags": ["Tag1", "Tag2"]},
+    {"id": "id2", "tags": ["Tag1", "Tag3"]},
+    {"id": "id3", "tags": ["Tag2", "Tag3"]}
 ]
 IdmcTagAssets(session_id, base_url, assets)
 ```
@@ -1140,7 +1227,7 @@ login = IdmcLogin(username, password, region)
 mappings = IdmcGetObjects(session_id, base_url, ObjectType="DTEMPLATE")
 
 # Tag assets
-IdmcTagAssets(session_id, base_url, [{"Id": "xxx", "Tags": ["Production"]}])
+IdmcTagAssets(session_id, base_url, [{"id": "xxx", "tags": ["Production"]}])
 
 # Create project
 IdmcCreateProject(session_id, base_url, "MyProject", "Description")
